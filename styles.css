@@ -1,0 +1,758 @@
+/* ===================================
+   VARIABLES Y RESET
+   =================================== */
+:root {
+    --color-primary: #C9A66B;
+    --color-secondary: #8B7355;
+    --color-accent: #D4AF37;
+    --color-bg-light: #FAF9F6;
+    --color-bg-dark: #2C2C2C;
+    --color-text-dark: #333333;
+    --color-text-light: #FFFFFF;
+    --font-script: 'Great Vibes', cursive;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===================================
+   TIPOGRAFÍA
+   =================================== */
+.script-font {
+    font-family: var(--font-script);
+    font-weight: 400;
+}
+
+.serif-font {
+    font-family: var(--font-serif);
+}
+
+/* ===================================
+   CONTENEDORES
+   =================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* ===================================
+   BOTÓN DE MÚSICA
+   =================================== */
+.music-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    font-size: 24px;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    background: var(--color-accent);
+}
+
+/* ===================================
+   SECCIÓN HERO
+   =================================== */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+                url('hero-bg.jpg') center/cover no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    color: var(--color-accent);
+}
+
+.names-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.bride-name,
+.groom-name {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.ampersand {
+    font-family: var(--font-script);
+    font-size: 4rem;
+    color: var(--color-accent);
+}
+
+.wedding-date {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    font-family: var(--font-serif);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+}
+
+/* ===================================
+   ANIMACIONES
+   =================================== */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1.5s ease-out;
+}
+
+.animate-slide-left {
+    animation: slideLeft 1s ease-out;
+}
+
+.animate-slide-right {
+    animation: slideRight 1s ease-out;
+}
+
+/* ===================================
+   TÍTULOS DE SECCIÓN
+   =================================== */
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-secondary);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--color-primary);
+    margin: 20px auto 0;
+}
+
+/* ===================================
+   SECCIÓN DE PADRES
+   =================================== */
+.parents-section {
+    background: var(--color-bg-light);
+}
+
+.parents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px;
+    text-align: center;
+}
+
+.parent-group h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.parent-group p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+}
+
+/* ===================================
+   SECCIÓN DE CITA ROMÁNTICA
+   =================================== */
+.quote-section {
+    background: var(--color-secondary);
+    color: var(--color-text-light);
+    padding: 100px 0;
+}
+
+.romantic-quote {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.romantic-quote p {
+    font-size: 2rem;
+    line-height: 1.8;
+    color: var(--color-accent);
+}
+
+/* ===================================
+   CUENTA REGRESIVA
+   =================================== */
+.countdown-section {
+    background: var(--color-bg-light);
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    text-align: center;
+    min-width: 120px;
+}
+
+.countdown-number {
+    display: block;
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    font-family: var(--font-serif);
+}
+
+.countdown-label {
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-secondary);
+    margin-top: 10px;
+}
+
+/* ===================================
+   GALERÍA DE FOTOS
+   =================================== */
+.gallery-section {
+    background: white;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.photo-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: scale(1.05);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===================================
+   DETALLES DEL EVENTO
+   =================================== */
+.event-details {
+    background: var(--color-bg-light);
+}
+
+.event-card {
+    background: white;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.event-card h3 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+}
+
+.event-time {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.event-location {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.event-address {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn-map {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.btn-map:hover {
+    background: var(--color-accent);
+    transform: scale(1.05);
+}
+
+.dress-code-text {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* ===================================
+   MESA DE REGALOS
+   =================================== */
+.gifts-section {
+    background: white;
+}
+
+.gifts-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.gifts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.gift-card {
+    background: var(--color-bg-light);
+    padding: 40px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.store-logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.gift-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: var(--color-secondary);
+}
+
+.gift-card p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.btn-gift {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-gift:hover {
+    background: var(--color-accent);
+    transform: scale(1.05);
+}
+
+/* ===================================
+   HASHTAG
+   =================================== */
+.hashtag-section {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+}
+
+.hashtag-content {
+    text-align: center;
+}
+
+.hashtag-content p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.hashtag {
+    font-family: var(--font-script);
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin: 30px 0;
+}
+
+.hashtag-description {
+    font-style: italic;
+    color: #ccc;
+}
+
+/* ===================================
+   CONFIRMACIÓN RSVP
+   =================================== */
+.rsvp-section {
+    background: var(--color-bg-light);
+}
+
+.rsvp-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.rsvp-form {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: var(--color-accent);
+    transform: scale(1.02);
+}
+
+.whatsapp-contact {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.whatsapp-contact p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    background: #128C7E;
+    transform: scale(1.05);
+}
+
+/* ===================================
+   INFORMACIÓN ADICIONAL
+   =================================== */
+.info-section {
+    background: white;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.info-card {
+    text-align: center;
+    padding: 30px;
+    background: var(--color-bg-light);
+    border-radius: 10px;
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    color: #666;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 60px 0 30px;
+    text-align: center;
+}
+
+.footer-message {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.footer-names {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+.footer-date {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin: 15px 0;
+}
+
+.footer-credit {
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .bride-name,
+    .groom-name {
+        font-size: 2rem;
+    }
+
+    .ampersand {
+        font-size: 2.5rem;
+    }
+
+    .wedding-date {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .countdown-number {
+        font-size: 3rem;
+    }
+
+    .romantic-quote p {
+        font-size: 1.5rem;
+    }
+
+    .hashtag {
+        font-size: 2rem;
+    }
+
+    .names-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    .rsvp-form {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .bride-name,
+    .groom-name {
+        font-size: 1.5rem;
+    }
+
+    .countdown-item {
+        min-width: 80px;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
+    }
+
+    .event-card {
+        padding: 25px;
+    }
+}

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda - [Nombre Novia] & [Nombre Novio]</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Música de fondo (opcional) -->
+    <audio id="background-music" loop>
+        <source src="musica-fondo.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Botón de música -->
+    <button id="music-toggle" class="music-btn" aria-label="Controlar música">
+        <span id="music-icon">🔇</span>
+    </button>
+
+    <!-- Sección Hero -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="script-font animate-fade-in">Nos Casamos</h1>
+            <div class="names-container">
+                <h2 class="bride-name animate-slide-left">[Nombre Novia]</h2>
+                <span class="ampersand">&</span>
+                <h2 class="groom-name animate-slide-right">[Nombre Novio]</h2>
+            </div>
+            <p class="wedding-date">19 • Diciembre • 2025</p>
+            <div class="scroll-indicator">
+                <span>↓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Padres -->
+    <section class="parents-section">
+        <div class="container">
+            <h2 class="section-title">Con la bendición de nuestros padres</h2>
+            <div class="parents-grid">
+                <div class="parent-group">
+                    <h3>Padres de la Novia</h3>
+                    <p>[Nombre del Padre]</p>
+                    <p>[Nombre de la Madre]</p>
+                </div>
+                <div class="parent-group">
+                    <h3>Padres del Novio</h3>
+                    <p>[Nombre del Padre]</p>
+                    <p>[Nombre de la Madre]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frase Romántica -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="romantic-quote">
+                <p class="script-font">"Que el amor sea siempre la razón de estar juntos,
+                y la razón más fuerte para permanecer unidos"</p>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Cuenta Regresiva -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="section-title">Faltan</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutos</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Segundos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Fotos -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <div class="photo-gallery">
+                <div class="photo-item">
+                    <img src="foto1.jpg" alt="Foto de la pareja" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="foto2.jpg" alt="Foto de la pareja" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="foto3.jpg" alt="Foto de la pareja" loading="lazy">
+                </div>
+                <div class="photo-item">
+                    <img src="foto4.jpg" alt="Foto de la pareja" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detalles del Evento -->
+    <section class="event-details">
+        <div class="container">
+            <h2 class="section-title">Detalles del Evento</h2>
+
+            <!-- Ceremonia Religiosa -->
+            <div class="event-card">
+                <div class="event-icon">⛪</div>
+                <h3>Ceremonia Religiosa</h3>
+                <p class="event-time">8:00 PM</p>
+                <p class="event-location">Templo San Judas Tadeo</p>
+                <p class="event-address">León, Guanajuato</p>
+                <a href="https://maps.google.com/?q=Templo+San+Judas+Tadeo+Leon+Gto"
+                   target="_blank"
+                   class="btn-map">
+                    Ver en Mapa 📍
+                </a>
+            </div>
+
+            <!-- Recepción -->
+            <div class="event-card">
+                <div class="event-icon">🎉</div>
+                <h3>Recepción</h3>
+                <p class="event-time">9:30 PM - 2:00 AM</p>
+                <p class="event-location">Salón de Eventos Laja</p>
+                <p class="event-address">León, Guanajuato</p>
+                <a href="https://maps.google.com/?q=Salon+de+Eventos+Laja+Leon+Gto"
+                   target="_blank"
+                   class="btn-map">
+                    Ver en Mapa 📍
+                </a>
+            </div>
+
+            <!-- Código de Vestimenta -->
+            <div class="event-card dress-code">
+                <div class="event-icon">👔</div>
+                <h3>Código de Vestimenta</h3>
+                <p class="dress-code-text">[Formal / Etiqueta / Semiformal]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mesa de Regalos -->
+    <section class="gifts-section">
+        <div class="container">
+            <h2 class="section-title">Mesa de Regalos</h2>
+            <p class="gifts-subtitle">Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo:</p>
+
+            <div class="gifts-grid">
+                <div class="gift-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Liverpool_logo.svg/320px-Liverpool_logo.svg.png"
+                         alt="Liverpool"
+                         class="store-logo">
+                    <h3>Liverpool</h3>
+                    <p>Evento: [Número de evento]</p>
+                    <a href="[ENLACE_LIVERPOOL]" target="_blank" class="btn-gift">
+                        Ver Mesa de Regalos
+                    </a>
+                </div>
+
+                <div class="gift-card">
+                    <div class="event-icon">💝</div>
+                    <h3>Lluvia de Sobres</h3>
+                    <p>También puedes obsequiarnos un sobre el día del evento</p>
+                </div>
+
+                <!-- Puedes agregar más tiendas aquí -->
+                <!--
+                <div class="gift-card">
+                    <img src="amazon-logo.png" alt="Amazon">
+                    <h3>Amazon</h3>
+                    <a href="[ENLACE_AMAZON]" target="_blank" class="btn-gift">
+                        Ver Mesa de Regalos
+                    </a>
+                </div>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Hashtag de la Boda -->
+    <section class="hashtag-section">
+        <div class="container">
+            <h2 class="section-title">Comparte con Nosotros</h2>
+            <div class="hashtag-content">
+                <p>Usa nuestro hashtag en redes sociales</p>
+                <h3 class="hashtag">#[NombreNovia]Y[NombreNovio]2025</h3>
+                <p class="hashtag-description">¡Queremos ver tus fotos y videos!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmación de Asistencia -->
+    <section class="rsvp-section">
+        <div class="container">
+            <h2 class="section-title">Confirmación de Asistencia</h2>
+            <p class="rsvp-subtitle">Por favor confirma tu asistencia antes del [Fecha Límite]</p>
+
+            <form id="rsvp-form" class="rsvp-form">
+                <div class="form-group">
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Número de Invitados</label>
+                    <select id="guests" name="guests" required>
+                        <option value="">Selecciona...</option>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje (Opcional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Déjanos un mensaje..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Confirmar Asistencia</button>
+            </form>
+
+            <div class="whatsapp-contact">
+                <p>También puedes confirmar por WhatsApp:</p>
+                <a href="https://wa.me/52[TELEFONO]?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda"
+                   target="_blank"
+                   class="btn-whatsapp">
+                    📱 Confirmar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Información Importante</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🎵</div>
+                    <h3>Música</h3>
+                    <p>¡Habrá música en vivo y DJ!</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🍽️</div>
+                    <h3>Comida y Bebida</h3>
+                    <p>Cena completa y barra libre</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🅿️</div>
+                    <h3>Estacionamiento</h3>
+                    <p>Estacionamiento disponible en el salón</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">👶</div>
+                    <h3>Niños</h3>
+                    <p>[Solo adultos / Niños bienvenidos]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="script-font footer-message">¡Gracias por acompañarnos en este día tan especial!</p>
+            <p class="footer-names">[Nombre Novia] & [Nombre Novio]</p>
+            <p class="footer-date">19.12.2025</p>
+            <p class="footer-credit">Fotografía y Video: Arturo Cruz - 477-920-3776</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos temporales
+*.tmp
+*.temp
+*~
+
+# Archivos de respaldo
+*.bak
+*.backup
+
+# Node modules (si se agregan en el futuro)
+node_modules/
+
+# Archivos personales que no deben subirse
+# (descomenta si tienes archivos privados)
+# datos-personales.txt
+# contactos.xlsx
