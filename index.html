@@ -3,14 +3,529 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación de Boda - [Nombre Novia] & [Nombre Novio]</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Boda - Paulina & Daniel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --verde-oliva: #556B2F;
+            --verde-salvia: #A3B18A;
+            --blanco-hueso: #F6F1E7;
+            --beige-arena: #CBBFA2;
+            --text-dark: #2c2c2c;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: var(--blanco-hueso);
+            overflow-x: hidden;
+        }
+
+        .script-font {
+            font-family: 'Great+Vibes', cursive;
+        }
+
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Music Button */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--verde-oliva);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--verde-salvia) 0%, var(--verde-oliva) 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23F6F1E7" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .names-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .bride-name, .groom-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .ampersand {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 6vw, 5rem);
+        }
+
+        .wedding-date {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            letter-spacing: 5px;
+            margin-top: 2rem;
+            font-weight: 300;
+        }
+
+        .scroll-indicator {
+            margin-top: 3rem;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            color: var(--verde-oliva);
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        /* Parents Section */
+        .parents-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .parents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .parent-group {
+            text-align: center;
+            padding: 2rem;
+            background: var(--blanco-hueso);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .parent-group h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--verde-oliva);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .parent-group p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: linear-gradient(135deg, var(--verde-salvia) 0%, var(--beige-arena) 100%);
+            padding: 5rem 2rem;
+        }
+
+        .romantic-quote {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .romantic-quote p {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: white;
+            line-height: 1.8;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        /* Countdown */
+        .countdown-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--blanco-hueso);
+            border-radius: 15px;
+            min-width: 120px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: bold;
+            color: var(--verde-oliva);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .countdown-label {
+            display: block;
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Event Details */
+        .event-details {
+            background: var(--blanco-hueso);
+            padding: 5rem 2rem;
+        }
+
+        .event-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--verde-oliva);
+            margin-bottom: 1rem;
+        }
+
+        .event-time {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--verde-salvia);
+            margin-bottom: 1rem;
+        }
+
+        .event-location {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-address {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-map {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--verde-oliva);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-map:hover {
+            background: var(--verde-salvia);
+        }
+
+        .dress-code-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Gifts Section */
+        .gifts-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .gifts-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #666;
+        }
+
+        .gifts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .gift-card {
+            background: var(--blanco-hueso);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .gift-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--verde-oliva);
+            margin: 1.5rem 0;
+        }
+
+        .gift-card p {
+            margin: 1rem 0;
+            color: #666;
+        }
+
+        /* Hashtag & Social */
+        .hashtag-section {
+            background: linear-gradient(135deg, var(--verde-oliva) 0%, var(--verde-salvia) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hashtag-section .section-title {
+            color: white;
+        }
+
+        .hashtag-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hashtag {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* RSVP Section */
+        .rsvp-section {
+            background: var(--blanco-hueso);
+            padding: 5rem 2rem;
+        }
+
+        .rsvp-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--verde-oliva);
+            font-weight: 600;
+        }
+
+        .whatsapp-contact {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .whatsapp-contact p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whatsapp:hover {
+            background: #20BA5A;
+        }
+
+        /* Info Cards */
+        .info-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--blanco-hueso);
+            border-radius: 15px;
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--verde-oliva);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--verde-oliva);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-message {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-names {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-date {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .footer-credit {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .names-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .ampersand {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Música de fondo (opcional) -->
+    <!-- Música de fondo -->
     <audio id="background-music" loop>
         <source src="musica-fondo.mp3" type="audio/mpeg">
     </audio>
@@ -20,15 +535,14 @@
         <span id="music-icon">🔇</span>
     </button>
 
-    <!-- Sección Hero -->
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="script-font animate-fade-in">Nos Casamos</h1>
+            <h1>Nos Casamos</h1>
             <div class="names-container">
-                <h2 class="bride-name animate-slide-left">[Nombre Novia]</h2>
+                <h2 class="bride-name">Paulina</h2>
                 <span class="ampersand">&</span>
-                <h2 class="groom-name animate-slide-right">[Nombre Novio]</h2>
+                <h2 class="groom-name">Daniel</h2>
             </div>
             <p class="wedding-date">19 • Diciembre • 2025</p>
             <div class="scroll-indicator">
@@ -37,36 +551,35 @@
         </div>
     </section>
 
-    <!-- Sección de Padres -->
+    <!-- Parents Section -->
     <section class="parents-section">
         <div class="container">
             <h2 class="section-title">Con la bendición de nuestros padres</h2>
             <div class="parents-grid">
                 <div class="parent-group">
                     <h3>Padres de la Novia</h3>
-                    <p>[Nombre del Padre]</p>
-                    <p>[Nombre de la Madre]</p>
+                    <p>Martha Esther Hernández Valderrama</p>
+                    <p>Manuel Carrillo Gallardo</p>
                 </div>
                 <div class="parent-group">
                     <h3>Padres del Novio</h3>
-                    <p>[Nombre del Padre]</p>
-                    <p>[Nombre de la Madre]</p>
+                    <p>María de la Cruz Hidalgo</p>
+                    <p>Carlos Daniel Hernández Palma</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Frase Romántica -->
+    <!-- Quote Section -->
     <section class="quote-section">
         <div class="container">
             <blockquote class="romantic-quote">
-                <p class="script-font">"Que el amor sea siempre la razón de estar juntos,
-                y la razón más fuerte para permanecer unidos"</p>
+                <p>Muchas gracias por compartir este momento tan especial con nosotros. Hemos pasado por muchas cosas pero al final el amor verdadero siempre gana. Y ahora con la bendición de Dios agradecemos que sean testigos de esto maravilloso y especial</p>
             </blockquote>
         </div>
     </section>
 
-    <!-- Cuenta Regresiva -->
+    <!-- Countdown -->
     <section class="countdown-section">
         <div class="container">
             <h2 class="section-title">Faltan</h2>
@@ -91,28 +604,7 @@
         </div>
     </section>
 
-    <!-- Galería de Fotos -->
-    <section class="gallery-section">
-        <div class="container">
-            <h2 class="section-title">Nuestra Historia</h2>
-            <div class="photo-gallery">
-                <div class="photo-item">
-                    <img src="foto1.jpg" alt="Foto de la pareja" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="foto2.jpg" alt="Foto de la pareja" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="foto3.jpg" alt="Foto de la pareja" loading="lazy">
-                </div>
-                <div class="photo-item">
-                    <img src="foto4.jpg" alt="Foto de la pareja" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Detalles del Evento -->
+    <!-- Event Details -->
     <section class="event-details">
         <div class="container">
             <h2 class="section-title">Detalles del Evento</h2>
@@ -124,6 +616,7 @@
                 <p class="event-time">8:00 PM</p>
                 <p class="event-location">Templo San Judas Tadeo</p>
                 <p class="event-address">León, Guanajuato</p>
+                <p style="margin: 1rem 0; font-style: italic; color: var(--verde-salvia);">Todos pueden asistir</p>
                 <a href="https://maps.google.com/?q=Templo+San+Judas+Tadeo+Leon+Gto"
                    target="_blank"
                    class="btn-map">
@@ -149,12 +642,12 @@
             <div class="event-card dress-code">
                 <div class="event-icon">👔</div>
                 <h3>Código de Vestimenta</h3>
-                <p class="dress-code-text">[Formal / Etiqueta / Semiformal]</p>
+                <p class="dress-code-text">Formal</p>
             </div>
         </div>
     </section>
 
-    <!-- Mesa de Regalos -->
+    <!-- Gifts Section -->
     <section class="gifts-section">
         <div class="container">
             <h2 class="section-title">Mesa de Regalos</h2>
@@ -162,91 +655,62 @@
 
             <div class="gifts-grid">
                 <div class="gift-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Liverpool_logo.svg/320px-Liverpool_logo.svg.png"
-                         alt="Liverpool"
-                         class="store-logo">
-                    <h3>Liverpool</h3>
-                    <p>Evento: [Número de evento]</p>
-                    <a href="[ENLACE_LIVERPOOL]" target="_blank" class="btn-gift">
-                        Ver Mesa de Regalos
-                    </a>
-                </div>
-
-                <div class="gift-card">
                     <div class="event-icon">💝</div>
                     <h3>Lluvia de Sobres</h3>
-                    <p>También puedes obsequiarnos un sobre el día del evento</p>
+                    <p>Puedes obsequiarnos un sobre el día del evento</p>
                 </div>
-
-                <!-- Puedes agregar más tiendas aquí -->
-                <!--
-                <div class="gift-card">
-                    <img src="amazon-logo.png" alt="Amazon">
-                    <h3>Amazon</h3>
-                    <a href="[ENLACE_AMAZON]" target="_blank" class="btn-gift">
-                        Ver Mesa de Regalos
-                    </a>
-                </div>
-                -->
             </div>
         </div>
     </section>
 
-    <!-- Hashtag de la Boda -->
+    <!-- Hashtag & Social Media -->
     <section class="hashtag-section">
         <div class="container">
             <h2 class="section-title">Comparte con Nosotros</h2>
             <div class="hashtag-content">
-                <p>Usa nuestro hashtag en redes sociales</p>
-                <h3 class="hashtag">#[NombreNovia]Y[NombreNovio]2025</h3>
+                <p>Usa nuestros hashtags en redes sociales</p>
+                <h3 class="hashtag">#PaulinaYDaniel2025</h3>
                 <p class="hashtag-description">¡Queremos ver tus fotos y videos!</p>
+
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" class="social-link">
+                        📘 @Danielito picoo jr Hernández
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social-link">
+                        📷 @Danielitopico picoo jr Hernández
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" class="social-link">
+                        🎵 @danielitopicoohernandez
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Confirmación de Asistencia -->
+    <!-- RSVP Section -->
     <section class="rsvp-section">
         <div class="container">
             <h2 class="section-title">Confirmación de Asistencia</h2>
-            <p class="rsvp-subtitle">Por favor confirma tu asistencia antes del [Fecha Límite]</p>
-
-            <form id="rsvp-form" class="rsvp-form">
-                <div class="form-group">
-                    <label for="name">Nombre Completo</label>
-                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
-                </div>
-
-                <div class="form-group">
-                    <label for="guests">Número de Invitados</label>
-                    <select id="guests" name="guests" required>
-                        <option value="">Selecciona...</option>
-                        <option value="1">1 persona</option>
-                        <option value="2">2 personas</option>
-                        <option value="3">3 personas</option>
-                        <option value="4">4 personas</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Mensaje (Opcional)</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Déjanos un mensaje..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Confirmar Asistencia</button>
-            </form>
+            <p class="rsvp-subtitle">Por favor confirma tu asistencia antes del 15 de noviembre de 2025</p>
 
             <div class="whatsapp-contact">
-                <p>También puedes confirmar por WhatsApp:</p>
-                <a href="https://wa.me/52[TELEFONO]?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda"
+                <p>Confirma tu asistencia por WhatsApp:</p>
+                <a href="https://wa.me/524772891223?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
                    target="_blank"
                    class="btn-whatsapp">
-                    📱 Confirmar por WhatsApp
+                    📱 477-289-1223
+                </a>
+                <br><br>
+                <a href="https://wa.me/524773766078?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
+                   target="_blank"
+                   class="btn-whatsapp">
+                    📱 477-376-6078
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Información Adicional -->
+    <!-- Info Section -->
     <section class="info-section">
         <div class="container">
             <h2 class="section-title">Información Importante</h2>
@@ -264,12 +728,12 @@
                 <div class="info-card">
                     <div class="info-icon">🅿️</div>
                     <h3>Estacionamiento</h3>
-                    <p>Estacionamiento disponible en el salón</p>
+                    <p>Habrá estacionamiento disponible</p>
                 </div>
                 <div class="info-card">
-                    <div class="info-icon">👶</div>
-                    <h3>Niños</h3>
-                    <p>[Solo adultos / Niños bienvenidos]</p>
+                    <div class="info-icon">⛪</div>
+                    <h3>Ceremonia</h3>
+                    <p>Todos pueden asistir</p>
                 </div>
             </div>
         </div>
@@ -278,13 +742,91 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p class="script-font footer-message">¡Gracias por acompañarnos en este día tan especial!</p>
-            <p class="footer-names">[Nombre Novia] & [Nombre Novio]</p>
+            <p class="footer-message">¡Gracias por acompañarnos en este día tan especial!</p>
+            <p class="footer-names">Paulina & Daniel</p>
             <p class="footer-date">19.12.2025</p>
-            <p class="footer-credit">Fotografía y Video: Arturo Cruz - 477-920-3776</p>
+            <p class="footer-credit">Fotografía y Video: Foro 7 - Arturo Cruz - 477-920-3776</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date('2025-12-19T20:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<p style='font-size: 2rem;'>¡Es hoy!</p>";
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Music Toggle
+        const musicToggle = document.getElementById('music-toggle');
+        const music = document.getElementById('background-music');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicIcon.textContent = '🔇';
+            } else {
+                music.play();
+                musicIcon.textContent = '🔊';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.event-card, .parent-group, .info-card, .gift-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
