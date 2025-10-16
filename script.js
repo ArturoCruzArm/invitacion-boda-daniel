@@ -1,38 +1,79 @@
 // ===================================
-// MÚSICA DE FONDO
+// INICIALIZACIÓN
 // ===================================
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('%c💍 ¡Bienvenido a nuestra invitación de boda! 💍', 
+        'font-size: 20px; color: #4A6B54; font-weight: bold;');
+    
+    initMusic();
+    initCountdown();
+    initScrollAnimations();
+    initSmoothScroll();
+    initShareButton();
+});
+
+// ===================================
+// MÚSICA DE FONDO
+// ===================================
+function initMusic() {
     const music = document.getElementById('background-music');
     const musicToggle = document.getElementById('music-toggle');
     const musicIcon = document.getElementById('music-icon');
-    let isPlaying = false;
 
-    // Control de música
-    musicToggle.addEventListener('click', function() {
+    // Validar que los elementos existen
+    if (!music || !musicToggle || !musicIcon) {
+        console.log('Elementos de música no encontrados');
+        return;
+    }
+
+    let isPlaying = false;
+    let hasInteracted = false;
+
+    // Función para iniciar música
+    function startMusic() {
+        if (!hasInteracted) {
+            music.play().catch(e => {
+                console.log('Autoplay bloqueado:', e);
+            });
+            isPlaying = true;
+            musicIcon.textContent = '🔊';
+            hasInteracted = true;
+        }
+    }
+
+    // Iniciar música en primera interacción
+    ['click', 'touchstart', 'scroll'].forEach(event => {
+        document.addEventListener(event, startMusic, { once: true });
+    });
+
+    // Toggle manual
+    musicToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
         if (isPlaying) {
             music.pause();
             musicIcon.textContent = '🔇';
         } else {
-            music.play().catch(e => {
-                console.log('Error al reproducir música:', e);
-            });
+            music.play().catch(e => console.log('Error:', e));
             musicIcon.textContent = '🔊';
         }
         isPlaying = !isPlaying;
+        hasInteracted = true;
     });
+}
 
-    // ===================================
-    // CUENTA REGRESIVA
-    // ===================================
-    const weddingDate = new Date('December 19, 2025 20:00:00').getTime();
+// ===================================
+// CUENTA REGRESIVA
+// ===================================
+function initCountdown() {
+    const weddingDate = new Date('2025-12-19T19:00:00').getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
 
         if (distance < 0) {
-            document.getElementById('countdown').innerHTML =
-                '<p style="font-size: 2rem; color: var(--color-primary);">¡Ya es nuestro día especial!</p>';
+            document.getElementById('countdown').innerHTML = 
+                '<div style="text-align: center; font-size: 2rem; color: var(--verde-eucalipto); font-family: var(--font-serif);">¡Es hoy! 🎉</div>';
             return;
         }
 
@@ -47,47 +88,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
     }
 
-    // Actualizar cada segundo
     updateCountdown();
     setInterval(updateCountdown, 1000);
+}
 
-    // ===================================
-    // FORMULARIO RSVP
-    // ===================================
-    const rsvpForm = document.getElementById('rsvp-form');
-
-    rsvpForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const guests = document.getElementById('guests').value;
-        const message = document.getElementById('message').value;
-
-        // Crear mensaje de WhatsApp
-        const whatsappMessage = `Hola, confirmo mi asistencia a la boda:%0A%0A` +
-            `Nombre: ${encodeURIComponent(name)}%0A` +
-            `Número de invitados: ${guests}%0A` +
-            `Mensaje: ${encodeURIComponent(message)}`;
-
-        // Número de WhatsApp (reemplazar con el número real)
-        const phoneNumber = '52XXXXXXXXXX'; // Reemplazar con el número real
-
-        // Abrir WhatsApp
-        window.open(`https://wa.me/${phoneNumber}?text=${whatsappMessage}`, '_blank');
-
-        // Mostrar mensaje de confirmación
-        alert('¡Gracias por confirmar! Serás redirigido a WhatsApp.');
-
-        // Limpiar formulario
-        rsvpForm.reset();
-    });
-
-    // ===================================
-    // ANIMACIONES AL HACER SCROLL
-    // ===================================
+// ===================================
+// ANIMACIONES AL HACER SCROLL
+// ===================================
+function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.2,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver(function(entries) {
@@ -95,25 +106,30 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observar elementos para animaciones
-    const animatedElements = document.querySelectorAll('.event-card, .gift-card, .info-card, .photo-item');
+    // Elementos a animar
+    const animatedElements = document.querySelectorAll(
+        '.event-card, .gift-card, .info-card, .parent-group, .countdown-item'
+    );
 
-    animatedElements.forEach(element => {
+    animatedElements.forEach((element, index) => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        element.style.transform = 'translateY(40px)';
+        element.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
         observer.observe(element);
     });
+}
 
-    // ===================================
-    // SMOOTH SCROLL PARA ENLACES
-    // ===================================
+// ===================================
+// SMOOTH SCROLL
+// ===================================
+function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -124,170 +140,193 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+}
 
-    // ===================================
-    // EFECTO PARALLAX EN EL HERO
-    // ===================================
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+// ===================================
+// COMPARTIR INVITACIÓN
+// ===================================
+function initShareButton() {
+    window.shareInvitation = function() {
+        const shareData = {
+            title: 'Boda Paulina & Daniel',
+            text: '¡Nos casamos! 💍 Te invitamos a celebrar con nosotros - 19 de Diciembre 2025',
+            url: window.location.href
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData)
+                .then(() => console.log('Compartido exitosamente'))
+                .catch(err => console.log('Error al compartir:', err));
+        } else {
+            // Fallback: copiar al portapapeles
+            copyToClipboard(window.location.href);
         }
-    });
+    };
+}
 
-    // ===================================
-    // LAZY LOADING DE IMÁGENES
-    // ===================================
-    if ('loading' in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        images.forEach(img => {
-            img.src = img.src;
-        });
+// ===================================
+// COPIAR AL PORTAPAPELES
+// ===================================
+function copyToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+                showNotification('¡Enlace copiado al portapapeles! 📋');
+            })
+            .catch(err => {
+                fallbackCopy(text);
+            });
     } else {
-        // Fallback para navegadores que no soportan lazy loading
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-        document.body.appendChild(script);
+        fallbackCopy(text);
     }
+}
 
-    // ===================================
-    // PRECARGA DE FUENTES
-    // ===================================
-    if ('fonts' in document) {
-        Promise.all([
-            document.fonts.load('1em Great Vibes'),
-            document.fonts.load('1em Cormorant Garamond'),
-            document.fonts.load('1em Montserrat')
-        ]).then(() => {
-            document.body.classList.add('fonts-loaded');
-        });
+function fallbackCopy(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showNotification('¡Enlace copiado! 📋');
+    } catch (err) {
+        showNotification('Por favor copia manualmente: ' + text);
     }
+    
+    document.body.removeChild(textArea);
+}
 
-    // ===================================
-    // COMPARTIR EN REDES SOCIALES
-    // ===================================
-    function shareOnSocialMedia(platform) {
-        const url = encodeURIComponent(window.location.href);
-        const text = encodeURIComponent('¡Nos casamos! Te invitamos a nuestra boda');
-
-        const socialLinks = {
-            facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
-            twitter: `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
-            whatsapp: `https://wa.me/?text=${text}%20${url}`
-        };
-
-        if (socialLinks[platform]) {
-            window.open(socialLinks[platform], '_blank', 'width=600,height=400');
-        }
-    }
-
-    // Exponer función globalmente si se necesita
-    window.shareOnSocialMedia = shareOnSocialMedia;
-
-    // ===================================
-    // DETECTAR SI ES MÓVIL
-    // ===================================
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    if (isMobile) {
-        document.body.classList.add('mobile-device');
-
-        // Deshabilitar parallax en móviles para mejor rendimiento
-        window.removeEventListener('scroll', function() {});
-    }
-
-    // ===================================
-    // AGREGAR AL CALENDARIO
-    // ===================================
-    function addToCalendar() {
-        const event = {
-            title: 'Boda de [Novia] y [Novio]',
-            description: 'Ceremonia religiosa y recepción',
-            location: 'Templo San Judas Tadeo y Salón de Eventos Laja, León, Gto.',
-            start: '2025-12-19T20:00:00',
-            end: '2025-12-20T02:00:00'
-        };
-
-        // Formato para Google Calendar
-        const googleCalendarUrl =
-            `https://calendar.google.com/calendar/render?action=TEMPLATE` +
-            `&text=${encodeURIComponent(event.title)}` +
-            `&details=${encodeURIComponent(event.description)}` +
-            `&location=${encodeURIComponent(event.location)}` +
-            `&dates=${event.start.replace(/[-:]/g, '')}/${event.end.replace(/[-:]/g, '')}`;
-
-        window.open(googleCalendarUrl, '_blank');
-    }
-
-    window.addToCalendar = addToCalendar;
-
-    // ===================================
-    // MOSTRAR NOTIFICACIÓN DE BIENVENIDA
-    // ===================================
+// ===================================
+// MOSTRAR NOTIFICACIÓN
+// ===================================
+function showNotification(message) {
+    // Crear elemento de notificación
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--verde-eucalipto);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        z-index: 10000;
+        font-family: var(--font-sans);
+        font-weight: 600;
+        animation: slideDown 0.5s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remover después de 3 segundos
     setTimeout(() => {
-        // Puedes agregar una notificación o modal de bienvenida aquí
-        console.log('Invitación cargada correctamente');
-    }, 1000);
+        notification.style.animation = 'slideUp 0.5s ease';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 500);
+    }, 3000);
+}
 
-    // ===================================
-    // PREVENIR ZOOM EN iOS
-    // ===================================
-    document.addEventListener('gesturestart', function(e) {
-        e.preventDefault();
-    });
+// ===================================
+// EFECTO PARALLAX SUAVE
+// ===================================
+let ticking = false;
 
-    // ===================================
-    // ANALYTICS Y SEGUIMIENTO (Opcional)
-    // ===================================
-    // Aquí puedes agregar Google Analytics o Facebook Pixel
-    // Ejemplo:
-    // gtag('event', 'page_view', { page_path: window.location.pathname });
+window.addEventListener('scroll', function() {
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+            const scrolled = window.pageYOffset;
+            
+            // Aplicar parallax muy sutil a las decoraciones florales
+            const florals = document.querySelectorAll('.floral-decoration');
+            florals.forEach(floral => {
+                const speed = 0.15;
+                const yPos = scrolled * speed;
+                floral.style.transform = `translateY(${yPos}px)`;
+            });
+            
+            ticking = false;
+        });
+        ticking = true;
+    }
 });
 
 // ===================================
-// FUNCIONES AUXILIARES
+// PREVENIR ZOOM EN iOS
 // ===================================
+document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+});
 
-// Formatear fecha
-function formatDate(date) {
-    const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    };
-    return new Date(date).toLocaleDateString('es-MX', options);
-}
+// ===================================
+// LAZY LOADING DE IMÁGENES
+// ===================================
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                observer.unobserve(img);
+            }
+        });
+    });
 
-// Copiar al portapapeles
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(() => {
-        alert('¡Copiado al portapapeles!');
-    }).catch(err => {
-        console.error('Error al copiar:', err);
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
     });
 }
 
-// Validar email
-function isValidEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
+// ===================================
+// DETECTAR MODO OSCURO DEL SISTEMA
+// ===================================
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    console.log('Modo oscuro detectado');
+    // Aquí podrías aplicar ajustes si lo deseas
 }
 
-// Cargar imagen con placeholder
-function loadImageWithPlaceholder(img) {
-    const placeholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23ddd" width="400" height="300"/%3E%3C/svg%3E';
+// ===================================
+// ANIMACIONES CSS ADICIONALES
+// ===================================
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    }
+    
+    @keyframes slideUp {
+        from {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-30px);
+        }
+    }
+`;
+document.head.appendChild(style);
 
-    img.src = placeholder;
-
-    const actualImage = new Image();
-    actualImage.onload = function() {
-        img.src = actualImage.src;
-        img.classList.add('loaded');
-    };
-    actualImage.src = img.dataset.src;
-}
-
-console.log('%c💒 ¡Bienvenido a nuestra invitación de boda! 💒', 'font-size: 20px; color: #C9A66B; font-weight: bold;');
-console.log('%cDesarrollado con amor ❤️', 'font-size: 14px; color: #8B7355;');
+// ===================================
+// LOG FINAL
+// ===================================
+console.log('%c✨ Invitación cargada exitosamente ✨', 
+    'font-size: 14px; color: #D4AF37; font-weight: bold;');
+console.log('%cDesarrollado con amor ❤️ para Paulina & Daniel', 
+    'font-size: 12px; color: #4A6B54;');
