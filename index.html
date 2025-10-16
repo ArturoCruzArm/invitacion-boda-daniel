@@ -5,982 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda - Paulina & Daniel</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- Fuentes actualizadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Alex+Brush&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --verde-oliva: #6B7E3F;
-            --verde-salvia: #A3B18A;
-            --dorado: #D4AF37;
-            --dorado-claro: #F4E4BC;
-            --blanco-hueso: #F9F7F2;
-            --beige-arena: #E5DCC5;
-            --text-dark: #2c2c2c;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text-dark);
-            background: var(--blanco-hueso);
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('fondo.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.15;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('marco.png');
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.2;
-        }
-
-        @keyframes floatEucalyptus {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .script-font {
-            font-family: 'Allura', cursive;
-        }
-
-        .serif-font {
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Music Button */
-        .music-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--verde-oliva);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .music-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #7A9152 0%, var(--verde-oliva) 100%);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23F6F1E7" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
-            background-size: cover;
-            opacity: 0.3;
-        }
-
-        .hero::after {
-            content: none;
-        }
-
-        @keyframes sway {
-            0%, 100% { transform: translateX(0px) rotate(0deg); }
-            25% { transform: translateX(-8px) rotate(-1deg); }
-            50% { transform: translateX(0px) rotate(0deg); }
-            75% { transform: translateX(8px) rotate(1deg); }
-        }
-
-        .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 2;
-            padding: 3rem;
-            animation: fadeInUp 1.5s ease-out;
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-content::before {
-            content: none;
-        }
-
-        @keyframes floatSlow {
-            0%, 100% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
-            50% { transform: translateX(-50%) translateY(-10px) rotate(2deg); }
-        }
-
-        .hero-content::after {
-            content: none;
-        }
-
-        @keyframes floatSlowReverse {
-            0%, 100% { transform: translateX(-50%) scaleY(-1) translateY(0px) rotate(0deg); }
-            50% { transform: translateX(-50%) scaleY(-1) translateY(10px) rotate(-2deg); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-content h1 {
-            font-family: 'Allura', cursive;
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: titlePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .names-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .bride-name, .groom-name {
-            font-family: 'Alex Brush', cursive;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: 3px;
-        }
-
-        .ampersand {
-            font-family: 'Alex Brush', cursive;
-            font-size: clamp(3rem, 6vw, 5rem);
-            color: var(--dorado);
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-            animation: goldGlow 2s ease-in-out infinite;
-            display: inline-block;
-        }
-
-        @keyframes goldGlow {
-            0%, 100% {
-                text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-                transform: rotate(-2deg);
-            }
-            50% {
-                text-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.4);
-                transform: rotate(2deg);
-            }
-        }
-
-        .wedding-date {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            letter-spacing: 5px;
-            margin-top: 2rem;
-            font-weight: 300;
-        }
-
-        .scroll-indicator {
-            margin-top: 3rem;
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(10px); }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            text-align: center;
-            color: var(--verde-oliva);
-            margin-bottom: 3rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            position: relative;
-        }
-
-        .section-title::before {
-            content: none;
-        }
-
-        @keyframes leafSway {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(-3deg) scale(1.02); }
-            50% { transform: rotate(0deg) scale(1); }
-            75% { transform: rotate(3deg) scale(1.02); }
-        }
-
-        .section-title::after {
-            content: none;
-        }
-
-        @keyframes leafSwayReverse {
-            0%, 100% { transform: scaleY(-1) rotate(0deg) scale(1); }
-            25% { transform: scaleY(-1) rotate(3deg) scale(1.02); }
-            50% { transform: scaleY(-1) rotate(0deg) scale(1); }
-            75% { transform: scaleY(-1) rotate(-3deg) scale(1.02); }
-        }
-
-        /* Parents Section */
-        .parents-section {
-            background: white;
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .parents-section::before {
-            content: none;
-        }
-
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            33% { transform: translateY(-10px) translateX(5px); }
-            66% { transform: translateY(5px) translateX(-5px); }
-        }
-
-        .parents-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .parent-group {
-            text-align: center;
-            padding: 2rem;
-            background: var(--blanco-hueso);
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--dorado-claro);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-
-        .parent-group:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.25);
-            border-color: var(--dorado);
-        }
-
-        .parent-group::before {
-            content: none;
-        }
-
-        .parent-group h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--verde-oliva);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .parent-group p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-        }
-
-        /* Quote Section */
-        .quote-section {
-            background: linear-gradient(135deg, var(--verde-salvia) 0%, var(--beige-arena) 100%);
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .quote-section::before,
-        .quote-section::after {
-            content: none;
-        }
-
-        .romantic-quote {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .romantic-quote p {
-            font-size: clamp(1.3rem, 3vw, 2rem);
-            color: white;
-            line-height: 1.8;
-            font-style: italic;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        }
-
-        /* Countdown */
-        .countdown-section {
-            background: white;
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .countdown-section::before,
-        .countdown-section::after {
-            content: none;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            text-align: center;
-            padding: 2rem;
-            background: var(--blanco-hueso);
-            border-radius: 15px;
-            min-width: 120px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 1px solid var(--dorado-claro);
-            transition: all 0.3s ease;
-            animation: fadeInScale 1s ease-out backwards;
-        }
-
-        .countdown-item:nth-child(1) { animation-delay: 0.1s; }
-        .countdown-item:nth-child(2) { animation-delay: 0.2s; }
-        .countdown-item:nth-child(3) { animation-delay: 0.3s; }
-        .countdown-item:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .countdown-item:hover {
-            transform: scale(1.1) rotate(2deg);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-            border-color: var(--dorado);
-        }
-
-        .countdown-number {
-            display: block;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: bold;
-            color: var(--verde-oliva);
-            font-family: 'Playfair Display', serif;
-            animation: numberPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes numberPulse {
-            0%, 100% { transform: scale(1); color: var(--verde-oliva); }
-            50% { transform: scale(1.05); color: var(--dorado); }
-        }
-
-        .countdown-label {
-            display: block;
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Event Details */
-        .event-details {
-            background: var(--blanco-hueso);
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-details::before {
-            content: none;
-        }
-
-        .event-card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 3px solid var(--dorado);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .event-card::before {
-            content: none;
-        }
-
-        .event-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 20px 45px rgba(212, 175, 55, 0.3);
-            border-top-width: 5px;
-        }
-
-        .event-card:hover .event-icon {
-            transform: scale(1.2) rotate(5deg);
-            animation: bounceIcon 0.6s ease;
-        }
-
-        @keyframes bounceIcon {
-            0%, 100% { transform: scale(1.2) translateY(0); }
-            50% { transform: scale(1.3) translateY(-10px); }
-        }
-
-        .event-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .event-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--verde-oliva);
-            margin-bottom: 1rem;
-        }
-
-        .event-time {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--verde-salvia);
-            margin-bottom: 1rem;
-        }
-
-        .event-location {
-            font-size: 1.3rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .event-address {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-map {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--verde-oliva);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-map::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, height 0.5s;
-        }
-
-        .btn-map:hover {
-            background: var(--dorado);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-map:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .dress-code-text {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        /* Gifts Section */
-        .gifts-section {
-            background: white;
-            padding: 5rem 2rem;
-            position: relative;
-        }
-
-        .gifts-section::before {
-            content: none;
-        }
-
-        .gifts-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            color: #666;
-        }
-
-        .gifts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .gift-card {
-            background: var(--blanco-hueso);
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border: 1px solid var(--dorado-claro);
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-10px) rotate(1deg);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
-            border-color: var(--dorado);
-        }
-
-        .gift-card:hover .event-icon {
-            transform: scale(1.3) rotate(360deg);
-            transition: transform 0.8s ease;
-        }
-
-        .gift-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--verde-oliva);
-            margin: 1.5rem 0;
-        }
-
-        .gift-card p {
-            margin: 1rem 0;
-            color: #666;
-        }
-
-        /* Hashtag & Social */
-        .hashtag-section {
-            background: linear-gradient(135deg, var(--verde-oliva) 0%, var(--verde-salvia) 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hashtag-section::before,
-        .hashtag-section::after {
-            content: none;
-        }
-
-        .hashtag-section .section-title {
-            color: white;
-        }
-
-        .hashtag-content p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .hashtag {
-            font-family: 'Allura', cursive;
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            margin: 2rem 0;
-            animation: shimmer 3s ease-in-out infinite;
-            background: linear-gradient(90deg, white, var(--dorado), white);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            padding: 1rem 2rem;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, height 0.5s;
-        }
-
-        .social-link:hover {
-            background: rgba(255,255,255,0.35);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border-color: rgba(212, 175, 55, 0.5);
-        }
-
-        .social-link:hover::before {
-            width: 200px;
-            height: 200px;
-        }
-
-        /* RSVP Section */
-        .rsvp-section {
-            background: var(--blanco-hueso);
-            padding: 5rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rsvp-section::before {
-            content: none;
-        }
-
-        .rsvp-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--verde-oliva);
-            font-weight: 600;
-        }
-
-        .whatsapp-contact {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .whatsapp-contact p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-whatsapp {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            animation: whatsappPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes whatsappPulse {
-            0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
-            50% { box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); }
-        }
-
-        .btn-whatsapp:hover {
-            background: #20BA5A;
-            transform: translateY(-5px) scale(1.08);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
-            animation: none;
-        }
-
-        /* Info Cards */
-        .info-section {
-            background: white;
-            padding: 5rem 2rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .info-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--blanco-hueso);
-            border-radius: 15px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
-            border-color: var(--dorado-claro);
-        }
-
-        .info-card:hover::before {
-            left: 100%;
-        }
-
-        .info-card:hover .info-icon {
-            transform: scale(1.2) rotate(10deg);
-            transition: transform 0.5s ease;
-        }
-
-        .info-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            transition: all 0.5s ease;
-            display: inline-block;
-        }
-
-        .info-card h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--verde-oliva);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--verde-oliva);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: none;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: translateX(-50%) translateY(0px); }
-            50% { transform: translateX(-50%) translateY(-10px); }
-        }
-
-        .footer-message {
-            font-family: 'Allura', cursive;
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-names {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-date {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
-        }
-
-        .footer-credit {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-top: 2rem;
-        }
-
-        /* Sparkle Effect */
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        .hero-content h1::after,
-        .footer-message::after {
-            content: '✨';
-            position: absolute;
-            animation: sparkle 3s ease-in-out infinite;
-            font-size: 1.5rem;
-            opacity: 0;
-        }
-
-        .hero-content h1 {
-            position: relative;
-        }
-
-        .hero-content h1::after {
-            top: -20px;
-            right: -20px;
-            animation-delay: 0s;
-        }
-
-        .footer-message {
-            position: relative;
-        }
-
-        .footer-message::after {
-            top: -10px;
-            right: 10%;
-            animation-delay: 1.5s;
-        }
-
-        /* Add glow to music button */
-        .music-btn {
-            animation: musicGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes musicGlow {
-            0%, 100% { box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-            50% { box-shadow: 0 4px 20px rgba(107, 126, 63, 0.6), 0 0 30px rgba(107, 126, 63, 0.3); }
-        }
-
-        /* Gallery section with botanical background */
-        .gallery-section {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-section::before {
-            content: none;
-        }
-
-        /* Gallery image hover effect */
-        .gallery-section img {
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .gallery-section img:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 50px rgba(107, 126, 63, 0.4);
-        }
-
-        /* Share button animation */
-        .gallery-section button {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-section button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .gallery-section button:hover::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .names-container {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .ampersand {
-                font-size: 3rem;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Música de fondo -->
@@ -993,19 +24,41 @@
         <span id="music-icon">🔇</span>
     </button>
 
-    <!-- Hero Section -->
+    <!-- Hero Section REDISEÑADO -->
     <section class="hero">
+        <!-- Decoraciones florales -->
+        <div class="floral-decoration top-left">
+            <img src="rosa.png" alt="" aria-hidden="true">
+        </div>
+        <div class="floral-decoration bottom-right">
+            <img src="rosa.png" alt="" aria-hidden="true">
+        </div>
+        
+        <!-- Marco geométrico -->
+        <div class="geometric-frame"></div>
+        
         <div class="hero-content">
-            <h1>Nos Casamos</h1>
-            <div class="names-container">
-                <h2 class="bride-name">Paulina</h2>
-                <span class="ampersand">&</span>
-                <h2 class="groom-name">Daniel</h2>
+            <p class="hero-subtitle">TE INVITAMOS A</p>
+            <h1 class="hero-title">NUESTRA BODA</h1>
+            
+            <div class="couple-names-container">
+                <h2 class="couple-names">
+                    Paulina<br>
+                    <span class="ampersand-small">y</span><br>
+                    Daniel
+                </h2>
             </div>
-            <p class="wedding-date">19 • Diciembre • 2025</p>
-            <div class="scroll-indicator">
-                <span>↓</span>
+            
+            <div class="date-container">
+                <p class="date-month">DICIEMBRE</p>
+                <div class="date-row">
+                    <span class="date-day">VIERNES</span>
+                    <span class="date-number">19</span>
+                    <span class="date-time">7:00pm</span>
+                </div>
             </div>
+            
+            <div class="scroll-indicator">↓</div>
         </div>
     </section>
 
@@ -1019,7 +72,7 @@
                     <p>Martha Esther Hernández Valderrama</p>
                     <p style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
                         Manuel Carrillo Gallardo
-                        <span style="font-size: 1.2rem; color: var(--verde-oliva); opacity: 0.7;" title="En memoria">✝</span>
+                        <span style="font-size: 1.2rem; color: var(--verde-eucalipto); opacity: 0.7;" title="En memoria">✝</span>
                     </p>
                     <p style="font-size: 0.9rem; font-style: italic; color: #888; margin-top: 0.5rem;">Siempre en nuestros corazones</p>
                 </div>
@@ -1042,14 +95,14 @@
     </section>
 
     <!-- Photo Gallery -->
-    <section class="gallery-section" style="background: white; padding: 5rem 2rem;">
+    <section class="gallery-section">
         <div class="container">
             <h2 class="section-title">Nuestra Historia</h2>
-            <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
-                <img src="invitacion.jpeg" alt="Paulina y Daniel" loading="lazy" style="width: 100%; height: auto; display: block;">
+            <div class="main-photo-container">
+                <img src="invitacion.jpeg" alt="Paulina y Daniel" loading="lazy">
             </div>
-            <div style="text-align: center; margin-top: 2rem;">
-                <button onclick="shareInvitation()" style="padding: 1rem 2.5rem; background: var(--verde-oliva); color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(85, 107, 47, 0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            <div class="share-button-container">
+                <button onclick="shareInvitation()" class="btn-share">
                     📤 Compartir Invitación
                 </button>
             </div>
@@ -1086,52 +139,41 @@
         <div class="container">
             <h2 class="section-title">Detalles del Evento</h2>
 
-            <!-- Ceremonia Religiosa -->
-            <div class="event-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.95);">
+            <div class="event-card">
                 <div class="event-icon">⛪</div>
                 <h3>Ceremonia Religiosa</h3>
                 <p class="event-time">7:00 PM</p>
                 <p class="event-location">Templo de San Judas Tadeo</p>
                 <p class="event-address">Av Roma s/n, Andrade<br>37020 León de los Aldama, Gto.</p>
-                <p style="margin: 1rem 0; font-style: italic; color: var(--verde-salvia); font-weight: 600;">✨ Todos pueden asistir</p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem; color: #888;">⏰ Sugerimos llegar 15 minutos antes</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-                    <a href="https://www.google.com/maps?q=21.11162879508956,-101.67137137651461"
-                       target="_blank"
-                       class="btn-map">
-                        🗺️ Ver en Google Maps
+                <p class="event-note">✨ Todos pueden asistir</p>
+                <p class="event-suggestion">⏰ Sugerimos llegar 15 minutos antes</p>
+                <div class="map-buttons">
+                    <a href="https://www.google.com/maps?q=21.11162879508956,-101.67137137651461" target="_blank" class="btn-map">
+                        🗺️ Google Maps
                     </a>
-                    <a href="https://www.waze.com/ul?ll=21.11162879508956,-101.67137137651461&navigate=yes"
-                       target="_blank"
-                       class="btn-map" style="background: #33CCFF;">
-                        🚗 Abrir en Waze
+                    <a href="https://www.waze.com/ul?ll=21.11162879508956,-101.67137137651461&navigate=yes" target="_blank" class="btn-map btn-waze">
+                        🚗 Waze
                     </a>
                 </div>
             </div>
 
-            <!-- Recepción -->
-            <div class="event-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.95);">
+            <div class="event-card">
                 <div class="event-icon">🎉</div>
                 <h3>Recepción</h3>
                 <p class="event-time">9:30 PM - 2:00 AM</p>
                 <p class="event-location">Salón De Eventos Laja</p>
                 <p class="event-address">Blvd. Campestre 79, Peñitas<br>37180 León de los Aldama, Gto.</p>
-                <p style="margin: 0.5rem 0; font-size: 0.95rem; color: #888;">⏰ Sugerimos llegar 15 minutos antes</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-                    <a href="https://www.google.com/maps?q=21.147224894292776,-101.68200812396928"
-                       target="_blank"
-                       class="btn-map">
-                        🗺️ Ver en Google Maps
+                <p class="event-suggestion">⏰ Sugerimos llegar 15 minutos antes</p>
+                <div class="map-buttons">
+                    <a href="https://www.google.com/maps?q=21.147224894292776,-101.68200812396928" target="_blank" class="btn-map">
+                        🗺️ Google Maps
                     </a>
-                    <a href="https://www.waze.com/ul?ll=21.147224894292776,-101.68200812396928&navigate=yes"
-                       target="_blank"
-                       class="btn-map" style="background: #33CCFF;">
-                        🚗 Abrir en Waze
+                    <a href="https://www.waze.com/ul?ll=21.147224894292776,-101.68200812396928&navigate=yes" target="_blank" class="btn-map btn-waze">
+                        🚗 Waze
                     </a>
                 </div>
             </div>
 
-            <!-- Código de Vestimenta -->
             <div class="event-card dress-code">
                 <div class="event-icon">👔</div>
                 <h3>Código de Vestimenta</h3>
@@ -1145,7 +187,6 @@
         <div class="container">
             <h2 class="section-title">Mesa de Regalos</h2>
             <p class="gifts-subtitle">Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo:</p>
-
             <div class="gifts-grid">
                 <div class="gift-card">
                     <div class="event-icon">💝</div>
@@ -1164,16 +205,15 @@
                 <p>Usa nuestros hashtags en redes sociales</p>
                 <h3 class="hashtag">#PaulinaYDaniel2025</h3>
                 <p class="hashtag-description">¡Queremos ver tus fotos y videos!</p>
-
                 <div class="social-links">
                     <a href="https://www.facebook.com/picoo.hernandez" target="_blank" class="social-link">
-                        📘 @Danielito picoo jr Hernández
+                        📘 Facebook
                     </a>
                     <a href="https://www.instagram.com/danielitopicoo/" target="_blank" class="social-link">
-                        📷 @Danielitopico picoo jr Hernández
+                        📷 Instagram
                     </a>
                     <a href="https://www.tiktok.com/@danielitopicoohernandez" target="_blank" class="social-link">
-                        🎵 @danielitopicoohernandez
+                        🎵 TikTok
                     </a>
                 </div>
             </div>
@@ -1185,24 +225,21 @@
         <div class="container">
             <h2 class="section-title">Confirmación de Asistencia</h2>
             <p class="rsvp-subtitle">Por favor confirma tu asistencia antes del 15 de noviembre de 2025</p>
-
             <div class="whatsapp-contact">
                 <p>Confirma tu asistencia por WhatsApp:</p>
-                <div style="margin-bottom: 1.5rem;">
-                    <p style="margin-bottom: 0.5rem; font-weight: 600; color: var(--verde-oliva);">Daniel</p>
-                    <a href="https://wa.me/524772891223?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
-                       target="_blank"
-                       class="btn-whatsapp">
-                        📱 477-289-1223
-                    </a>
-                </div>
-                <div>
-                    <p style="margin-bottom: 0.5rem; font-weight: 600; color: var(--verde-oliva);">Paulina</p>
-                    <a href="https://wa.me/524773766078?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
-                       target="_blank"
-                       class="btn-whatsapp">
-                        📱 477-376-6078
-                    </a>
+                <div class="whatsapp-numbers">
+                    <div class="whatsapp-item">
+                        <p class="whatsapp-name">Daniel</p>
+                        <a href="https://wa.me/524772891223?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel" target="_blank" class="btn-whatsapp">
+                            📱 477-289-1223
+                        </a>
+                    </div>
+                    <div class="whatsapp-item">
+                        <p class="whatsapp-name">Paulina</p>
+                        <a href="https://wa.me/524773766078?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel" target="_blank" class="btn-whatsapp">
+                            📱 477-376-6078
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1247,163 +284,6 @@
         </div>
     </footer>
 
-    <script>
-        // Countdown Timer
-        const weddingDate = new Date('2025-12-19T19:00:00').getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-
-            if (distance < 0) {
-                document.getElementById('countdown').innerHTML = "<p style='font-size: 2rem;'>¡Es hoy!</p>";
-            }
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Music Toggle with Autoplay on First Interaction
-        const musicToggle = document.getElementById('music-toggle');
-        const music = document.getElementById('background-music');
-        const musicIcon = document.getElementById('music-icon');
-        let isPlaying = false;
-        let hasInteracted = false;
-
-        // Function to start music
-        function startMusic() {
-            if (!hasInteracted) {
-                music.play().catch(e => console.log('Autoplay prevented:', e));
-                isPlaying = true;
-                musicIcon.textContent = '🔊';
-                hasInteracted = true;
-            }
-        }
-
-        // Start music on first user interaction
-        ['click', 'touchstart', 'scroll'].forEach(event => {
-            document.addEventListener(event, startMusic, { once: true });
-        });
-
-        musicToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (isPlaying) {
-                music.pause();
-                musicIcon.textContent = '🔇';
-            } else {
-                music.play();
-                musicIcon.textContent = '🔊';
-            }
-            isPlaying = !isPlaying;
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Share Invitation Function
-        function shareInvitation() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Boda Paulina & Daniel',
-                    text: '¡Nos casamos! 💍 Paulina & Daniel - 19 de Diciembre 2025',
-                    url: window.location.href
-                }).catch(err => console.log('Error sharing:', err));
-            } else {
-                // Fallback: copy to clipboard
-                const url = window.location.href;
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('¡Enlace copiado al portapapeles!');
-                }).catch(err => {
-                    alert('Por favor copia este enlace: ' + url);
-                });
-            }
-        }
-
-        // Scroll Animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.event-card, .parent-group, .info-card, .gift-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Parallax Effect on Scroll
-        let ticking = false;
-
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero::after, body::before, .section-title::before, .section-title::after');
-
-            // Apply subtle parallax effect
-            const heroAfter = document.querySelector('.hero::after');
-            if (heroAfter) {
-                const speed = 0.3;
-                const yPos = -(scrolled * speed);
-                document.documentElement.style.setProperty('--parallax-y', `${yPos}px`);
-            }
-
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                window.requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', requestTick, { passive: true });
-
-        // Add staggered entrance animations to sections
-        const sections = document.querySelectorAll('section');
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = `fadeInUp 1s ease-out ${index * 0.1}s forwards`;
-                    sectionObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        sections.forEach(section => {
-            section.style.opacity = '0';
-            sectionObserver.observe(section);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
