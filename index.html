@@ -560,7 +560,11 @@
                 <div class="parent-group">
                     <h3>Padres de la Novia</h3>
                     <p>Martha Esther Hernández Valderrama</p>
-                    <p>Manuel Carrillo Gallardo</p>
+                    <p style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        Manuel Carrillo Gallardo
+                        <span style="font-size: 1.2rem; color: var(--verde-oliva); opacity: 0.7;" title="En memoria">✝</span>
+                    </p>
+                    <p style="font-size: 0.9rem; font-style: italic; color: #888; margin-top: 0.5rem;">Siempre en nuestros corazones</p>
                 </div>
                 <div class="parent-group">
                     <h3>Padres del Novio</h3>
@@ -577,6 +581,21 @@
             <blockquote class="romantic-quote">
                 <p>Muchas gracias por compartir este momento tan especial con nosotros. Hemos pasado por muchas cosas pero al final el amor verdadero siempre gana. Y ahora con la bendición de Dios agradecemos que sean testigos de esto maravilloso y especial</p>
             </blockquote>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery-section" style="background: white; padding: 5rem 2rem;">
+        <div class="container">
+            <h2 class="section-title">Nuestra Historia</h2>
+            <div style="max-width: 800px; margin: 0 auto; border-radius: 20px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.15);">
+                <img src="invitacion.jpeg" alt="Paulina y Daniel" loading="lazy" style="width: 100%; height: auto; display: block;">
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <button onclick="shareInvitation()" style="padding: 1rem 2.5rem; background: var(--verde-oliva); color: white; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(85, 107, 47, 0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    📤 Compartir Invitación
+                </button>
+            </div>
         </div>
     </section>
 
@@ -611,32 +630,48 @@
             <h2 class="section-title">Detalles del Evento</h2>
 
             <!-- Ceremonia Religiosa -->
-            <div class="event-card">
+            <div class="event-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.95);">
                 <div class="event-icon">⛪</div>
                 <h3>Ceremonia Religiosa</h3>
                 <p class="event-time">8:00 PM</p>
-                <p class="event-location">Templo San Judas Tadeo</p>
-                <p class="event-address">León, Guanajuato</p>
-                <p style="margin: 1rem 0; font-style: italic; color: var(--verde-salvia);">Todos pueden asistir</p>
-                <a href="https://maps.google.com/?q=Templo+San+Judas+Tadeo+Leon+Gto"
-                   target="_blank"
-                   class="btn-map">
-                    Ver en Mapa 📍
-                </a>
+                <p class="event-location">Templo de San Judas Tadeo</p>
+                <p class="event-address">Av Roma s/n, Andrade<br>37020 León de los Aldama, Gto.</p>
+                <p style="margin: 1rem 0; font-style: italic; color: var(--verde-salvia); font-weight: 600;">✨ Todos pueden asistir</p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem; color: #888;">⏰ Sugerimos llegar 15 minutos antes</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="https://www.google.com/maps?q=21.1485,-101.6704"
+                       target="_blank"
+                       class="btn-map">
+                        🗺️ Ver en Google Maps
+                    </a>
+                    <a href="https://www.waze.com/ul?ll=21.1485,-101.6704&navigate=yes"
+                       target="_blank"
+                       class="btn-map" style="background: #33CCFF;">
+                        🚗 Abrir en Waze
+                    </a>
+                </div>
             </div>
 
             <!-- Recepción -->
-            <div class="event-card">
+            <div class="event-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.95);">
                 <div class="event-icon">🎉</div>
                 <h3>Recepción</h3>
                 <p class="event-time">9:30 PM - 2:00 AM</p>
-                <p class="event-location">Salón de Eventos Laja</p>
-                <p class="event-address">León, Guanajuato</p>
-                <a href="https://maps.google.com/?q=Salon+de+Eventos+Laja+Leon+Gto"
-                   target="_blank"
-                   class="btn-map">
-                    Ver en Mapa 📍
-                </a>
+                <p class="event-location">Salón De Eventos Laja</p>
+                <p class="event-address">Blvd. Campestre 79, Peñitas<br>37180 León de los Aldama, Gto.</p>
+                <p style="margin: 0.5rem 0; font-size: 0.95rem; color: #888;">⏰ Sugerimos llegar 15 minutos antes</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <a href="https://www.google.com/maps?q=21.1474,-101.6468"
+                       target="_blank"
+                       class="btn-map">
+                        🗺️ Ver en Google Maps
+                    </a>
+                    <a href="https://www.waze.com/ul?ll=21.1474,-101.6468&navigate=yes"
+                       target="_blank"
+                       class="btn-map" style="background: #33CCFF;">
+                        🚗 Abrir en Waze
+                    </a>
+                </div>
             </div>
 
             <!-- Código de Vestimenta -->
@@ -674,13 +709,13 @@
                 <p class="hashtag-description">¡Queremos ver tus fotos y videos!</p>
 
                 <div class="social-links">
-                    <a href="https://facebook.com" target="_blank" class="social-link">
+                    <a href="https://www.facebook.com/profile.php?id=61550918896653" target="_blank" class="social-link">
                         📘 @Danielito picoo jr Hernández
                     </a>
-                    <a href="https://instagram.com" target="_blank" class="social-link">
+                    <a href="https://www.instagram.com/danielitopicoojr/" target="_blank" class="social-link">
                         📷 @Danielitopico picoo jr Hernández
                     </a>
-                    <a href="https://tiktok.com" target="_blank" class="social-link">
+                    <a href="https://www.tiktok.com/@danielitopicoohernandez" target="_blank" class="social-link">
                         🎵 @danielitopicoohernandez
                     </a>
                 </div>
@@ -696,17 +731,22 @@
 
             <div class="whatsapp-contact">
                 <p>Confirma tu asistencia por WhatsApp:</p>
-                <a href="https://wa.me/524772891223?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
-                   target="_blank"
-                   class="btn-whatsapp">
-                    📱 477-289-1223
-                </a>
-                <br><br>
-                <a href="https://wa.me/524773766078?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
-                   target="_blank"
-                   class="btn-whatsapp">
-                    📱 477-376-6078
-                </a>
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="margin-bottom: 0.5rem; font-weight: 600; color: var(--verde-oliva);">Daniel</p>
+                    <a href="https://wa.me/524772891223?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
+                       target="_blank"
+                       class="btn-whatsapp">
+                        📱 477-289-1223
+                    </a>
+                </div>
+                <div>
+                    <p style="margin-bottom: 0.5rem; font-weight: 600; color: var(--verde-oliva);">Paulina</p>
+                    <a href="https://wa.me/524773766078?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel"
+                       target="_blank"
+                       class="btn-whatsapp">
+                        📱 477-376-6078
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -776,13 +816,30 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Music Toggle
+        // Music Toggle with Autoplay on First Interaction
         const musicToggle = document.getElementById('music-toggle');
         const music = document.getElementById('background-music');
         const musicIcon = document.getElementById('music-icon');
         let isPlaying = false;
+        let hasInteracted = false;
 
-        musicToggle.addEventListener('click', () => {
+        // Function to start music
+        function startMusic() {
+            if (!hasInteracted) {
+                music.play().catch(e => console.log('Autoplay prevented:', e));
+                isPlaying = true;
+                musicIcon.textContent = '🔊';
+                hasInteracted = true;
+            }
+        }
+
+        // Start music on first user interaction
+        ['click', 'touchstart', 'scroll'].forEach(event => {
+            document.addEventListener(event, startMusic, { once: true });
+        });
+
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (isPlaying) {
                 music.pause();
                 musicIcon.textContent = '🔇';
@@ -806,6 +863,25 @@
                 }
             });
         });
+
+        // Share Invitation Function
+        function shareInvitation() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Boda Paulina & Daniel',
+                    text: '¡Nos casamos! 💍 Paulina & Daniel - 19 de Diciembre 2025',
+                    url: window.location.href
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback: copy to clipboard
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('¡Enlace copiado al portapapeles!');
+                }).catch(err => {
+                    alert('Por favor copia este enlace: ' + url);
+                });
+            }
+        }
 
         // Scroll Animations
         const observerOptions = {
