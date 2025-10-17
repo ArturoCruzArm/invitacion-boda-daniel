@@ -521,6 +521,12 @@ section {
 @media (max-width: 480px) {
     .parents-hero-names {
         font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .parents-hero-names p {
+        padding: 0 0.5rem;
+        word-break: break-word;
     }
 }
 
@@ -1103,6 +1109,12 @@ section {
 @media (max-width: 480px) {
     .parents-hero-names {
         font-size: 1.1rem;
+        line-height: 1.8;
+    }
+
+    .parents-hero-names p {
+        padding: 0 0.5rem;
+        word-break: break-word;
     }
 }
 
@@ -1185,27 +1197,61 @@ section {
     .hero-content {
         padding: 1rem;
     }
-    
+
     .couple-names {
         font-size: 3rem;
     }
-    
+
     .date-number {
         font-size: 4rem;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
+
     .countdown-number {
         font-size: 2.5rem;
     }
-    
+
     .parent-group,
     .gift-card,
     .info-card {
         padding: 1.8rem;
+    }
+
+    /* Mejor responsividad para contenido */
+    .event-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .event-location {
+        font-size: 1.1rem;
+    }
+
+    .event-address {
+        font-size: 0.95rem;
+    }
+
+    .romantic-quote p {
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+    }
+
+    .rsvp-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .gifts-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Ajuste para nombres largos */
+    .footer-credit {
+        font-size: 0.85rem;
+        padding: 0 1rem;
     }
 }
 
