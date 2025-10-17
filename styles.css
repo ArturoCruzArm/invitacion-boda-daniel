@@ -961,3 +961,490 @@ border-radius: 20px;
 box-shadow: 0 10px 40px rgba(0,0,0,0.15);
 max-width: 800px;
 margin: 0 auto;
+border: 2px solid rgba(255,255,255,0.3);
+}
+
+.hashtag-content p {
+font-size: 1.2rem;
+margin-bottom: 1rem;
+color: white;
+}
+
+.hashtag {
+font-family: var(–font-script);
+font-size: clamp(2.5rem, 6vw, 4rem);
+margin: 2.5rem 0;
+color: var(–dorado-elegante);
+text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.hashtag-description {
+font-style: italic;
+margin-top: 1rem;
+color: white;
+}
+
+.social-links {
+display: flex;
+justify-content: center;
+gap: 1.5rem;
+margin-top: 2.5rem;
+flex-wrap: wrap;
+}
+
+.social-link {
+color: white;
+text-decoration: none;
+font-size: 1.1rem;
+padding: 1rem 2rem;
+background: rgba(255,255,255,0.15);
+border-radius: 50px;
+transition: all 0.4s ease;
+border: 2px solid rgba(255,255,255,0.2);
+backdrop-filter: blur(10px);
+}
+
+.social-link:hover {
+background: rgba(255,255,255,0.3);
+transform: translateY(-5px) scale(1.05);
+box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+border-color: var(–dorado-elegante);
+}
+
+/* ===================================
+CONFIRMACIÓN RSVP CON MARCO
+=================================== */
+.rsvp-section {
+background: white;
+padding: 5rem 2rem;
+position: relative;
+}
+
+.rsvp-section::before {
+content: ‘’;
+position: absolute;
+border: 1px solid var(–beige-taupe);
+border-radius: 12px;
+width: calc(100% - 60px);
+height: calc(100% - 60px);
+top: 30px;
+left: 30px;
+pointer-events: none;
+opacity: 0.4;
+z-index: 1;
+}
+
+.rsvp-subtitle {
+text-align: center;
+font-size: 1.2rem;
+margin-bottom: 3rem;
+color: var(–verde-eucalipto);
+font-weight: 600;
+position: relative;
+z-index: 2;
+}
+
+.whatsapp-contact {
+text-align: center;
+margin-top: 3rem;
+position: relative;
+z-index: 2;
+}
+
+.whatsapp-contact > p {
+font-size: 1.2rem;
+margin-bottom: 2rem;
+color: var(–texto-oscuro);
+}
+
+.whatsapp-numbers {
+display: flex;
+justify-content: center;
+gap: 3rem;
+flex-wrap: wrap;
+}
+
+.whatsapp-item {
+text-align: center;
+padding: 2rem;
+background: var(–crema-calido);
+border-radius: 15px;
+border: 2px solid var(–beige-taupe);
+transition: all 0.3s ease;
+position: relative;
+}
+
+.whatsapp-item::before {
+content: ‘’;
+position: absolute;
+width: 10px;
+height: 10px;
+border: 2px solid var(–dorado-elegante);
+border-radius: 50%;
+top: -5px;
+right: 20px;
+background: white;
+}
+
+.whatsapp-item:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.whatsapp-name {
+font-size: 1.1rem;
+font-weight: 600;
+color: var(–verde-eucalipto);
+margin-bottom: 1rem;
+}
+
+.btn-whatsapp {
+display: inline-block;
+padding: 1.2rem 2.5rem;
+background: #25D366;
+color: white;
+text-decoration: none;
+border-radius: 50px;
+font-size: 1.1rem;
+font-weight: 600;
+transition: all 0.4s ease;
+box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+border: 2px solid transparent;
+}
+
+.btn-whatsapp:hover {
+background: #20BA5A;
+transform: translateY(-5px) scale(1.08);
+box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+border-color: rgba(255,255,255,0.3);
+}
+
+/* ===================================
+INFORMACIÓN ADICIONAL CON MARCOS
+=================================== */
+.info-section {
+background: var(–crema-calido);
+padding: 5rem 2rem;
+position: relative;
+}
+
+.info-section::before {
+content: ‘’;
+position: absolute;
+border: 1px solid var(–beige-taupe);
+border-radius: 12px;
+width: calc(100% - 60px);
+height: calc(100% - 60px);
+top: 30px;
+left: 30px;
+pointer-events: none;
+opacity: 0.4;
+z-index: 1;
+}
+
+.info-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 2rem;
+position: relative;
+z-index: 2;
+}
+
+.info-card {
+text-align: center;
+padding: 2.5rem;
+background: white;
+border-radius: 15px;
+transition: all 0.4s ease;
+border: 2px solid var(–beige-taupe);
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+position: relative;
+}
+
+.info-card::before {
+content: ‘’;
+position: absolute;
+width: 8px;
+height: 8px;
+border: 1px solid var(–dorado-elegante);
+border-radius: 50%;
+top: -4px;
+left: 20px;
+background: var(–crema-calido);
+}
+
+.info-card::after {
+content: ‘’;
+position: absolute;
+width: 8px;
+height: 8px;
+border: 1px solid var(–dorado-elegante);
+border-radius: 50%;
+bottom: -4px;
+right: 20px;
+background: var(–crema-calido);
+}
+
+.info-card:hover {
+transform: translateY(-10px) scale(1.03);
+box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+border-color: var(–dorado-elegante);
+}
+
+.info-icon {
+font-size: 3rem;
+margin-bottom: 1.5rem;
+display: inline-block;
+transition: all 0.5s ease;
+}
+
+.info-card:hover .info-icon {
+transform: scale(1.2) rotate(10deg);
+}
+
+.info-card h3 {
+font-family: var(–font-serif);
+color: var(–verde-eucalipto);
+font-size: 1.5rem;
+margin-bottom: 1rem;
+font-weight: 600;
+}
+
+.info-card p {
+color: var(–texto-medio);
+line-height: 1.6;
+}
+
+/* ===================================
+FOOTER CON DISEÑO ELEGANTE
+=================================== */
+.footer {
+background: var(–verde-eucalipto);
+color: white;
+padding: 4rem 2rem;
+text-align: center;
+position: relative;
+}
+
+.footer::before {
+content: ‘’;
+position: absolute;
+border: 1px solid rgba(255,255,255,0.2);
+border-radius: 12px;
+width: calc(100% - 60px);
+height: calc(100% - 60px);
+top: 30px;
+left: 30px;
+pointer-events: none;
+opacity: 0.5;
+z-index: 1;
+}
+
+.footer-message {
+font-family: var(–font-script);
+font-size: clamp(2rem, 5vw, 3.5rem);
+margin-bottom: 1.5rem;
+color: var(–dorado-elegante);
+position: relative;
+z-index: 2;
+}
+
+.footer-names {
+font-family: var(–font-serif);
+font-size: 2rem;
+margin-bottom: 1rem;
+font-weight: 600;
+position: relative;
+z-index: 2;
+}
+
+.footer-date {
+font-size: 1.3rem;
+margin-bottom: 2rem;
+letter-spacing: 4px;
+position: relative;
+z-index: 2;
+}
+
+.footer-credit {
+font-size: 0.95rem;
+opacity: 0.85;
+margin-top: 2rem;
+position: relative;
+z-index: 2;
+}
+
+/* ===================================
+RESPONSIVE
+=================================== */
+@media (max-width: 768px) {
+.hero-subtitle {
+letter-spacing: 4px;
+font-size: 0.7rem;
+}
+
+```
+.hero-title {
+    letter-spacing: 6px;
+    font-size: 1.8rem;
+}
+
+.couple-names {
+    font-size: 4rem;
+}
+
+.date-row {
+    flex-direction: column;
+    gap: 20px;
+}
+
+.date-day::after,
+.date-time::before {
+    display: none;
+}
+
+.floral-decoration.top-left,
+.floral-decoration.bottom-right {
+    width: 200px;
+}
+
+.geometric-frame {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    top: 20px;
+    left: 20px;
+}
+
+section::before {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    top: 20px;
+    left: 20px;
+}
+
+.parents-section::before,
+.quote-section::before,
+.gallery-section::before,
+.countdown-section::before,
+.event-details::before,
+.gifts-section::before,
+.hashtag-section::before,
+.rsvp-section::before,
+.info-section::before,
+.footer::before {
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    top: 20px;
+    left: 20px;
+}
+
+section {
+    padding: 3rem 1.5rem;
+}
+
+.countdown {
+    gap: 1.5rem;
+}
+
+.countdown-item {
+    min-width: 100px;
+    padding: 1.8rem;
+}
+
+.event-card {
+    padding: 2rem 1.5rem;
+}
+
+.map-buttons {
+    flex-direction: column;
+}
+
+.btn-map {
+    width: 100%;
+}
+
+.whatsapp-numbers {
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.info-grid {
+    grid-template-columns: 1fr;
+}
+```
+
+}
+
+@media (max-width: 480px) {
+.hero-content {
+padding: 1rem;
+}
+
+```
+.couple-names {
+    font-size: 3rem;
+}
+
+.date-number {
+    font-size: 4rem;
+}
+
+.section-title {
+    font-size: 1.8rem;
+}
+
+.countdown-number {
+    font-size: 2.5rem;
+}
+
+.parent-group,
+.gift-card,
+.info-card {
+    padding: 1.8rem;
+}
+
+.romantic-quote {
+    padding: 2rem;
+}
+
+.hashtag-content {
+    padding: 2rem;
+}
+```
+
+}
+
+/* ===================================
+ANIMACIONES ADICIONALES
+=================================== */
+@keyframes shimmer {
+0%, 100% { background-position: 0% center; }
+50% { background-position: 100% center; }
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.05); }
+}
+
+/* Aplicar animación suave al cargar elementos */
+.fade-in {
+animation: fadeUp 0.8s ease-out;
+}
+
+/* ===================================
+UTILIDADES
+=================================== */
+.text-center {
+text-align: center;
+}
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
