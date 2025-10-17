@@ -392,7 +392,7 @@ section .floral-decoration,
 
 .couple-names {
     font-family: var(--font-script);
-    font-size: clamp(4rem, 12vw, 7rem);
+    font-size: clamp(5rem, 14vw, 9rem);
     font-weight: 400;
     line-height: 1;
     color: #000000; /* Negro puro para nombres principales */
@@ -681,7 +681,7 @@ section {
 
 .quote-message {
     font-family: var(--font-script);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(2.8rem, 6vw, 4.2rem);
     line-height: 1.6;
     color: #000000; /* Negro para texto principal sobre fondo crema */
     text-align: center;
@@ -1115,21 +1115,21 @@ section {
     font-size: 2rem;
     margin-bottom: 1rem;
     font-weight: 600;
-    color: #FFFFFF; /* Blanco puro */
+    color: #000000; /* Blanco puro */
 }
 
 .footer-date {
     font-size: 1.3rem;
     margin-bottom: 2rem;
     letter-spacing: 4px;
-    color: #FFFFFF; /* Blanco puro */
+    color: #0c3300; /* Blanco puro */
 }
 
 .footer-credit {
     font-size: 0.95rem;
     opacity: 1; /* Sin opacidad para mejor legibilidad */
     margin-top: 2rem;
-    color: #FFFFFF; /* Blanco puro */
+    color: #00240b; /* Blanco puro */
 }
 
 /* ===================================
