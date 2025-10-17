@@ -916,6 +916,81 @@ section {
 }
 
 /* ===================================
+   PARENTS HERO SECTION - NUEVA SECCIÓN
+   =================================== */
+.parents-hero {
+    background: white;
+}
+
+.parents-hero-group {
+    margin: 3rem 0;
+    animation: fadeUp 1s ease-out 0.4s backwards;
+}
+
+.parents-hero-label {
+    font-family: var(--font-sans);
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: var(--verde-eucalipto);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.parents-hero-names {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--texto-oscuro);
+}
+
+.parents-hero-names p {
+    margin: 0.5rem 0;
+}
+
+.parents-hero-memory {
+    font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
+    font-style: italic;
+    color: var(--texto-medio) !important;
+    margin-top: 0.8rem !important;
+    font-family: var(--font-sans) !important;
+    font-weight: 300;
+}
+
+.parents-hero-divider {
+    margin: 3rem 0;
+    animation: fadeUp 1s ease-out 0.6s backwards;
+}
+
+.parents-hero-divider .ampersand-small {
+    font-size: 4rem;
+    opacity: 0.5;
+}
+
+/* Responsive para la nueva sección */
+@media (max-width: 768px) {
+    .parents-hero-label {
+        letter-spacing: 2px;
+        font-size: 0.8rem;
+    }
+    
+    .parents-hero-names {
+        font-size: 1.3rem;
+    }
+    
+    .parents-hero-divider .ampersand-small {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .parents-hero-names {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===================================
    RESPONSIVE
    =================================== */
 @media (max-width: 768px) {
