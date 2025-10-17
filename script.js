@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initCountdown();
     initScrollAnimations();
     initSmoothScroll();
-    initShareButton();
 });
 
 // ===================================
@@ -20,7 +19,6 @@ function initMusic() {
     const musicToggle = document.getElementById('music-toggle');
     const musicIcon = document.getElementById('music-icon');
 
-    // Validar que los elementos existen
     if (!music || !musicToggle || !musicIcon) {
         console.log('Elementos de música no encontrados');
         return;
@@ -29,7 +27,6 @@ function initMusic() {
     let isPlaying = false;
     let hasInteracted = false;
 
-    // Función para iniciar música
     function startMusic() {
         if (!hasInteracted) {
             music.play().catch(e => {
@@ -41,12 +38,10 @@ function initMusic() {
         }
     }
 
-    // Iniciar música en primera interacción
     ['click', 'touchstart', 'scroll'].forEach(event => {
         document.addEventListener(event, startMusic, { once: true });
     });
 
-    // Toggle manual
     musicToggle.addEventListener('click', function(e) {
         e.stopPropagation();
         if (isPlaying) {
@@ -62,18 +57,27 @@ function initMusic() {
 }
 
 // ===================================
-// CUENTA REGRESIVA
+// CUENTA REGRESIVA - CORREGIDA
 // ===================================
 function initCountdown() {
-    const weddingDate = new Date('2025-12-19T19:00:00').getTime();
+    // Fecha: 19 de diciembre de 2025, 19:00 hrs (7:00 PM)
+    const weddingYear = 2025;
+    const weddingMonth = 11; // Diciembre (0=enero, 11=diciembre)
+    const weddingDay = 19;
+    const weddingHour = 19;
+    const weddingMinute = 0;
+    
+    const weddingDate = new Date(weddingYear, weddingMonth, weddingDay, weddingHour, weddingMinute, 0).getTime();
 
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
 
         if (distance < 0) {
-            document.getElementById('countdown').innerHTML = 
-                '<div style="text-align: center; font-size: 2rem; color: var(--verde-eucalipto); font-family: var(--font-serif);">¡Es hoy! 🎉</div>';
+            const countdown = document.getElementById('countdown');
+            if (countdown) {
+                countdown.innerHTML = '<div style="text-align: center; font-size: 2rem; color: var(--verde-eucalipto); font-family: var(--font-serif);">¡Es hoy! 🎉</div>';
+            }
             return;
         }
 
@@ -82,39 +86,39 @@ function initCountdown() {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('days').textContent = String(days).padStart(2, '0');
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        if (daysEl) daysEl.textContent = days < 10 ? '0' + days : days;
+        if (hoursEl) hoursEl.textContent = hours < 10 ? '0' + hours : hours;
+        if (minutesEl) minutesEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+        if (secondsEl) secondsEl.textContent = seconds < 10 ? '0' + seconds : seconds;
     }
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+    console.log('✅ Cuenta regresiva inicializada');
 }
 
 // ===================================
-// ANIMACIONES AL HACER SCROLL - MEJORADO
+// ANIMACIONES AL HACER SCROLL
 // ===================================
 function initScrollAnimations() {
-    // Configuración del observador
     const observerOptions = {
-        threshold: 0.1, // Se activa cuando el 10% del elemento es visible
-        rootMargin: '0px 0px -50px 0px' // Margen inferior para activar antes
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
 
-    // Crear el observador
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Agregar clase 'visible' cuando el elemento entra en el viewport
                 entry.target.classList.add('visible');
-                // Opcional: dejar de observar después de animar
-                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Seleccionar TODOS los elementos que queremos animar
     const animatedElements = document.querySelectorAll(`
         .section-title,
         .parent-group,
@@ -134,13 +138,10 @@ function initScrollAnimations() {
         .whatsapp-contact > p
     `);
 
-    // Agregar clases de animación a cada elemento
     animatedElements.forEach((element, index) => {
-        // Determinar qué tipo de animación usar según el elemento
         if (element.classList.contains('section-title')) {
             element.classList.add('fade-in-up');
         } else if (element.classList.contains('parent-group')) {
-            // Alternar entre izquierda y derecha
             element.classList.add(index % 2 === 0 ? 'fade-in-left' : 'fade-in-right');
         } else if (element.classList.contains('countdown-item')) {
             element.classList.add('scale-in');
@@ -158,11 +159,9 @@ function initScrollAnimations() {
             element.classList.add('fade-in-up');
         }
         
-        // Observar el elemento
         observer.observe(element);
     });
 
-    // Animar también los párrafos dentro de parent-group
     const parentParagraphs = document.querySelectorAll('.parent-group p, .parent-group h3');
     parentParagraphs.forEach((p, index) => {
         p.classList.add('fade-in-up');
@@ -170,14 +169,12 @@ function initScrollAnimations() {
         observer.observe(p);
     });
 
-    // Animar elementos de la quote
     const quoteText = document.querySelector('.romantic-quote p');
     if (quoteText) {
         quoteText.classList.add('fade-in-up');
         observer.observe(quoteText);
     }
 
-    // Animar botones de mapa
     const mapButtons = document.querySelectorAll('.btn-map');
     mapButtons.forEach((btn, index) => {
         btn.classList.add('fade-in-up');
@@ -185,7 +182,6 @@ function initScrollAnimations() {
         observer.observe(btn);
     });
 
-    // Animar enlaces sociales
     const socialLinks = document.querySelectorAll('.social-link');
     socialLinks.forEach((link, index) => {
         link.classList.add('scale-in');
@@ -193,7 +189,6 @@ function initScrollAnimations() {
         observer.observe(link);
     });
 
-    // Animar el hashtag
     const hashtag = document.querySelector('.hashtag');
     if (hashtag) {
         hashtag.classList.add('scale-in');
@@ -220,97 +215,6 @@ function initSmoothScroll() {
 }
 
 // ===================================
-// COMPARTIR INVITACIÓN
-// ===================================
-function initShareButton() {
-    window.shareInvitation = function() {
-        const shareData = {
-            title: 'Boda Paulina & Daniel',
-            text: '¡Nos casamos! 💍 Te invitamos a celebrar con nosotros - 19 de Diciembre 2025',
-            url: window.location.href
-        };
-
-        if (navigator.share) {
-            navigator.share(shareData)
-                .then(() => console.log('Compartido exitosamente'))
-                .catch(err => console.log('Error al compartir:', err));
-        } else {
-            // Fallback: copiar al portapapeles
-            copyToClipboard(window.location.href);
-        }
-    };
-}
-
-// ===================================
-// COPIAR AL PORTAPAPELES
-// ===================================
-function copyToClipboard(text) {
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                showNotification('¡Enlace copiado al portapapeles! 📋');
-            })
-            .catch(err => {
-                fallbackCopy(text);
-            });
-    } else {
-        fallbackCopy(text);
-    }
-}
-
-function fallbackCopy(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-999999px';
-    document.body.appendChild(textArea);
-    textArea.select();
-    
-    try {
-        document.execCommand('copy');
-        showNotification('¡Enlace copiado! 📋');
-    } catch (err) {
-        showNotification('Por favor copia manualmente: ' + text);
-    }
-    
-    document.body.removeChild(textArea);
-}
-
-// ===================================
-// MOSTRAR NOTIFICACIÓN
-// ===================================
-function showNotification(message) {
-    // Crear elemento de notificación
-    const notification = document.createElement('div');
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--verde-eucalipto);
-        color: white;
-        padding: 1rem 2rem;
-        border-radius: 50px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        z-index: 10000;
-        font-family: var(--font-sans);
-        font-weight: 600;
-        animation: slideDown 0.5s ease;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Remover después de 3 segundos
-    setTimeout(() => {
-        notification.style.animation = 'slideUp 0.5s ease';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 500);
-    }, 3000);
-}
-
-// ===================================
 // EFECTO PARALLAX SUAVE
 // ===================================
 let ticking = false;
@@ -320,7 +224,6 @@ window.addEventListener('scroll', function() {
         window.requestAnimationFrame(function() {
             const scrolled = window.pageYOffset;
             
-            // Aplicar parallax muy sutil a las decoraciones florales
             const florals = document.querySelectorAll('.floral-decoration');
             florals.forEach(floral => {
                 const speed = 0.15;
@@ -333,42 +236,6 @@ window.addEventListener('scroll', function() {
         ticking = true;
     }
 });
-
-// ===================================
-// PREVENIR ZOOM EN iOS
-// ===================================
-document.addEventListener('gesturestart', function(e) {
-    e.preventDefault();
-});
-
-// ===================================
-// LAZY LOADING DE IMÁGENES
-// ===================================
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                }
-                observer.unobserve(img);
-            }
-        });
-    });
-
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// ===================================
-// DETECTAR MODO OSCURO DEL SISTEMA
-// ===================================
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    console.log('Modo oscuro detectado');
-}
 
 // ===================================
 // ANIMACIONES CSS ADICIONALES
@@ -399,10 +266,4 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ===================================
-// LOG FINAL
-// ===================================
-console.log('%c✨ Invitación cargada exitosamente ✨', 
-    'font-size: 14px; color: #D4AF37; font-weight: bold;');
-console.log('%cDesarrollado con amor ❤️ para Paulina & Daniel', 
-    'font-size: 12px; color: #4A6B54;');
+console.log('%c✨ Invitación cargada exitosamente ✨', 'font-size: 14px; color: #D4AF37; font-weight: bold;');
