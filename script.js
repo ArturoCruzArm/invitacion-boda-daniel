@@ -135,7 +135,8 @@ function initScrollAnimations() {
         .rsvp-subtitle,
         .gifts-subtitle,
         .event-icon,
-        .whatsapp-contact > p
+        .whatsapp-contact > p,
+        .parents-hero
     `);
 
     animatedElements.forEach((element, index) => {
