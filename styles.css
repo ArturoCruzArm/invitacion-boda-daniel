@@ -409,7 +409,7 @@ section {
    PARENTS HERO SECTION - NUEVA SECCIÓN
    =================================== */
 .parents-hero {
-    background: white;
+    background: var(--crema-calido);
 }
 
 .parents-hero-group {
@@ -947,7 +947,7 @@ section {
    PARENTS HERO SECTION - NUEVA SECCIÓN
    =================================== */
 .parents-hero {
-    background: white;
+    background: var(--crema-calido);
 }
 
 .parents-hero-group {
