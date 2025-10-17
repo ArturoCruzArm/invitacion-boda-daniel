@@ -406,7 +406,7 @@ section {
 }
 
 /* ===================================
-   PARENTS HERO SECTION - NUEVA SECCIÓN CON ANIMACIONES
+   PARENTS HERO SECTION - NUEVA SECCIÓN
    =================================== */
 .parents-hero {
     background: white;
@@ -414,18 +414,7 @@ section {
 
 .parents-hero-group {
     margin: 3rem 0;
-}
-
-/* Animación desde la izquierda para padres de la novia */
-.parents-hero-group:first-of-type {
-    opacity: 0;
-    animation: slideInFromLeft 1.2s ease-out 0.4s forwards;
-}
-
-/* Animación desde la derecha para padres del novio */
-.parents-hero-group:last-of-type {
-    opacity: 0;
-    animation: slideInFromRight 1.2s ease-out 0.8s forwards;
+    animation: fadeUp 1s ease-out 0.4s backwards;
 }
 
 .parents-hero-label {
@@ -450,22 +439,6 @@ section {
     margin: 0.5rem 0;
 }
 
-/* Animación para cada nombre individual */
-.parents-hero-names p:nth-child(1) {
-    opacity: 0;
-    animation: fadeInFromLeft 0.8s ease-out 0.6s forwards;
-}
-
-.parents-hero-names p:nth-child(2) {
-    opacity: 0;
-    animation: fadeInFromRight 0.8s ease-out 0.9s forwards;
-}
-
-.parents-hero-names p:nth-child(3) {
-    opacity: 0;
-    animation: fadeInFromLeft 0.8s ease-out 1.2s forwards;
-}
-
 .parents-hero-memory {
     font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
     font-style: italic;
@@ -477,13 +450,34 @@ section {
 
 .parents-hero-divider {
     margin: 3rem 0;
-    opacity: 0;
-    animation: scaleInCenter 1s ease-out 1.2s forwards;
+    animation: fadeUp 1s ease-out 0.6s backwards;
 }
 
 .parents-hero-divider .ampersand-small {
     font-size: 4rem;
     opacity: 0.5;
+}
+
+/* Responsive para la nueva sección */
+@media (max-width: 768px) {
+    .parents-hero-label {
+        letter-spacing: 2px;
+        font-size: 0.8rem;
+    }
+    
+    .parents-hero-names {
+        font-size: 1.3rem;
+    }
+    
+    .parents-hero-divider .ampersand-small {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .parents-hero-names {
+        font-size: 1.1rem;
+    }
 }
 
 /* ===================================
