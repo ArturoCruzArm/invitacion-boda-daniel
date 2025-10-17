@@ -185,17 +185,29 @@ function animateParentsLetters(parentsSection) {
     const textElements = parentsSection.querySelectorAll('.parents-hero-label, .parents-hero-names p, .parents-hero-memory');
 
     textElements.forEach((element, elementIndex) => {
-        // Verificar si el elemento tiene un span con título (como la cruz)
-        const specialSpan = element.querySelector('span[title]');
+        // Verificar si el elemento tiene un icono (como la cruz memorial)
+        const specialIcon = element.querySelector('.memorial-cross');
 
         // Si tiene elementos especiales, guardarlos antes de procesar
         let savedSpecialHTML = null;
-        if (specialSpan) {
-            savedSpecialHTML = specialSpan.outerHTML;
+        if (specialIcon) {
+            savedSpecialHTML = specialIcon.outerHTML;
         }
 
-        // Obtener solo el texto visible, sin los elementos especiales
-        const text = element.textContent.trim();
+        // Guardar el innerHTML original para preservar <br>
+        const originalHTML = element.innerHTML;
+
+        // Si tiene <br>, reemplazar con marcador especial para preservar
+        let htmlWithMarkers = originalHTML;
+        if (specialIcon) {
+            htmlWithMarkers = htmlWithMarkers.replace(specialIcon.outerHTML, '');
+        }
+        htmlWithMarkers = htmlWithMarkers.replace(/<br\s*\/?>/gi, '|||BR|||');
+
+        // Obtener solo el texto visible
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = htmlWithMarkers;
+        const text = tempDiv.textContent.trim();
 
         // Crear contenedor para las letras
         element.innerHTML = '';
@@ -205,6 +217,14 @@ function animateParentsLetters(parentsSection) {
         // Crear array de letras con sus índices
         const letters = [];
         for (let i = 0; i < text.length; i++) {
+            // Si encontramos el marcador de BR
+            if (text.substring(i, i + 9) === '|||BR|||') {
+                const br = document.createElement('br');
+                element.appendChild(br);
+                i += 8; // Saltar el resto del marcador
+                continue;
+            }
+
             const span = document.createElement('span');
             span.textContent = text[i];
             span.style.opacity = '0';

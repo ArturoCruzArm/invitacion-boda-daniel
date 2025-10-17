@@ -529,6 +529,14 @@ section {
     position: relative;
 }
 
+.memorial-cross {
+    font-size: 1.3rem;
+    color: #8B6914;
+    text-shadow: 0 0 10px rgba(139, 105, 20, 0.4);
+    margin-left: 0.3rem;
+    display: inline;
+}
+
 /* ===================================
    PARENTS HERO SECTION - NUEVA SECCIÓN
    =================================== */
