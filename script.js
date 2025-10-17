@@ -133,8 +133,17 @@ function initScrollAnimations() {
         const textElements = parentsHeroSection.querySelectorAll('.parents-hero-label, .parents-hero-names p, .parents-hero-memory');
 
         textElements.forEach((element, elementIndex) => {
-            const text = element.textContent;
-            const emojis = element.querySelectorAll('span[title]'); // Guardar emojis
+            // Verificar si el elemento tiene un span con título (como la cruz)
+            const specialSpan = element.querySelector('span[title]');
+
+            // Si tiene elementos especiales, guardarlos antes de procesar
+            let savedSpecialHTML = null;
+            if (specialSpan) {
+                savedSpecialHTML = specialSpan.outerHTML;
+            }
+
+            // Obtener solo el texto visible, sin los elementos especiales
+            const text = element.textContent.trim();
 
             // Crear contenedor para las letras
             element.innerHTML = '';
@@ -151,7 +160,7 @@ function initScrollAnimations() {
                 span.style.transition = 'opacity 0.3s ease-out';
                 element.appendChild(span);
 
-                // Solo animar letras visibles (no espacios en blanco al inicio/final)
+                // Solo animar letras visibles (no espacios)
                 if (text[i].trim() !== '') {
                     letters.push({ span, index: i });
                 }
@@ -168,11 +177,11 @@ function initScrollAnimations() {
                 }, baseDelay + (i * 30)); // 30ms entre cada letra
             });
 
-            // Restaurar emojis si los había
-            if (emojis.length > 0) {
-                emojis.forEach(emoji => {
-                    element.appendChild(emoji.cloneNode(true));
-                });
+            // Restaurar elementos especiales al final si los había
+            if (savedSpecialHTML) {
+                setTimeout(() => {
+                    element.insertAdjacentHTML('beforeend', ' ' + savedSpecialHTML);
+                }, baseDelay + (letters.length * 30));
             }
         });
     }
