@@ -424,9 +424,6 @@ section {
     color: var(--verde-eucalipto);
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .parents-hero-names {
@@ -439,24 +436,6 @@ section {
 
 .parents-hero-names p {
     margin: 0.5rem 0;
-    opacity: 0;
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* Estados iniciales para animaciones entrelazadas */
-.parents-hero-names p:nth-child(1) {
-    transform: translateX(100px);
-    transition-delay: 0.2s;
-}
-
-.parents-hero-names p:nth-child(2) {
-    transform: translateX(-100px);
-    transition-delay: 0.4s;
-}
-
-.parents-hero-names p:nth-child(3) {
-    transform: translateX(100px);
-    transition-delay: 0.6s;
 }
 
 .parents-hero-memory {
@@ -466,9 +445,6 @@ section {
     margin-top: 0.8rem !important;
     font-family: var(--font-sans) !important;
     font-weight: 300;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s;
 }
 
 .parents-hero-divider {
@@ -478,23 +454,15 @@ section {
 }
 
 /* Cuando la sección es visible (clase agregada por JS) */
-.parents-hero.visible .parents-hero-label {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.parents-hero.visible .parents-hero-names p {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.parents-hero.visible .parents-hero-memory {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 .parents-hero.visible .parents-hero-divider {
     opacity: 1;
+}
+
+/* Estilos para letras animadas individualmente */
+.parents-hero-label span,
+.parents-hero-names span,
+.parents-hero-memory span {
+    display: inline-block;
 }
 
 .parents-hero-divider .ampersand-small {
@@ -1038,9 +1006,6 @@ section {
     color: var(--verde-eucalipto);
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .parents-hero-names {
@@ -1053,24 +1018,6 @@ section {
 
 .parents-hero-names p {
     margin: 0.5rem 0;
-    opacity: 0;
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* Estados iniciales para animaciones entrelazadas */
-.parents-hero-names p:nth-child(1) {
-    transform: translateX(100px);
-    transition-delay: 0.2s;
-}
-
-.parents-hero-names p:nth-child(2) {
-    transform: translateX(-100px);
-    transition-delay: 0.4s;
-}
-
-.parents-hero-names p:nth-child(3) {
-    transform: translateX(100px);
-    transition-delay: 0.6s;
 }
 
 .parents-hero-memory {
@@ -1080,9 +1027,6 @@ section {
     margin-top: 0.8rem !important;
     font-family: var(--font-sans) !important;
     font-weight: 300;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 0.8s ease-out 0.8s, transform 0.8s ease-out 0.8s;
 }
 
 .parents-hero-divider {
@@ -1092,23 +1036,15 @@ section {
 }
 
 /* Cuando la sección es visible (clase agregada por JS) */
-.parents-hero.visible .parents-hero-label {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.parents-hero.visible .parents-hero-names p {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.parents-hero.visible .parents-hero-memory {
-    opacity: 1;
-    transform: translateX(0);
-}
-
 .parents-hero.visible .parents-hero-divider {
     opacity: 1;
+}
+
+/* Estilos para letras animadas individualmente */
+.parents-hero-label span,
+.parents-hero-names span,
+.parents-hero-memory span {
+    display: inline-block;
 }
 
 .parents-hero-divider .ampersand-small {

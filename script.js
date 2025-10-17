@@ -114,10 +114,68 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                // Si es la sección parents-hero, animar letra por letra
+                if (entry.target.classList.contains('parents-hero')) {
+                    animateParentsHeroLetters(entry.target);
+                } else {
+                    entry.target.classList.add('visible');
+                }
             }
         });
     }, observerOptions);
+
+    // Función para animar letra por letra de forma aleatoria
+    function animateParentsHeroLetters(parentsHeroSection) {
+        // Agregar clase visible para otros elementos
+        parentsHeroSection.classList.add('visible');
+
+        // Obtener todos los elementos de texto
+        const textElements = parentsHeroSection.querySelectorAll('.parents-hero-label, .parents-hero-names p, .parents-hero-memory');
+
+        textElements.forEach((element, elementIndex) => {
+            const text = element.textContent;
+            const emojis = element.querySelectorAll('span[title]'); // Guardar emojis
+
+            // Crear contenedor para las letras
+            element.innerHTML = '';
+            element.style.opacity = '1';
+            element.style.transform = 'translateX(0)';
+
+            // Crear array de letras con sus índices
+            const letters = [];
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = text[i];
+                span.style.opacity = '0';
+                span.style.display = 'inline-block';
+                span.style.transition = 'opacity 0.3s ease-out';
+                element.appendChild(span);
+
+                // Solo animar letras visibles (no espacios en blanco al inicio/final)
+                if (text[i].trim() !== '') {
+                    letters.push({ span, index: i });
+                }
+            }
+
+            // Mezclar aleatoriamente el orden de aparición
+            const shuffledLetters = [...letters].sort(() => Math.random() - 0.5);
+
+            // Animar cada letra con delay progresivo aleatorio
+            const baseDelay = elementIndex * 300; // Delay base por elemento
+            shuffledLetters.forEach((letter, i) => {
+                setTimeout(() => {
+                    letter.span.style.opacity = '1';
+                }, baseDelay + (i * 30)); // 30ms entre cada letra
+            });
+
+            // Restaurar emojis si los había
+            if (emojis.length > 0) {
+                emojis.forEach(emoji => {
+                    element.appendChild(emoji.cloneNode(true));
+                });
+            }
+        });
+    }
 
     const animatedElements = document.querySelectorAll(`
         .section-title,
