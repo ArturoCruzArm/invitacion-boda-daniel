@@ -202,7 +202,6 @@ function animateParentsLetters(parentsSection) {
         if (specialIcon) {
             htmlWithMarkers = htmlWithMarkers.replace(specialIcon.outerHTML, '');
         }
-        htmlWithMarkers = htmlWithMarkers.replace(/<br\s*\/?>/gi, '|||BR|||');
 
         // Obtener solo el texto visible
         const tempDiv = document.createElement('div');
