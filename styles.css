@@ -1,1450 +1,281 @@
-/* ===================================
-VARIABLES CSS ACTUALIZADAS
-=================================== */
-:root {
-/* Paleta de colores estilo peonía/eucalipto */
-–crema-calido: #F8F6F0;
-–verde-eucalipto: #4A6B54;
-–verde-salvia: #A3B18A;
-–beige-taupe: #C9B8A3;
-–dorado-elegante: #D4AF37;
-–texto-oscuro: #2B2B2B;
-–texto-medio: #6B6B6B;
-–blanco-floral: #FFFBF5;
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda - Paulina & Daniel</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='80'>💍</text></svg>">
 
 ```
-/* Tipografías */
---font-script: 'Mr De Haviland', cursive;
---font-serif: 'Cormorant Garamond', serif;
---font-sans: 'Montserrat', sans-serif;
+<!-- Fuentes actualizadas -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
 ```
 
-}
-
-/* ===================================
-RESET Y BASE
-=================================== */
-
-- {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
-
-html {
-scroll-behavior: smooth;
-}
-
-body {
-font-family: var(–font-sans);
-color: var(–texto-oscuro);
-background: var(–crema-calido);
-line-height: 1.6;
-overflow-x: hidden;
-position: relative;
-}
-
-/* Textura de papel sutil */
-body::after {
-content: ‘’;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-image: url(‘data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>’);
-pointer-events: none;
-z-index: 1;
-}
-
-/* ===================================
-BOTÓN DE MÚSICA
-=================================== */
-.music-btn {
-position: fixed;
-top: 20px;
-right: 20px;
-z-index: 1000;
-background: var(–verde-eucalipto);
-color: white;
-border: none;
-width: 50px;
-height: 50px;
-border-radius: 50%;
-font-size: 24px;
-cursor: pointer;
-box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-transition: all 0.3s ease;
-}
-
-.music-btn:hover {
-transform: scale(1.1);
-background: var(–dorado-elegante);
-box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-}
-
-/* ===================================
-HERO SECTION CON MARCO ELEGANTE
-=================================== */
-.hero {
-min-height: 100vh;
-position: relative;
-display: flex;
-align-items: center;
-justify-content: center;
-background: var(–crema-calido);
-overflow: hidden;
-padding: 60px 20px;
-}
-
-/* Decoraciones florales */
-.floral-decoration {
-position: absolute;
-z-index: 1;
-opacity: 0.9;
-pointer-events: none;
-}
-
-.floral-decoration.top-left {
-top: -20px;
-left: -20px;
-width: min(450px, 40vw);
-animation: gentleFloat 8s ease-in-out infinite;
-}
-
-.floral-decoration.bottom-right {
-bottom: -20px;
-right: -20px;
-width: min(500px, 45vw);
-animation: gentleFloat 10s ease-in-out infinite reverse;
-}
-
-.floral-decoration img {
-width: 100%;
-height: auto;
-display: block;
-}
-
-@keyframes gentleFloat {
-0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
-33% { transform: translateY(-15px) translateX(5px) rotate(1deg); }
-66% { transform: translateY(10px) translateX(-5px) rotate(-1deg); }
-}
-
-/* Marco geométrico */
-.geometric-frame {
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 80px);
-height: calc(100% - 80px);
-top: 40px;
-left: 40px;
-pointer-events: none;
-opacity: 0.5;
-z-index: 1;
-}
-
-.geometric-frame::before {
-content: ‘’;
-position: absolute;
-width: 24px;
-height: 24px;
-border: 1px solid var(–beige-taupe);
-border-radius: 50%;
-top: -12px;
-right: 30%;
-}
-
-.geometric-frame::after {
-content: ‘’;
-position: absolute;
-width: 20px;
-height: 20px;
-border: 1px solid var(–beige-taupe);
-bottom: -10px;
-left: 30%;
-clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-/* Contenido del Hero */
-.hero-content {
-position: relative;
-z-index: 2;
-text-align: center;
-max-width: 900px;
-padding: 2rem;
-}
-
-.hero-subtitle {
-font-family: var(–font-sans);
-font-weight: 300;
-font-size: clamp(0.75rem, 2vw, 0.95rem);
-letter-spacing: 8px;
-color: var(–texto-medio);
-margin-bottom: 15px;
-text-transform: uppercase;
-animation: fadeDown 1s ease-out;
-}
-
-.hero-title {
-font-family: var(–font-sans);
-font-weight: 600;
-font-size: clamp(2rem, 5vw, 3rem);
-letter-spacing: 12px;
-color: var(–texto-oscuro);
-margin-bottom: 50px;
-text-transform: uppercase;
-animation: fadeUp 1s ease-out 0.2s backwards;
-}
-
-.couple-names-container {
-margin: 60px 0;
-animation: fadeUp 1s ease-out 0.4s backwards;
-}
-
-.couple-names {
-font-family: var(–font-script);
-font-size: clamp(4rem, 12vw, 7rem);
-font-weight: 400;
-line-height: 1;
-color: var(–texto-oscuro);
-margin: 0;
-}
-
-.ampersand-small {
-font-family: var(–font-script);
-font-size: 0.7em;
-display: inline-block;
-margin: 15px 0;
-color: var(–verde-eucalipto);
-}
-
-.date-container {
-margin-top: 70px;
-animation: fadeUp 1s ease-out 0.6s backwards;
-}
-
-.date-month {
-font-family: var(–font-sans);
-font-size: clamp(0.85rem, 2vw, 1.1rem);
-letter-spacing: 6px;
-font-weight: 400;
-margin-bottom: 25px;
-color: var(–texto-oscuro);
-}
-
-.date-row {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 40px;
-flex-wrap: wrap;
-}
-
-.date-day,
-.date-time {
-font-family: var(–font-sans);
-font-size: clamp(0.85rem, 2vw, 1.05rem);
-font-weight: 400;
-letter-spacing: 2px;
-position: relative;
-color: var(–texto-oscuro);
-}
-
-.date-day::after {
-content: ‘’;
-position: absolute;
-width: 60px;
-height: 1px;
-background-color: var(–texto-oscuro);
-top: 50%;
-right: -50px;
-}
-
-.date-time::before {
-content: ‘’;
-position: absolute;
-width: 60px;
-height: 1px;
-background-color: var(–texto-oscuro);
-top: 50%;
-left: -50px;
-}
-
-.date-number {
-font-family: var(–font-serif);
-font-size: clamp(5rem, 15vw, 8rem);
-font-weight: 300;
-line-height: 1;
-color: var(–texto-oscuro);
-}
-
-.scroll-indicator {
-margin-top: 60px;
-font-size: 2rem;
-animation: bounce 2s infinite;
-color: var(–verde-eucalipto);
-}
-
-/* Animaciones */
-@keyframes fadeUp {
-from {
-opacity: 0;
-transform: translateY(40px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-@keyframes fadeDown {
-from {
-opacity: 0;
-transform: translateY(-20px);
-}
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-
-@keyframes bounce {
-0%, 100% { transform: translateY(0); }
-50% { transform: translateY(12px); }
-}
-
-/* ===================================
-CONTENEDORES Y SECCIONES CON MARCOS
-=================================== */
-.container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 2rem;
-position: relative;
-z-index: 2;
-}
-
-section {
-padding: 5rem 2rem;
-position: relative;
-}
-
-/* Marco decorativo para todas las secciones */
-.section-frame {
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.section-title {
-font-family: var(–font-serif);
-font-size: clamp(2rem, 5vw, 3rem);
-text-align: center;
-color: var(–verde-eucalipto);
-margin-bottom: 3rem;
-font-weight: 600;
-letter-spacing: 2px;
-position: relative;
-z-index: 2;
-}
-
-/* ===================================
-SECCIÓN DE PADRES CON ESTILO HERO
-=================================== */
-.parents-section {
-background: var(–crema-calido);
-padding: 5rem 2rem;
-position: relative;
-}
-
-.parents-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.parents-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 3rem;
-max-width: 900px;
-margin: 0 auto;
-position: relative;
-z-index: 2;
-}
-
-.parent-group {
-text-align: center;
-padding: 2.5rem;
-background: white;
-border-radius: 15px;
-box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-border: 1px solid var(–beige-taupe);
-transition: all 0.4s ease;
-position: relative;
-}
-
-.parent-group::before {
-content: ‘’;
-position: absolute;
-width: 12px;
-height: 12px;
-border: 1px solid var(–beige-taupe);
-border-radius: 50%;
-top: -6px;
-left: 20px;
-background: var(–crema-calido);
-}
-
-.parent-group::after {
-content: ‘’;
-position: absolute;
-width: 12px;
-height: 12px;
-border: 1px solid var(–beige-taupe);
-border-radius: 50%;
-bottom: -6px;
-right: 20px;
-background: var(–crema-calido);
-}
-
-.parent-group:hover {
-transform: translateY(-8px);
-box-shadow: 0 12px 35px rgba(212, 175, 55, 0.2);
-border-color: var(–dorado-elegante);
-}
-
-.parent-group h3 {
-font-family: var(–font-serif);
-font-size: 1.6rem;
-color: var(–verde-eucalipto);
-margin-bottom: 1.5rem;
-font-weight: 600;
-}
-
-.parent-group p {
-font-size: 1.1rem;
-line-height: 1.8;
-color: var(–texto-oscuro);
-margin: 0.5rem 0;
-}
-
-/* ===================================
-SECCIÓN DE CITA CON MARCO
-=================================== */
-.quote-section {
-background: white;
-padding: 5rem 2rem;
-position: relative;
-}
-
-.quote-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.romantic-quote {
-max-width: 850px;
-margin: 0 auto;
-text-align: center;
-position: relative;
-z-index: 2;
-padding: 3rem;
-background: linear-gradient(135deg, var(–verde-salvia) 0%, var(–beige-taupe) 100%);
-border-radius: 20px;
-box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-}
-
-.romantic-quote::before {
-content: ‘”’;
-position: absolute;
-top: -20px;
-left: 20px;
-font-size: 6rem;
-color: var(–dorado-elegante);
-font-family: var(–font-serif);
-opacity: 0.5;
-}
-
-.romantic-quote p {
-font-size: clamp(1.2rem, 3vw, 1.8rem);
-color: white;
-line-height: 1.9;
-font-style: italic;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-font-weight: 300;
-}
-
-/* ===================================
-GALERÍA CON MARCO ELEGANTE
-=================================== */
-.gallery-section {
-background: var(–crema-calido);
-padding: 5rem 2rem;
-position: relative;
-}
-
-.gallery-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.main-photo-container {
-max-width: 850px;
-margin: 0 auto;
-border-radius: 20px;
-overflow: hidden;
-box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-transition: transform 0.4s ease;
-position: relative;
-z-index: 2;
-border: 3px solid var(–beige-taupe);
-}
-
-.main-photo-container::before {
-content: ‘’;
-position: absolute;
-width: 16px;
-height: 16px;
-border: 2px solid var(–dorado-elegante);
-border-radius: 50%;
-top: -8px;
-left: 30px;
-background: var(–crema-calido);
-z-index: 3;
-}
-
-.main-photo-container::after {
-content: ‘’;
-position: absolute;
-width: 16px;
-height: 16px;
-border: 2px solid var(–dorado-elegante);
-border-radius: 50%;
-bottom: -8px;
-right: 30px;
-background: var(–crema-calido);
-z-index: 3;
-}
-
-.main-photo-container:hover {
-transform: translateY(-5px);
-box-shadow: 0 15px 50px rgba(74, 107, 84, 0.25);
-}
-
-.main-photo-container img {
-width: 100%;
-height: auto;
-display: block;
-}
-
-.share-button-container {
-text-align: center;
-margin-top: 2.5rem;
-position: relative;
-z-index: 2;
-}
-
-.btn-share {
-padding: 1.2rem 3rem;
-background: var(–verde-eucalipto);
-color: white;
-border: 2px solid var(–beige-taupe);
-border-radius: 50px;
-font-size: 1.1rem;
-font-weight: 600;
-cursor: pointer;
-box-shadow: 0 4px 15px rgba(74, 107, 84, 0.3);
-transition: all 0.4s ease;
-font-family: var(–font-sans);
-}
-
-.btn-share:hover {
-background: var(–dorado-elegante);
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-border-color: var(–dorado-elegante);
-}
-
-/* ===================================
-CUENTA REGRESIVA CON MARCOS
-=================================== */
-.countdown-section {
-background: white;
-padding: 5rem 2rem;
-position: relative;
-}
-
-.countdown-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.countdown {
-display: flex;
-justify-content: center;
-gap: 2.5rem;
-flex-wrap: wrap;
-position: relative;
-z-index: 2;
-}
-
-.countdown-item {
-text-align: center;
-padding: 2.5rem;
-background: var(–crema-calido);
-border-radius: 15px;
-min-width: 130px;
-box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-border: 2px solid var(–beige-taupe);
-transition: all 0.3s ease;
-position: relative;
-}
-
-.countdown-item::before {
-content: ‘’;
-position: absolute;
-width: 8px;
-height: 8px;
-border: 1px solid var(–dorado-elegante);
-border-radius: 50%;
-top: -4px;
-left: 15px;
-background: white;
-}
-
-.countdown-item:hover {
-transform: translateY(-8px) scale(1.05);
-box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
-border-color: var(–dorado-elegante);
-}
-
-.countdown-number {
-display: block;
-font-size: clamp(3rem, 6vw, 4.5rem);
-font-weight: 300;
-color: var(–verde-eucalipto);
-font-family: var(–font-serif);
-line-height: 1;
-}
-
-.countdown-label {
-display: block;
-font-size: 1rem;
-color: var(–texto-medio);
-margin-top: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-font-weight: 400;
-}
-
-/* ===================================
-DETALLES DEL EVENTO CON MARCO
-=================================== */
-.event-details {
-background: var(–crema-calido);
-padding: 5rem 2rem;
-position: relative;
-}
-
-.event-details::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.event-card {
-background: white;
-padding: 3rem 2.5rem;
-border-radius: 20px;
-text-align: center;
-margin-bottom: 2.5rem;
-box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-transition: all 0.4s ease;
-border: 2px solid var(–beige-taupe);
-max-width: 700px;
-margin-left: auto;
-margin-right: auto;
-margin-bottom: 2.5rem;
-position: relative;
-z-index: 2;
-}
-
-.event-card::before {
-content: ‘’;
-position: absolute;
-width: 14px;
-height: 14px;
-border: 2px solid var(–dorado-elegante);
-border-radius: 50%;
-top: -7px;
-right: 40px;
-background: var(–crema-calido);
-}
-
-.event-card:hover {
-transform: translateY(-10px);
-box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
-border-color: var(–dorado-elegante);
-}
-
-.event-icon {
-font-size: 3.5rem;
-margin-bottom: 1.5rem;
-display: inline-block;
-transition: all 0.3s ease;
-}
-
-.event-card:hover .event-icon {
-transform: scale(1.2) rotate(5deg);
-}
-
-.event-card h3 {
-font-family: var(–font-serif);
-font-size: 2rem;
-color: var(–verde-eucalipto);
-margin-bottom: 1rem;
-font-weight: 600;
-}
-
-.event-time {
-font-size: 1.5rem;
-font-weight: 600;
-color: var(–verde-salvia);
-margin-bottom: 1.2rem;
-}
-
-.event-location {
-font-size: 1.4rem;
-font-weight: 500;
-margin-bottom: 0.5rem;
-color: var(–texto-oscuro);
-}
-
-.event-address {
-color: var(–texto-medio);
-margin-bottom: 1rem;
-font-size: 1.05rem;
-}
-
-.event-note {
-margin: 1rem 0;
-font-style: italic;
-color: var(–verde-salvia);
-font-weight: 600;
-}
-
-.event-suggestion {
-margin: 0.8rem 0;
-font-size: 0.95rem;
-color: #888;
-}
-
-.map-buttons {
-display: flex;
-gap: 1rem;
-justify-content: center;
-flex-wrap: wrap;
-margin-top: 1.8rem;
-}
-
-.btn-map {
-display: inline-block;
-padding: 1rem 2rem;
-background: var(–verde-eucalipto);
-color: white;
-text-decoration: none;
-border-radius: 50px;
-font-weight: 600;
-transition: all 0.4s ease;
-font-size: 1rem;
-box-shadow: 0 4px 15px rgba(74, 107, 84, 0.3);
-border: 2px solid transparent;
-}
-
-.btn-map:hover {
-background: var(–dorado-elegante);
-transform: translateY(-3px) scale(1.05);
-box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
-border-color: var(–beige-taupe);
-}
-
-.btn-waze {
-background: #33CCFF;
-}
-
-.btn-waze:hover {
-background: #00A3E0;
-}
-
-.dress-code-text {
-font-size: 1.6rem;
-font-weight: 600;
-color: var(–texto-oscuro);
-margin-top: 0.5rem;
-}
-
-/* ===================================
-MESA DE REGALOS CON ESTILO ELEGANTE
-=================================== */
-.gifts-section {
-background: white;
-padding: 5rem 2rem;
-position: relative;
-}
-
-.gifts-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.gifts-subtitle {
-text-align: center;
-font-size: 1.2rem;
-margin-bottom: 3rem;
-color: var(–texto-medio);
-position: relative;
-z-index: 2;
-}
-
-.gifts-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-gap: 2.5rem;
-max-width: 900px;
-margin: 0 auto;
-position: relative;
-z-index: 2;
-}
-
-.gift-card {
-background: var(–crema-calido);
-padding: 3rem;
-border-radius: 20px;
-text-align: center;
-box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-border: 2px solid var(–beige-taupe);
-transition: all 0.4s ease;
-cursor: pointer;
-position: relative;
-}
-
-.gift-card::before {
-content: ‘’;
-position: absolute;
-width: 12px;
-height: 12px;
-border: 2px solid var(–dorado-elegante);
-top: -6px;
-left: 30px;
-background: white;
-transform: rotate(45deg);
-}
-
-.gift-card:hover {
-transform: translateY(-10px) rotate(1deg);
-box-shadow: 0 20px 45px rgba(212, 175, 55, 0.25);
-border-color: var(–dorado-elegante);
-}
-
-.gift-card h3 {
-font-family: var(–font-serif);
-font-size: 1.9rem;
-color: var(–verde-eucalipto);
-margin: 1.5rem 0;
-font-weight: 600;
-}
-
-.gift-card p {
-margin: 1rem 0;
-color: var(–texto-medio);
-line-height: 1.7;
-}
-
-/* ===================================
-HASHTAG Y REDES SOCIALES
-=================================== */
-.hashtag-section {
-background: var(–crema-calido);
-padding: 5rem 2rem;
-text-align: center;
-position: relative;
-}
-
-.hashtag-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.hashtag-section .section-title {
-color: var(–verde-eucalipto);
-position: relative;
-z-index: 2;
-}
-
-.hashtag-content {
-position: relative;
-z-index: 2;
-padding: 3rem;
-background: linear-gradient(135deg, var(–verde-eucalipto) 0%, var(–verde-salvia) 100%);
-border-radius: 20px;
-box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-max-width: 800px;
-margin: 0 auto;
-border: 2px solid rgba(255,255,255,0.3);
-}
-
-.hashtag-content p {
-font-size: 1.2rem;
-margin-bottom: 1rem;
-color: white;
-}
-
-.hashtag {
-font-family: var(–font-script);
-font-size: clamp(2.5rem, 6vw, 4rem);
-margin: 2.5rem 0;
-color: var(–dorado-elegante);
-text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-}
-
-.hashtag-description {
-font-style: italic;
-margin-top: 1rem;
-color: white;
-}
-
-.social-links {
-display: flex;
-justify-content: center;
-gap: 1.5rem;
-margin-top: 2.5rem;
-flex-wrap: wrap;
-}
-
-.social-link {
-color: white;
-text-decoration: none;
-font-size: 1.1rem;
-padding: 1rem 2rem;
-background: rgba(255,255,255,0.15);
-border-radius: 50px;
-transition: all 0.4s ease;
-border: 2px solid rgba(255,255,255,0.2);
-backdrop-filter: blur(10px);
-}
-
-.social-link:hover {
-background: rgba(255,255,255,0.3);
-transform: translateY(-5px) scale(1.05);
-box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-border-color: var(–dorado-elegante);
-}
-
-/* ===================================
-CONFIRMACIÓN RSVP CON MARCO
-=================================== */
-.rsvp-section {
-background: white;
-padding: 5rem 2rem;
-position: relative;
-}
-
-.rsvp-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.rsvp-subtitle {
-text-align: center;
-font-size: 1.2rem;
-margin-bottom: 3rem;
-color: var(–verde-eucalipto);
-font-weight: 600;
-position: relative;
-z-index: 2;
-}
-
-.whatsapp-contact {
-text-align: center;
-margin-top: 3rem;
-position: relative;
-z-index: 2;
-}
-
-.whatsapp-contact > p {
-font-size: 1.2rem;
-margin-bottom: 2rem;
-color: var(–texto-oscuro);
-}
-
-.whatsapp-numbers {
-display: flex;
-justify-content: center;
-gap: 3rem;
-flex-wrap: wrap;
-}
-
-.whatsapp-item {
-text-align: center;
-padding: 2rem;
-background: var(–crema-calido);
-border-radius: 15px;
-border: 2px solid var(–beige-taupe);
-transition: all 0.3s ease;
-position: relative;
-}
-
-.whatsapp-item::before {
-content: ‘’;
-position: absolute;
-width: 10px;
-height: 10px;
-border: 2px solid var(–dorado-elegante);
-border-radius: 50%;
-top: -5px;
-right: 20px;
-background: white;
-}
-
-.whatsapp-item:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.whatsapp-name {
-font-size: 1.1rem;
-font-weight: 600;
-color: var(–verde-eucalipto);
-margin-bottom: 1rem;
-}
-
-.btn-whatsapp {
-display: inline-block;
-padding: 1.2rem 2.5rem;
-background: #25D366;
-color: white;
-text-decoration: none;
-border-radius: 50px;
-font-size: 1.1rem;
-font-weight: 600;
-transition: all 0.4s ease;
-box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-border: 2px solid transparent;
-}
-
-.btn-whatsapp:hover {
-background: #20BA5A;
-transform: translateY(-5px) scale(1.08);
-box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
-border-color: rgba(255,255,255,0.3);
-}
-
-/* ===================================
-INFORMACIÓN ADICIONAL CON MARCOS
-=================================== */
-.info-section {
-background: var(–crema-calido);
-padding: 5rem 2rem;
-position: relative;
-}
-
-.info-section::before {
-content: ‘’;
-position: absolute;
-border: 1px solid var(–beige-taupe);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.4;
-z-index: 1;
-}
-
-.info-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-gap: 2rem;
-position: relative;
-z-index: 2;
-}
-
-.info-card {
-text-align: center;
-padding: 2.5rem;
-background: white;
-border-radius: 15px;
-transition: all 0.4s ease;
-border: 2px solid var(–beige-taupe);
-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-position: relative;
-}
-
-.info-card::before {
-content: ‘’;
-position: absolute;
-width: 8px;
-height: 8px;
-border: 1px solid var(–dorado-elegante);
-border-radius: 50%;
-top: -4px;
-left: 20px;
-background: var(–crema-calido);
-}
-
-.info-card::after {
-content: ‘’;
-position: absolute;
-width: 8px;
-height: 8px;
-border: 1px solid var(–dorado-elegante);
-border-radius: 50%;
-bottom: -4px;
-right: 20px;
-background: var(–crema-calido);
-}
-
-.info-card:hover {
-transform: translateY(-10px) scale(1.03);
-box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
-border-color: var(–dorado-elegante);
-}
-
-.info-icon {
-font-size: 3rem;
-margin-bottom: 1.5rem;
-display: inline-block;
-transition: all 0.5s ease;
-}
-
-.info-card:hover .info-icon {
-transform: scale(1.2) rotate(10deg);
-}
-
-.info-card h3 {
-font-family: var(–font-serif);
-color: var(–verde-eucalipto);
-font-size: 1.5rem;
-margin-bottom: 1rem;
-font-weight: 600;
-}
-
-.info-card p {
-color: var(–texto-medio);
-line-height: 1.6;
-}
-
-/* ===================================
-FOOTER CON DISEÑO ELEGANTE
-=================================== */
-.footer {
-background: var(–verde-eucalipto);
-color: white;
-padding: 4rem 2rem;
-text-align: center;
-position: relative;
-}
-
-.footer::before {
-content: ‘’;
-position: absolute;
-border: 1px solid rgba(255,255,255,0.2);
-border-radius: 12px;
-width: calc(100% - 60px);
-height: calc(100% - 60px);
-top: 30px;
-left: 30px;
-pointer-events: none;
-opacity: 0.5;
-z-index: 1;
-}
-
-.footer-message {
-font-family: var(–font-script);
-font-size: clamp(2rem, 5vw, 3.5rem);
-margin-bottom: 1.5rem;
-color: var(–dorado-elegante);
-position: relative;
-z-index: 2;
-}
-
-.footer-names {
-font-family: var(–font-serif);
-font-size: 2rem;
-margin-bottom: 1rem;
-font-weight: 600;
-position: relative;
-z-index: 2;
-}
-
-.footer-date {
-font-size: 1.3rem;
-margin-bottom: 2rem;
-letter-spacing: 4px;
-position: relative;
-z-index: 2;
-}
-
-.footer-credit {
-font-size: 0.95rem;
-opacity: 0.85;
-margin-top: 2rem;
-position: relative;
-z-index: 2;
-}
-
-/* ===================================
-RESPONSIVE
-=================================== */
-@media (max-width: 768px) {
-.hero-subtitle {
-letter-spacing: 4px;
-font-size: 0.7rem;
-}
+</head>
+<body>
+    <!-- Música de fondo -->
+    <audio id="background-music" loop>
+        <source src="musica-fondo.mp3" type="audio/mpeg">
+    </audio>
 
 ```
-.hero-title {
-    letter-spacing: 6px;
-    font-size: 1.8rem;
-}
+<!-- Botón de música -->
+<button id="music-toggle" class="music-btn" aria-label="Controlar música">
+    <span id="music-icon">🔇</span>
+</button>
 
-.couple-names {
-    font-size: 4rem;
-}
+<!-- Hero Section REDISEÑADO -->
+<section class="hero">
+    <!-- Decoraciones florales -->
+    <div class="floral-decoration top-left">
+        <img src="rosa-izquierda.png" alt="" aria-hidden="true">
+    </div>
+    <div class="floral-decoration bottom-right">
+        <img src="rosa-derecha.png" alt="" aria-hidden="true">
+    </div>
+    
+    <!-- Marco geométrico -->
+    <div class="geometric-frame"></div>
+    
+    <div class="hero-content">
+        <p class="hero-subtitle">TE INVITAMOS A</p>
+        <h1 class="hero-title">NUESTRA BODA</h1>
+        
+        <div class="couple-names-container">
+            <h2 class="couple-names">
+                Paulina<br>
+                <span class="ampersand-small">y</span><br>
+                Daniel
+            </h2>
+        </div>
+        
+        <div class="date-container">
+            <p class="date-month">DICIEMBRE</p>
+            <div class="date-row">
+                <span class="date-day">VIERNES</span>
+                <span class="date-number">19</span>
+                <span class="date-time">7:00pm</span>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">↓</div>
+    </div>
+</section>
 
-.date-row {
-    flex-direction: column;
-    gap: 20px;
-}
+<!-- Parents Section -->
+<section class="parents-section">
+    <div class="container">
+        <h2 class="section-title">Con la bendición de nuestros padres</h2>
+        <div class="parents-grid">
+            <div class="parent-group">
+                <h3>Padres de la Novia</h3>
+                <p>Martha Esther Hernández Valderrama</p>
+                <p style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                    Manuel Carrillo Gallardo
+                    <span style="font-size: 1.2rem; color: var(--verde-eucalipto); opacity: 0.7;" title="En memoria">💚</span>
+                </p>
+                <p style="font-size: 0.9rem; font-style: italic; color: #888; margin-top: 0.5rem;">Siempre en nuestros corazones</p>
+            </div>
+            <div class="parent-group">
+                <h3>Padres del Novio</h3>
+                <p>María de la Cruz Hidalgo</p>
+                <p>Carlos Daniel Hernández Palma</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-.date-day::after,
-.date-time::before {
-    display: none;
-}
+<!-- Quote Section -->
+<section class="quote-section">
+    <div class="container">
+        <blockquote class="romantic-quote">
+            <p>Muchas gracias por compartir este momento tan especial con nosotros. Hemos pasado por muchas cosas pero al final el amor verdadero siempre gana. Y ahora con la bendición de Dios agradecemos que sean testigos de esto maravilloso y especial</p>
+        </blockquote>
+    </div>
+</section>
 
-.floral-decoration.top-left,
-.floral-decoration.bottom-right {
-    width: 200px;
-}
+<!-- Countdown -->
+<section class="countdown-section">
+    <div class="container">
+        <h2 class="section-title">Faltan</h2>
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Segundos</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-.geometric-frame {
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    top: 20px;
-    left: 20px;
-}
+<!-- Event Details -->
+<section class="event-details">
+    <div class="container">
+        <h2 class="section-title">Detalles del Evento</h2>
 
-section::before {
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    top: 20px;
-    left: 20px;
-}
+        <div class="event-card">
+            <div class="event-icon">⛪</div>
+            <h3>Ceremonia Religiosa</h3>
+            <p class="event-time">7:00 PM</p>
+            <p class="event-location">Templo de San Judas Tadeo</p>
+            <p class="event-address">Av Roma s/n, Andrade<br>37020 León de los Aldama, Gto.</p>
+            <p class="event-note">✨ Todos pueden asistir</p>
+            <p class="event-suggestion">⏰ Sugerimos llegar 15 minutos antes</p>
+            <div class="map-buttons">
+                <a href="https://www.google.com/maps?q=21.11162879508956,-101.67137137651461" target="_blank" class="btn-map">
+                    🗺️ Google Maps
+                </a>
+                <a href="https://www.waze.com/ul?ll=21.11162879508956,-101.67137137651461&navigate=yes" target="_blank" class="btn-map btn-waze">
+                    🚗 Waze
+                </a>
+            </div>
+        </div>
 
-.parents-section::before,
-.quote-section::before,
-.gallery-section::before,
-.countdown-section::before,
-.event-details::before,
-.gifts-section::before,
-.hashtag-section::before,
-.rsvp-section::before,
-.info-section::before,
-.footer::before {
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    top: 20px;
-    left: 20px;
-}
+        <div class="event-card">
+            <div class="event-icon">🎉</div>
+            <h3>Recepción</h3>
+            <p class="event-time">9:30 PM - 2:00 AM</p>
+            <p class="event-location">Salón De Eventos Laja</p>
+            <p class="event-address">Blvd. Campestre 79, Peñitas<br>37180 León de los Aldama, Gto.</p>
+            <p class="event-suggestion">⏰ Sugerimos llegar 15 minutos antes</p>
+            <div class="map-buttons">
+                <a href="https://www.google.com/maps?q=21.147224894292776,-101.68200812396928" target="_blank" class="btn-map">
+                    🗺️ Google Maps
+                </a>
+                <a href="https://www.waze.com/ul?ll=21.147224894292776,-101.68200812396928&navigate=yes" target="_blank" class="btn-map btn-waze">
+                    🚗 Waze
+                </a>
+            </div>
+        </div>
 
-section {
-    padding: 3rem 1.5rem;
-}
+        <div class="event-card dress-code">
+            <div class="event-icon">👔</div>
+            <h3>Código de Vestimenta</h3>
+            <p class="dress-code-text">Formal</p>
+        </div>
+    </div>
+</section>
 
-.countdown {
-    gap: 1.5rem;
-}
+<!-- Gifts Section -->
+<section class="gifts-section">
+    <div class="container">
+        <h2 class="section-title">Mesa de Regalos</h2>
+        <p class="gifts-subtitle">Tu presencia es nuestro mejor regalo, pero si deseas obsequiarnos algo:</p>
+        <div class="gifts-grid">
+            <div class="gift-card">
+                <div class="event-icon">💝</div>
+                <h3>Lluvia de Sobres</h3>
+                <p>Puedes obsequiarnos un sobre el día del evento</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-.countdown-item {
-    min-width: 100px;
-    padding: 1.8rem;
-}
+<!-- Hashtag & Social Media -->
+<section class="hashtag-section">
+    <div class="container">
+        <h2 class="section-title">Comparte con Nosotros</h2>
+        <div class="hashtag-content">
+            <p>Usa nuestros hashtags en redes sociales</p>
+            <h3 class="hashtag">#PaulinaYDaniel2025</h3>
+            <p class="hashtag-description">¡Queremos ver tus fotos y videos!</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/picoo.hernandez" target="_blank" class="social-link">
+                    📘 Facebook
+                </a>
+                <a href="https://www.instagram.com/danielitopicoo/" target="_blank" class="social-link">
+                    📷 Instagram
+                </a>
+                <a href="https://www.tiktok.com/@danielitopicoohernandez" target="_blank" class="social-link">
+                    🎵 TikTok
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-.event-card {
-    padding: 2rem 1.5rem;
-}
+<!-- RSVP Section -->
+<section class="rsvp-section">
+    <div class="container">
+        <h2 class="section-title">Confirmación de Asistencia</h2>
+        <p class="rsvp-subtitle">Por favor confirma tu asistencia antes del 15 de noviembre de 2025</p>
+        <div class="whatsapp-contact">
+            <p>Confirma tu asistencia por WhatsApp:</p>
+            <div class="whatsapp-numbers">
+                <div class="whatsapp-item">
+                    <p class="whatsapp-name">💍 Daniel</p>
+                    <a href="https://wa.me/524772891223?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel" target="_blank" class="btn-whatsapp">
+                        📱 477-289-1223
+                    </a>
+                </div>
+                <div class="whatsapp-item">
+                    <p class="whatsapp-name">💍 Paulina</p>
+                    <a href="https://wa.me/524773766078?text=Hola,%20confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Paulina%20y%20Daniel" target="_blank" class="btn-whatsapp">
+                        📱 477-376-6078
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-.map-buttons {
-    flex-direction: column;
-}
+<!-- Info Section -->
+<section class="info-section">
+    <div class="container">
+        <h2 class="section-title">Información Importante</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-icon">🎵</div>
+                <h3>Música</h3>
+                <p>¡Habrá música en vivo y DJ!</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🍽️</div>
+                <h3>Comida y Bebida</h3>
+                <p>Cena completa y barra libre</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🅿️</div>
+                <h3>Estacionamiento</h3>
+                <p>Habrá estacionamiento disponible</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💒</div>
+                <h3>Ceremonia</h3>
+                <p>Todos pueden asistir</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-.btn-map {
-    width: 100%;
-}
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p class="footer-message">¡Gracias por acompañarnos en este día tan especial!</p>
+        <p class="footer-names">Paulina & Daniel</p>
+        <p class="footer-date">19.12.2025</p>
+        <p class="footer-credit">Fotografía y Video: Foro 7 - Arturo Cruz - 477-920-3776</p>
+    </div>
+</footer>
 
-.whatsapp-numbers {
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.info-grid {
-    grid-template-columns: 1fr;
-}
+<script src="script.js"></script>
 ```
 
-}
-
-@media (max-width: 480px) {
-.hero-content {
-padding: 1rem;
-}
-
-```
-.couple-names {
-    font-size: 3rem;
-}
-
-.date-number {
-    font-size: 4rem;
-}
-
-.section-title {
-    font-size: 1.8rem;
-}
-
-.countdown-number {
-    font-size: 2.5rem;
-}
-
-.parent-group,
-.gift-card,
-.info-card {
-    padding: 1.8rem;
-}
-
-.romantic-quote {
-    padding: 2rem;
-}
-
-.hashtag-content {
-    padding: 2rem;
-}
-```
-
-}
-
-/* ===================================
-ANIMACIONES ADICIONALES
-=================================== */
-@keyframes shimmer {
-0%, 100% { background-position: 0% center; }
-50% { background-position: 100% center; }
-}
-
-@keyframes pulse {
-0%, 100% { transform: scale(1); }
-50% { transform: scale(1.05); }
-}
-
-/* Aplicar animación suave al cargar elementos */
-.fade-in {
-animation: fadeUp 0.8s ease-out;
-}
-
-/* ===================================
-UTILIDADES
-=================================== */
-.text-center {
-text-align: center;
-}
-
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
-.mb-4 { margin-bottom: 2rem; }
-
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mt-4 { margin-top: 2rem; }
+</body>
+</html>
