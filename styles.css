@@ -165,7 +165,7 @@ body::after {
 /* Decoraciones florales - FIXED */
 .fixed-background .floral-decoration {
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     opacity: 0.9;
     pointer-events: none;
 }
