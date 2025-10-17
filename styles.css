@@ -4,14 +4,14 @@
 :root {
     /* Paleta de colores estilo peonía/eucalipto */
     --crema-calido: #F8F6F0;
-    --verde-eucalipto: #4A6B54;
-    --verde-salvia: #A3B18A;
-    --beige-taupe: #C9B8A3;
-    --dorado-elegante: #D4AF37;
-    --texto-oscuro: #2B2B2B;
-    --texto-medio: #6B6B6B;
+    --verde-eucalipto: #2d4232; /* Oscurecido para mejor contraste */
+    --verde-salvia: #5a6e4d; /* Oscurecido para mejor contraste */
+    --beige-taupe: #8a7866; /* Oscurecido para mejor contraste */
+    --dorado-elegante: #b89320; /* Oscurecido para mejor contraste */
+    --texto-oscuro: #000000; /* Negro puro */
+    --texto-medio: #333333; /* Gris muy oscuro */
     --blanco-floral: #FFFBF5;
-    
+
     /* Tipografías */
     --font-script: 'Mr De Haviland', cursive;
     --font-serif: 'Cormorant Garamond', serif;
@@ -147,42 +147,44 @@ body::after {
 }
 
 /* ===================================
-   HERO SECTION REDISEÑADO
+   FIXED BACKGROUND ARCHITECTURE
    =================================== */
-.hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+/* Fixed background container - stays in place throughout entire page */
+.fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: var(--crema-calido);
-    overflow: hidden;
-    padding: 60px 20px;
+    z-index: 0;
+    pointer-events: none;
 }
 
-/* Decoraciones florales */
-.floral-decoration {
-    position: absolute;
+/* Decoraciones florales - FIXED */
+.fixed-background .floral-decoration {
+    position: fixed;
     z-index: 1;
     opacity: 0.9;
     pointer-events: none;
 }
 
-.floral-decoration.top-left {
+.fixed-background .floral-decoration.top-left {
     top: -20px;
     left: -20px;
     width: min(450px, 40vw);
     animation: gentleFloat 8s ease-in-out infinite;
 }
 
-.floral-decoration.bottom-right {
+.fixed-background .floral-decoration.bottom-right {
     bottom: -20px;
     right: -20px;
     width: min(500px, 45vw);
     animation: gentleFloat 10s ease-in-out infinite reverse;
 }
 
-.floral-decoration img {
+.fixed-background .floral-decoration img {
     width: 100%;
     height: auto;
     display: block;
@@ -194,13 +196,13 @@ body::after {
     66% { transform: translateY(10px) translateX(-5px) rotate(-1deg); }
 }
 
-/* Marco geométrico */
-.geometric-frame {
-    position: absolute;
+/* Marco geométrico - FIXED */
+.fixed-background .geometric-frame {
+    position: fixed;
     border: 1px solid var(--beige-taupe);
     border-radius: 12px;
-    width: calc(100% - 80px);
-    height: calc(100% - 80px);
+    width: calc(100vw - 80px);
+    height: calc(100vh - 80px);
     top: 40px;
     left: 40px;
     pointer-events: none;
@@ -208,7 +210,7 @@ body::after {
     z-index: 1;
 }
 
-.geometric-frame::before {
+.fixed-background .geometric-frame::before {
     content: '';
     position: absolute;
     width: 24px;
@@ -219,7 +221,7 @@ body::after {
     right: 30%;
 }
 
-.geometric-frame::after {
+.fixed-background .geometric-frame::after {
     content: '';
     position: absolute;
     width: 20px;
@@ -228,6 +230,128 @@ body::after {
     bottom: -10px;
     left: 30%;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* ===================================
+   TRANSITIONING CONTENT SECTIONS
+   =================================== */
+
+/* Content wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* Content sections - these transition in and out */
+.content-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.content-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Asegurar contraste en secciones de contenido sobre fondo crema */
+.content-section .hero-subtitle,
+.content-section .hero-title,
+.content-section .couple-names,
+.content-section .date-month,
+.content-section .date-day,
+.content-section .date-time,
+.content-section .date-number {
+    color: #000000;
+}
+
+.content-section .event-hero-details .event-location,
+.content-section .dresscode-content,
+.content-section .gifts-hero-content h3,
+.content-section .gifts-hero-content p,
+.content-section .social-subtitle,
+.content-section .rsvp-subtitle,
+.content-section .whatsapp-name {
+    color: #000000;
+}
+
+.content-section .gifts-hero-content p,
+.content-section .event-hero-details .event-address {
+    color: #333333;
+}
+
+/* Estilos adicionales para contraste */
+.event-hero-details {
+    color: #000000;
+}
+
+.event-hero-details .event-time {
+    color: #000000; /* Negro para máximo contraste */
+}
+
+.event-hero-details .event-note {
+    color: var(--verde-eucalipto); /* Verde oscuro ya actualizado */
+}
+
+.event-hero-details .event-suggestion {
+    color: #555555;
+}
+
+.dresscode-content .dress-code-text {
+    color: #000000;
+}
+
+.gifts-hero-content {
+    color: #000000;
+}
+
+.gifts-hero-content h3 {
+    color: #000000;
+}
+
+.social-subtitle {
+    color: #000000;
+}
+
+.info-grid .info-card h3 {
+    color: #000000; /* Negro para máximo contraste */
+}
+
+.info-grid .info-card p {
+    color: #333333;
+}
+
+/* Old hero styles - now deprecated */
+.hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    overflow: visible;
+    padding: 60px 20px;
+}
+
+/* Old floral decorations - only hide those NOT in fixed-background */
+section .floral-decoration,
+.hero .floral-decoration {
+    display: none;
+}
+
+/* Old geometric frame - now removed from sections */
+.hero .geometric-frame {
+    display: none;
 }
 
 /* Contenido del Hero */
@@ -244,7 +368,7 @@ body::after {
     font-weight: 300;
     font-size: clamp(0.75rem, 2vw, 0.95rem);
     letter-spacing: 8px;
-    color: var(--texto-medio);
+    color: #1a1a1a; /* Negro oscuro para mejor contraste */
     margin-bottom: 15px;
     text-transform: uppercase;
     animation: fadeDown 1s ease-out;
@@ -255,7 +379,7 @@ body::after {
     font-weight: 600;
     font-size: clamp(2rem, 5vw, 3rem);
     letter-spacing: 12px;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro puro para títulos principales */
     margin-bottom: 50px;
     text-transform: uppercase;
     animation: fadeUp 1s ease-out 0.2s backwards;
@@ -271,7 +395,7 @@ body::after {
     font-size: clamp(4rem, 12vw, 7rem);
     font-weight: 400;
     line-height: 1;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro puro para nombres principales */
     margin: 0;
 }
 
@@ -280,7 +404,7 @@ body::after {
     font-size: 0.7em;
     display: inline-block;
     margin: 15px 0;
-    color: var(--verde-eucalipto);
+    color: #1a2820; /* Verde muy oscuro para máximo contraste */
 }
 
 .date-container {
@@ -294,7 +418,7 @@ body::after {
     letter-spacing: 6px;
     font-weight: 400;
     margin-bottom: 25px;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para texto sobre fondo crema */
 }
 
 .date-row {
@@ -312,7 +436,7 @@ body::after {
     font-weight: 400;
     letter-spacing: 2px;
     position: relative;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para mejor contraste */
 }
 
 .date-day::after {
@@ -320,7 +444,7 @@ body::after {
     position: absolute;
     width: 60px;
     height: 1px;
-    background-color: var(--texto-oscuro);
+    background-color: #000000; /* Negro para líneas decorativas */
     top: 50%;
     right: -50px;
 }
@@ -330,7 +454,7 @@ body::after {
     position: absolute;
     width: 60px;
     height: 1px;
-    background-color: var(--texto-oscuro);
+    background-color: #000000; /* Negro para líneas decorativas */
     top: 50%;
     left: -50px;
 }
@@ -340,14 +464,14 @@ body::after {
     font-size: clamp(5rem, 15vw, 8rem);
     font-weight: 300;
     line-height: 1;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para número principal */
 }
 
 .scroll-indicator {
     margin-top: 60px;
     font-size: 2rem;
     animation: bounce 2s infinite;
-    color: var(--verde-eucalipto);
+    color: #1a2820; /* Verde muy oscuro para máximo contraste */
 }
 
 /* Animaciones del Hero */
@@ -398,7 +522,7 @@ section {
     font-family: var(--font-serif);
     font-size: clamp(2rem, 5vw, 3rem);
     text-align: center;
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     margin-bottom: 3rem;
     font-weight: 600;
     letter-spacing: 2px;
@@ -421,7 +545,7 @@ section {
     font-size: clamp(0.85rem, 2vw, 1.1rem);
     letter-spacing: 4px;
     font-weight: 500;
-    color: var(--verde-eucalipto);
+    color: #1a2820; /* Verde muy oscuro para máximo contraste */
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
@@ -431,7 +555,7 @@ section {
     font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: 400;
     line-height: 1.6;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para nombres sobre fondo crema */
 }
 
 .parents-hero-names p {
@@ -441,7 +565,7 @@ section {
 .parents-hero-memory {
     font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
     font-style: italic;
-    color: var(--texto-medio) !important;
+    color: #333333 !important; /* Gris oscuro para texto secundario */
     margin-top: 0.8rem !important;
     font-family: var(--font-sans) !important;
     font-weight: 300;
@@ -528,29 +652,34 @@ section {
         padding: 0 0.5rem;
         word-break: break-word;
     }
+
+    .quote-message {
+        font-size: 1.3rem;
+        padding: 0 1rem;
+    }
 }
 
 /* ===================================
-   SECCIÓN DE CITA
+   QUOTE HERO SECTION - ESTILO HERO
    =================================== */
-.quote-section {
-    background: linear-gradient(135deg, var(--verde-salvia) 0%, var(--beige-taupe) 100%);
-    padding: 5rem 2rem;
+.quote-hero {
+    background: var(--crema-calido);
 }
 
-.romantic-quote {
-    max-width: 850px;
-    margin: 0 auto;
+.quote-hero-text {
+    margin: 60px 0;
+    animation: fadeUp 1s ease-out 0.4s backwards;
+}
+
+.quote-message {
+    font-family: var(--font-script);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.6;
+    color: #000000; /* Negro para texto principal sobre fondo crema */
     text-align: center;
-}
-
-.romantic-quote p {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: white;
-    line-height: 1.9;
-    font-style: italic;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    font-weight: 300;
+    max-width: 900px;
+    margin: 0 auto;
+    font-weight: 400;
 }
 
 /* ===================================
@@ -559,6 +688,11 @@ section {
 .countdown-section {
     background: var(--crema-calido);
     padding: 5rem 2rem;
+}
+
+/* Countdown dentro de content-section sobre fondo crema */
+.content-section .countdown {
+    color: #000000;
 }
 
 .countdown {
@@ -589,7 +723,7 @@ section {
     display: block;
     font-size: clamp(3rem, 6vw, 4.5rem);
     font-weight: 300;
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     font-family: var(--font-serif);
     line-height: 1;
 }
@@ -597,7 +731,7 @@ section {
 .countdown-label {
     display: block;
     font-size: 1rem;
-    color: var(--texto-medio);
+    color: #000000; /* Negro para máximo contraste */
     margin-top: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -647,7 +781,7 @@ section {
 .event-card h3 {
     font-family: var(--font-serif);
     font-size: 2rem;
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     margin-bottom: 1rem;
     font-weight: 600;
 }
@@ -655,7 +789,7 @@ section {
 .event-time {
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--verde-salvia);
+    color: #000000; /* Negro para máximo contraste */
     margin-bottom: 1.2rem;
 }
 
@@ -663,11 +797,11 @@ section {
     font-size: 1.4rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para ubicaciones sobre fondo crema */
 }
 
 .event-address {
-    color: var(--texto-medio);
+    color: #333333; /* Gris oscuro para direcciones */
     margin-bottom: 1rem;
     font-size: 1.05rem;
 }
@@ -675,14 +809,14 @@ section {
 .event-note {
     margin: 1rem 0;
     font-style: italic;
-    color: var(--verde-salvia);
+    color: var(--verde-eucalipto); /* Verde oscuro para contraste */
     font-weight: 600;
 }
 
 .event-suggestion {
     margin: 0.8rem 0;
     font-size: 0.95rem;
-    color: #888;
+    color: #555555; /* Gris medio oscuro para mejor contraste */
 }
 
 .map-buttons {
@@ -713,17 +847,17 @@ section {
 }
 
 .btn-waze {
-    background: #33CCFF;
+    background: var(--verde-salvia);
 }
 
 .btn-waze:hover {
-    background: #00A3E0;
+    background: var(--dorado-elegante);
 }
 
 .dress-code-text {
     font-size: 1.6rem;
     font-weight: 600;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para texto sobre fondo crema */
     margin-top: 0.5rem;
 }
 
@@ -739,7 +873,7 @@ section {
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 3rem;
-    color: var(--texto-medio);
+    color: #333333; /* Gris oscuro para mejor contraste sobre fondo crema */
 }
 
 .gifts-grid {
@@ -770,42 +904,34 @@ section {
 .gift-card h3 {
     font-family: var(--font-serif);
     font-size: 1.9rem;
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     margin: 1.5rem 0;
     font-weight: 600;
 }
 
 .gift-card p {
     margin: 1rem 0;
-    color: var(--texto-medio);
+    color: #333333; /* Gris oscuro para texto sobre fondo blanco */
     line-height: 1.7;
 }
 
 /* ===================================
    HASHTAG Y REDES SOCIALES
    =================================== */
-.hashtag-section {
-    background: linear-gradient(135deg, var(--verde-eucalipto) 0%, var(--verde-salvia) 100%);
-    padding: 5rem 2rem;
-    text-align: center;
-    color: white;
-}
-
-.hashtag-section .section-title {
-    color: white;
-}
+/* Estilos heredados de content-section - sobre fondo crema */
 
 .hashtag-content p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: #000000;
 }
 
 .hashtag {
     font-family: var(--font-script);
     font-size: clamp(2.5rem, 6vw, 4rem);
     margin: 2.5rem 0;
-    color: var(--dorado-elegante);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    color: #000000; /* Negro para máximo contraste sobre cualquier fondo */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .hashtag-description {
@@ -822,19 +948,21 @@ section {
 }
 
 .social-link {
-    color: white;
+    color: #000000; /* Negro para máximo contraste sobre fondo crema */
     text-decoration: none;
     font-size: 1.1rem;
     padding: 1rem 2rem;
-    background: rgba(255,255,255,0.15);
+    background: rgba(74, 107, 84, 0.1); /* Fondo verde muy claro */
     border-radius: 50px;
     transition: all 0.4s ease;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 2px solid var(--verde-eucalipto); /* Borde verde oscuro */
     backdrop-filter: blur(10px);
+    font-weight: 600;
 }
 
 .social-link:hover {
-    background: rgba(255,255,255,0.3);
+    background: var(--verde-eucalipto); /* Fondo verde oscuro al hover */
+    color: white; /* Texto blanco al hover */
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
@@ -851,7 +979,7 @@ section {
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 3rem;
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     font-weight: 600;
 }
 
@@ -863,7 +991,7 @@ section {
 .whatsapp-contact > p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para texto sobre fondo blanco */
 }
 
 .whatsapp-numbers {
@@ -880,27 +1008,27 @@ section {
 .whatsapp-name {
     font-size: 1.1rem;
     font-weight: 600;
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     margin-bottom: 1rem;
 }
 
 .btn-whatsapp {
     display: inline-block;
     padding: 1.2rem 2.5rem;
-    background: #25D366;
+    background: var(--verde-eucalipto);
     color: white;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 600;
     transition: all 0.4s ease;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 20px rgba(45, 66, 50, 0.3);
 }
 
 .btn-whatsapp:hover {
-    background: #20BA5A;
+    background: var(--dorado-elegante);
     transform: translateY(-5px) scale(1.08);
-    box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+    box-shadow: 0 15px 40px rgba(184, 147, 32, 0.5);
 }
 
 /* ===================================
@@ -946,14 +1074,14 @@ section {
 
 .info-card h3 {
     font-family: var(--font-serif);
-    color: var(--verde-eucalipto);
+    color: #000000; /* Negro para máximo contraste */
     font-size: 1.5rem;
     margin-bottom: 1rem;
     font-weight: 600;
 }
 
 .info-card p {
-    color: var(--texto-medio);
+    color: #333333; /* Gris oscuro para texto sobre fondo blanco */
     line-height: 1.6;
 }
 
@@ -971,7 +1099,7 @@ section {
     font-family: var(--font-script);
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 1.5rem;
-    color: var(--dorado-elegante);
+    color: #FFD700; /* Dorado brillante para destacar sobre verde oscuro */
 }
 
 .footer-names {
@@ -979,18 +1107,21 @@ section {
     font-size: 2rem;
     margin-bottom: 1rem;
     font-weight: 600;
+    color: #FFFFFF; /* Blanco puro */
 }
 
 .footer-date {
     font-size: 1.3rem;
     margin-bottom: 2rem;
     letter-spacing: 4px;
+    color: #FFFFFF; /* Blanco puro */
 }
 
 .footer-credit {
     font-size: 0.95rem;
-    opacity: 0.85;
+    opacity: 1; /* Sin opacidad para mejor legibilidad */
     margin-top: 2rem;
+    color: #FFFFFF; /* Blanco puro */
 }
 
 /* ===================================
@@ -1009,7 +1140,7 @@ section {
     font-size: clamp(0.85rem, 2vw, 1.1rem);
     letter-spacing: 4px;
     font-weight: 500;
-    color: var(--verde-eucalipto);
+    color: #1a2820; /* Verde muy oscuro para máximo contraste */
     margin-bottom: 1.5rem;
     text-transform: uppercase;
 }
@@ -1019,7 +1150,7 @@ section {
     font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: 400;
     line-height: 1.6;
-    color: var(--texto-oscuro);
+    color: #000000; /* Negro para nombres sobre fondo crema */
 }
 
 .parents-hero-names p {
@@ -1029,7 +1160,7 @@ section {
 .parents-hero-memory {
     font-size: clamp(0.9rem, 2vw, 1.1rem) !important;
     font-style: italic;
-    color: var(--texto-medio) !important;
+    color: #333333 !important; /* Gris oscuro para texto secundario */
     margin-top: 0.8rem !important;
     font-family: var(--font-sans) !important;
     font-weight: 300;
@@ -1116,6 +1247,11 @@ section {
         padding: 0 0.5rem;
         word-break: break-word;
     }
+
+    .quote-message {
+        font-size: 1.3rem;
+        padding: 0 1rem;
+    }
 }
 
 /* ===================================
@@ -1126,68 +1262,73 @@ section {
         letter-spacing: 4px;
         font-size: 0.7rem;
     }
-    
+
     .hero-title {
         letter-spacing: 6px;
         font-size: 1.8rem;
     }
-    
+
     .couple-names {
         font-size: 4rem;
     }
-    
+
     .date-row {
         flex-direction: column;
         gap: 20px;
     }
-    
+
     .date-day::after,
     .date-time::before {
         display: none;
     }
-    
-    .floral-decoration.top-left,
-    .floral-decoration.bottom-right {
+
+    /* Fixed decorations responsive */
+    .fixed-background .floral-decoration.top-left,
+    .fixed-background .floral-decoration.bottom-right {
         width: 200px;
     }
-    
-    .geometric-frame {
-        width: calc(100% - 40px);
-        height: calc(100% - 40px);
+
+    .fixed-background .geometric-frame {
+        width: calc(100vw - 40px);
+        height: calc(100vh - 40px);
         top: 20px;
         left: 20px;
     }
-    
+
     section {
         padding: 3rem 1.5rem;
     }
-    
+
+    .content-section {
+        padding: 40px 15px;
+    }
+
     .countdown {
         gap: 1.5rem;
     }
-    
+
     .countdown-item {
         min-width: 100px;
         padding: 1.8rem;
     }
-    
+
     .event-card {
         padding: 2rem 1.5rem;
     }
-    
+
     .map-buttons {
         flex-direction: column;
     }
-    
+
     .btn-map {
         width: 100%;
     }
-    
+
     .whatsapp-numbers {
         flex-direction: column;
         gap: 2rem;
     }
-    
+
     .info-grid {
         grid-template-columns: 1fr;
     }

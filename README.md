@@ -1,279 +1,285 @@
-# 💒 Invitación de Boda Digital - Plantilla Profesional
+💒 Invitación de Boda Digital - Paulina & Daniel
+Invitación web elegante con diseño inspirado en invitaciones botánicas de alta calidad, con peonías y eucalipto.
 
-Invitación web elegante y moderna para bodas, con diseño responsivo y múltiples características interactivas.
+🎨 Cambios Principales Implementados
+✨ Diseño Renovado
+Nueva Paleta de Colores
+Crema cálido (
+#F8F6F0) como fondo principal
+Verde eucalipto (
+#4A6B54) para acentos
+Dorado elegante (
+#D4AF37) para detalles
+Beige taupe (
+#C9B8A3) para bordes y decoraciones
+Tipografía Mejorada
+Mr De Haviland: Para los nombres (estilo caligrafía elegante)
+Cormorant Garamond: Para títulos y números
+Montserrat: Para texto general (con tracking amplio)
+Hero Section Rediseñado
+Layout minimalista con espaciado amplio
+Decoraciones florales en las esquinas (peonías + eucalipto)
+Marco geométrico sutil
+Tipografía con letter-spacing amplio
+Estructura: TE INVITAMOS A → NUESTRA BODA → Nombres → Fecha
+📁 Archivos Modificados
+invitacion-boda/
+├── index.html          ← ACTUALIZADO ✅
+├── styles.css          ← ACTUALIZADO ✅
+├── script.js           ← ACTUALIZADO ✅
+├── README.md           ← Este archivo
+├── contrato.html       (sin cambios)
+├── DATOS_PARA_PERSONALIZAR.txt (sin cambios)
+└── .gitignore          (sin cambios)
+🖼️ Imágenes Necesarias
+Para que el diseño funcione perfectamente, necesitas agregar estas imágenes:
 
-## ✨ Características
+Decoraciones Florales (IMPORTANTE)
+Crea o descarga imágenes PNG con fondo transparente:
 
-### Diseño y Estética
-- 🎨 Diseño elegante con paleta de colores dorados y neutros
-- 📱 Completamente responsivo (móvil, tablet y escritorio)
-- ✨ Animaciones suaves y efectos de parallax
-- 🖼️ Galería de fotos integrada
-- 🎭 Tipografías elegantes (Great Vibes, Cormorant Garamond, Montserrat)
+peonia-left.png (esquina superior izquierda)
+Dimensiones recomendadas: 500x500px
+Contenido: Peonías blancas + hojas de eucalipto
+Estilo: Acuarela suave, orientada hacia abajo-derecha
+peonia-right.png (esquina inferior derecha)
+Dimensiones recomendadas: 550x550px
+Contenido: Peonías blancas + hojas de eucalipto
+Estilo: Acuarela suave, orientada hacia arriba-izquierda
+¿Dónde conseguir las imágenes florales?
+Opción 1: Usar marcadores de posición temporales
 
-### Funcionalidades Interactivas
-- ⏰ Cuenta regresiva en tiempo real hasta el día de la boda
-- 🎵 Control de música de fondo opcional
-- 📝 Formulario de confirmación de asistencia (RSVP)
-- 📍 Enlaces directos a Google Maps para ceremonia y recepción
-- 💝 Sección de mesa de regalos con enlaces
-- 📱 Integración con WhatsApp para confirmaciones
-- #️⃣ Hashtag de la boda para redes sociales
-- 📅 Opción para agregar al calendario
+bash
+# Las decoraciones están configuradas pero serán invisibles sin las imágenes
+# El sitio funcionará perfectamente mientras consigues las imágenes finales
+Opción 2: Generarlas con IA
 
-### Secciones Incluidas
-1. **Hero** - Portada con nombres y fecha
-2. **Padres** - Reconocimiento a los padres de los novios
-3. **Frase Romántica** - Cita especial
-4. **Cuenta Regresiva** - Contador dinámico
-5. **Galería** - Fotos de la pareja
-6. **Detalles del Evento** - Ceremonia y recepción con mapas
-7. **Mesa de Regalos** - Enlaces a tiendas
-8. **Hashtag** - Para redes sociales
-9. **RSVP** - Formulario de confirmación
-10. **Información Adicional** - Detalles importantes
+Usa DALL-E, Midjourney o Stable Diffusion
+Prompt sugerido: "watercolor white peony flowers with eucalyptus leaves, botanical illustration, transparent background, soft colors, elegant wedding style"
+Opción 3: Descargar de bancos de imágenes
 
-## 📋 Datos del Evento (Ejemplo)
+Freepik.com (busca "watercolor peony eucalyptus PNG")
+Pngtree.com
+Vecteezy.com
+Opción 4: Contratar diseñador
 
-```
-Fecha: 19 de Diciembre de 2025
-Ceremonia: 8:00 PM - Templo San Judas Tadeo
-Recepción: 9:30 PM - 2:00 AM - Salón de Eventos Laja
-Ubicación: León, Guanajuato
-```
+Fiverr: $5-20 USD
+Upwork: $10-50 USD
+Otras Imágenes Requeridas
+invitacion.jpeg
+Tu foto actual de pareja
+Dimensiones: 800x800px mínimo
+Ya la tienes ✅
+musica-fondo.mp3 (opcional)
+Canción romántica de 2-3 minutos
+Formato: MP3
+Bitrate: 128kbps
+favicon.svg (opcional)
+Ícono del sitio (aparece en la pestaña del navegador)
+Puedes usar un emoji: 💍 o 💐
+🚀 Instalación Rápida
+1. Estructura de Archivos
+Asegúrate de tener esta estructura:
 
-## 🚀 Instalación y Uso
+boda-daniel-paulina/
+├── index.html
+├── styles.css
+├── script.js
+├── invitacion.jpeg
+├── peonia-left.png        ← AGREGAR
+├── peonia-right.png       ← AGREGAR
+├── musica-fondo.mp3       ← OPCIONAL
+├── favicon.svg            ← OPCIONAL
+└── README.md
+2. Publicar en GitHub Pages
+bash
+# 1. Crear repositorio en GitHub
+# Ve a github.com y crea un nuevo repositorio público
 
-### 1. Clonar o Descargar
-```bash
-git clone [URL_DEL_REPOSITORIO]
-cd invitacion-boda-daniel
-```
-
-### 2. Personalizar Contenido
-
-Edita el archivo `index.html` y reemplaza los campos marcados con corchetes:
-
-- `[Nombre Novia]` - Nombre completo de la novia
-- `[Nombre Novio]` - Nombre completo del novio
-- `[Nombre del Padre]` - Nombres de los padres
-- `[Nombre de la Madre]` - Nombres de las madres
-- `[ENLACE_LIVERPOOL]` - URL de la mesa de regalos
-- `[TELEFONO]` - Número de WhatsApp para confirmaciones
-- `[Fecha Límite]` - Fecha límite para confirmar asistencia
-- Código de vestimenta
-- Información sobre niños
-
-### 3. Personalizar Colores y Estilos
-
-En `styles.css`, modifica las variables CSS al inicio del archivo:
-
-```css
-:root {
-    --color-primary: #C9A66B;      /* Color principal (dorado) */
-    --color-secondary: #8B7355;     /* Color secundario */
-    --color-accent: #D4AF37;        /* Color de acento */
-    --color-bg-light: #FAF9F6;      /* Fondo claro */
-    --color-bg-dark: #2C2C2C;       /* Fondo oscuro */
-}
-```
-
-### 4. Agregar Imágenes
-
-Coloca tus imágenes en la carpeta del proyecto y actualiza las rutas:
-
-- `hero-bg.jpg` - Imagen de portada (1920x1080px recomendado)
-- `foto1.jpg` hasta `foto4.jpg` - Fotos de la galería (800x800px recomendado)
-- `musica-fondo.mp3` - Música de fondo (opcional)
-
-### 5. Configurar WhatsApp
-
-En `script.js`, actualiza el número de teléfono:
-
-```javascript
-const phoneNumber = '52XXXXXXXXXX'; // Reemplazar con tu número (incluye código de país)
-```
-
-### 6. Configurar Fecha de la Boda
-
-En `script.js`, verifica la fecha:
-
-```javascript
-const weddingDate = new Date('December 19, 2025 20:00:00').getTime();
-```
-
-## 🌐 Publicación en GitHub Pages
-
-### Opción 1: Desde la línea de comandos
-
-```bash
-# Inicializar repositorio
+# 2. Inicializar Git local
 git init
-
-# Agregar archivos
 git add .
+git commit -m "Invitación de boda - Diseño actualizado"
 
-# Commit
-git commit -m "Invitación de boda inicial"
-
-# Conectar con GitHub
-git remote add origin https://github.com/TU_USUARIO/invitacion-boda.git
-
-# Subir a GitHub
+# 3. Conectar con GitHub
+git remote add origin https://github.com/TU_USUARIO/boda-paulina-daniel.git
 git branch -M main
 git push -u origin main
-```
 
-### Opción 2: Configurar GitHub Pages
+# 4. Activar GitHub Pages
+# Ve a: Settings → Pages → Source: main branch → Save
+Tu sitio estará en: https://TU_USUARIO.github.io/boda-paulina-daniel/
 
-1. Ve a tu repositorio en GitHub
-2. Click en **Settings**
-3. En el menú lateral, click en **Pages**
-4. En **Source**, selecciona **main** branch
-5. Click en **Save**
-6. Tu sitio estará disponible en: `https://TU_USUARIO.github.io/invitacion-boda/`
+3. Opcional: Dominio Personalizado
+Si quieres un dominio como paulinaydaniel.com:
 
-## 📱 Compartir la Invitación
+Compra el dominio en Namecheap, GoDaddy, etc. (~$10-15 USD/año)
+En GitHub Pages settings, agrega el dominio personalizado
+Configura los DNS según las instrucciones de GitHub
+🎨 Personalización Adicional
+Cambiar Colores
+En styles.css, líneas 5-15:
 
-Una vez publicada, puedes compartir el enlace por:
+css
+:root {
+    --crema-calido: #F8F6F0;        /* Fondo principal */
+    --verde-eucalipto: #4A6B54;     /* Color primario */
+    --verde-salvia: #A3B18A;        /* Color secundario */
+    --beige-taupe: #C9B8A3;         /* Bordes y detalles */
+    --dorado-elegante: #D4AF37;     /* Acentos dorados */
+}
+Cambiar Fuentes
+Si quieres usar otras fuentes, modifica en index.html (línea 10):
 
-- WhatsApp
-- Email
-- Redes sociales
-- Código QR (genera uno con tu URL)
+html
+<link href="https://fonts.googleapis.com/css2?family=TuFuenteAqui&display=swap" rel="stylesheet">
+Y actualiza en styles.css:
 
-## 🎨 Personalización Avanzada
+css
+:root {
+    --font-script: 'TuFuenteScript', cursive;
+    --font-serif: 'TuFuenteSerif', serif;
+    --font-sans: 'TuFuenteSans', sans-serif;
+}
+Modificar Textos
+Todos los textos están en index.html. Busca y reemplaza según necesites:
 
-### Cambiar Fuentes
+Nombres de los novios
+Nombres de los padres
+Fechas y horarios
+Direcciones
+Números de teléfono
+Redes sociales
+📱 Características Implementadas
+✅ Funcionalidades Activas
+ Diseño responsivo (móvil, tablet, desktop)
+ Cuenta regresiva en tiempo real
+ Música de fondo con control
+ Botones de Google Maps y Waze
+ Integración con WhatsApp para RSVP
+ Compartir invitación (Web Share API)
+ Animaciones suaves al hacer scroll
+ Lazy loading de imágenes
+ Decoraciones florales animadas
+ Textura de papel en el fondo
+ SEO optimizado
+🎯 Checklist Pre-Lanzamiento
+Antes de compartir la invitación, verifica:
 
-Puedes cambiar las fuentes en `index.html` (sección `<head>`):
+Contenido
+ Nombres correctos de novios y padres
+ Fecha y hora correctas (19 de Diciembre 2025, 7:00 PM)
+ Direcciones verificadas
+ Links de Google Maps funcionando
+ Links de Waze funcionando
+ Números de WhatsApp correctos
+ Redes sociales actualizadas
+ Hashtag personalizado
+Diseño
+ Imágenes florales agregadas (peonia-left.png, peonia-right.png)
+ Foto de pareja cargada (invitacion.jpeg)
+ Colores ajustados a tu gusto
+ Fuentes cargando correctamente
+Funcionalidad
+ Contador regresivo funcionando
+ Música de fondo (si la agregaste)
+ Botones de mapa abriendo correctamente
+ WhatsApp redirigiendo bien
+ Botón compartir funcionando
+ Responsive en móvil
+Testing
+ Probado en Chrome
+ Probado en Safari
+ Probado en Firefox
+ Probado en móvil iPhone
+ Probado en móvil Android
+ Velocidad de carga aceptable
+🐛 Solución de Problemas
+Las decoraciones florales no se ven
+Problema: Faltan las imágenes PNG Solución:
 
-```html
-<link href="https://fonts.googleapis.com/css2?family=TuFuente&display=swap" rel="stylesheet">
-```
+Agrega peonia-left.png y peonia-right.png a la raíz del proyecto
+O temporalmente comenta las líneas en index.html:
+html
+<!-- <div class="floral-decoration top-left">... -->
+<!-- <div class="floral-decoration bottom-right">... -->
+La música no se reproduce automáticamente
+Problema: Los navegadores bloquean autoplay Solución: Es normal. El usuario debe hacer clic en el botón 🔇 para activar la música. El sitio intentará reproducirla automáticamente después de la primera interacción.
 
-Y actualiza las variables en `styles.css`:
+Los mapas no abren
+Problema: Coordenadas incorrectas Solución: Verifica las coordenadas en Google Maps y actualiza los enlaces en index.html.
 
-```css
---font-script: 'TuFuente', cursive;
-```
+El contador muestra números negativos
+Problema: La fecha ya pasó (modo de prueba) Solución: Verifica la fecha en script.js línea 36:
 
-### Agregar Más Fotos a la Galería
+javascript
+const weddingDate = new Date('2025-12-19T19:00:00').getTime();
+El sitio se ve mal en móvil
+Problema: Caché del navegador Solución:
 
-En `index.html`, dentro de `.photo-gallery`, agrega:
+Forzar recarga: Ctrl+Shift+R (Windows) o Cmd+Shift+R (Mac)
+Limpiar caché del navegador
+Verificar que styles.css tenga las media queries (@media)
+📊 Comparación: Antes vs Después
+Aspecto	Antes	Después
+Tipografía	Fuentes genéricas	Mr De Haviland (script elegante)
+Paleta	Verde oliva/dorado	Crema/eucalipto/dorado
+Hero	Simple con fondo	Decoraciones florales + marco geométrico
+Espaciado	Compacto	Amplio y respirable (letter-spacing)
+Estilo	Moderno	Elegante botánico (peonía/eucalipto)
+Textura	Sin textura	Textura de papel sutil
+Animaciones	Básicas	Suaves y naturales
+🎓 Aprende Más
+Recursos Útiles
+Paletas de colores: coolors.co, color.adobe.com
+Fuentes gratis: fonts.google.com
+Imágenes: unsplash.com, pexels.com, freepik.com
+Íconos: fontawesome.com, heroicons.com
+Testing: browserstack.com (cross-browser testing)
+Inspiración de Diseño
+Pinterest: "botanical wedding invitation"
+Dribbble: "elegant wedding website"
+Behance: "wedding invitation design"
+💡 Ideas Adicionales (Futuras Mejoras)
+Si quieres agregar más funcionalidades:
 
-```html
-<div class="photo-item">
-    <img src="foto5.jpg" alt="Foto de la pareja" loading="lazy">
-</div>
-```
+Galería de fotos completa
+Lightbox para ver fotos en grande
+Grid de múltiples fotos de la pareja
+Mapa de la ciudad
+Mapa interactivo con Leaflet.js
+Marcadores de iglesia, salón, hoteles
+Timeline de la relación
+Historia de cómo se conocieron
+Momentos importantes
+Livestream
+Para invitados que no puedan asistir
+Integración con YouTube/Zoom
+Libro de firmas digital
+Formulario para mensajes
+Galería de mensajes de invitados
+Contador de confirmados
+"X de Y personas han confirmado"
+Barra de progreso visual
+📞 Contacto del Fotógrafo
+Foro 7 - Arturo Cruz
 
-### Modificar Colores del Contador
+📱 Teléfono: 477-920-3776
+📸 Servicios: Fotografía y Video profesional
+📍 Ubicación: León, Guanajuato
+🎉 ¡Listo para Compartir!
+Una vez que hayas:
 
-En `styles.css`, busca `.countdown-number` y `.countdown-label` para cambiar colores.
+✅ Agregado las imágenes florales
+✅ Verificado todos los datos
+✅ Probado en diferentes dispositivos
+✅ Publicado en GitHub Pages
+Comparte tu invitación:
 
-## 📝 Checklist de Personalización
+Por WhatsApp
+En redes sociales
+Crea un código QR con tu URL
+Envía por email
+¡Felicidades por tu boda! 💑✨
 
-- [ ] Nombres de los novios
-- [ ] Nombres de los padres
-- [ ] Fecha y hora del evento
-- [ ] Direcciones de ceremonia y recepción
-- [ ] Enlaces a Google Maps
-- [ ] Mesa de regalos (Liverpool y otras)
-- [ ] Número de WhatsApp
-- [ ] Código de vestimenta
-- [ ] Política de niños
-- [ ] Hashtag de la boda
-- [ ] Imágenes (hero y galería)
-- [ ] Música de fondo
-- [ ] Colores y estilos personalizados
-- [ ] Fecha límite de confirmación
+Desarrollado con amor para Paulina & Daniel 19 de Diciembre, 2025
 
-## 🔧 Tecnologías Utilizadas
-
-- HTML5
-- CSS3 (Variables CSS, Flexbox, Grid)
-- JavaScript Vanilla
-- Google Fonts
-- Responsive Design
-
-## 📞 Información de Contacto del Fotógrafo
-
-**Arturo Cruz**
-- Teléfono: 477-920-3776
-- Servicios: Fotografía y Video para Eventos
-
-## 🎉 Características Premium Implementadas
-
-✅ Diseño elegante y profesional
-✅ Totalmente responsivo
-✅ Cuenta regresiva en tiempo real
-✅ Formulario RSVP integrado
-✅ Integración con WhatsApp
-✅ Mapas interactivos
-✅ Galería de fotos
-✅ Animaciones suaves
-✅ Optimización de carga (lazy loading)
-✅ SEO friendly
-✅ Compatible con todos los navegadores
-
-## 💡 Tips y Recomendaciones
-
-### Optimización de Imágenes
-- Usa formato JPG para fotos
-- Comprime las imágenes antes de subirlas (usa TinyPNG o similar)
-- Tamaño recomendado: 1920x1080px para hero, 800x800px para galería
-
-### Música de Fondo
-- Formato MP3
-- Duración: 3-5 minutos en loop
-- Bitrate: 128kbps para balance entre calidad y tamaño
-
-### Testing
-Prueba tu invitación en:
-- Chrome, Firefox, Safari, Edge
-- iPhone y Android
-- Diferentes tamaños de pantalla
-
-### Accesibilidad
-- Usa alto contraste en textos
-- Incluye atributos alt en imágenes
-- Asegúrate de que sea navegable con teclado
-
-## 🐛 Solución de Problemas
-
-### La música no se reproduce
-- Verifica que el archivo MP3 existe en la carpeta
-- Algunos navegadores bloquean reproducción automática
-- El usuario debe hacer click en el botón de música
-
-### Las imágenes no se cargan
-- Verifica las rutas de los archivos
-- Asegúrate de que los nombres coincidan exactamente
-- Verifica que las imágenes estén en la carpeta correcta
-
-### El contador no funciona
-- Verifica la fecha en `script.js`
-- Asegúrate de que el formato sea correcto
-- Revisa la consola del navegador para errores
-
-## 📄 Licencia
-
-Este proyecto es de uso libre para eventos personales. Si lo usas, sería genial que mencionaras al desarrollador original.
-
-## 🤝 Contribuciones
-
-Si encuentras bugs o tienes sugerencias de mejoras, siéntete libre de:
-- Abrir un Issue
-- Hacer un Pull Request
-- Contactar directamente
-
-## 📸 Preview
-
-Una vez que agregues tus fotos y personalices el contenido, tendrás una invitación digital profesional lista para compartir con tus invitados.
-
----
-
-**¡Felicidades por tu boda! 💑**
-
-*Desarrollado con ❤️ para celebrar el amor*
