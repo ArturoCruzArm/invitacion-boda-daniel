@@ -28,32 +28,73 @@ function initMusic() {
     let isPlaying = false;
     let hasInteracted = false;
 
+    // Función para intentar reproducir música
     function startMusic() {
         if (!hasInteracted) {
-            music.play().catch(e => {
-                console.log('Autoplay bloqueado:', e);
-            });
-            isPlaying = true;
-            musicIcon.className = 'fas fa-volume-up';
-            hasInteracted = true;
+            const playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    musicIcon.className = 'fas fa-volume-up';
+                    hasInteracted = true;
+                    console.log('Música iniciada automáticamente');
+                }).catch(e => {
+                    console.log('Autoplay bloqueado, esperando interacción del usuario:', e);
+                    isPlaying = false;
+                    musicIcon.className = 'fas fa-volume-mute';
+                });
+            }
         }
     }
 
-    ['click', 'touchstart', 'scroll'].forEach(event => {
-        document.addEventListener(event, startMusic, { once: true });
+    // Intentar reproducir con diferentes eventos (importante para Android)
+    ['click', 'touchstart', 'touchend', 'scroll'].forEach(event => {
+        document.addEventListener(event, startMusic, { once: true, passive: true });
     });
 
-    musicToggle.addEventListener('click', function(e) {
+    // Manejar clicks en el botón de música
+    function toggleMusic(e) {
+        e.preventDefault();
         e.stopPropagation();
-        if (isPlaying) {
-            music.pause();
-            musicIcon.className = 'fas fa-volume-mute';
-        } else {
-            music.play().catch(e => console.log('Error:', e));
-            musicIcon.className = 'fas fa-volume-up';
-        }
-        isPlaying = !isPlaying;
+
         hasInteracted = true;
+
+        if (music.paused || !isPlaying) {
+            // Intentar reproducir
+            const playPromise = music.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    musicIcon.className = 'fas fa-volume-up';
+                    console.log('Música reproduciendo');
+                }).catch(e => {
+                    console.log('Error al reproducir:', e);
+                    isPlaying = false;
+                    musicIcon.className = 'fas fa-volume-mute';
+                });
+            }
+        } else {
+            // Pausar
+            music.pause();
+            isPlaying = false;
+            musicIcon.className = 'fas fa-volume-mute';
+            console.log('Música pausada');
+        }
+    }
+
+    // Agregar listeners para click y touch
+    musicToggle.addEventListener('click', toggleMusic);
+    musicToggle.addEventListener('touchend', toggleMusic);
+
+    // Sincronizar el estado cuando el audio cambia
+    music.addEventListener('play', function() {
+        isPlaying = true;
+        musicIcon.className = 'fas fa-volume-up';
+    });
+
+    music.addEventListener('pause', function() {
+        isPlaying = false;
+        musicIcon.className = 'fas fa-volume-mute';
     });
 }
 
