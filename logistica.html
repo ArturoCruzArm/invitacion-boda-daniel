@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logística del Evento - Boda Paulina & Daniel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4A6B54 0%, #A3B18A 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .logistics-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4A6B54 0%, #A3B18A 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            background: white;
+            color: #4A6B54;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a.active {
+            background: #4A6B54;
+            color: white;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #4A6B54, #A3B18A);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 100px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 38px;
+            top: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #4A6B54;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #4A6B54;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: #4A6B54;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .time-badge.special {
+            background: #D4AF37;
+            color: #333;
+        }
+
+        .timeline-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #4A6B54;
+        }
+
+        .timeline-content h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+            margin: 5px 0;
+        }
+
+        .timeline-content ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .timeline-content li {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .location-card {
+            background: white;
+            border: 2px solid #4A6B54;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .location-card h4 {
+            color: #4A6B54;
+            margin-bottom: 10px;
+        }
+
+        .location-card a {
+            display: inline-block;
+            background: #4A6B54;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .location-card a:hover {
+            background: #3d5a46;
+            transform: translateX(5px);
+        }
+
+        .section {
+            margin: 30px 0;
+        }
+
+        .section h2 {
+            color: #4A6B54;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #A3B18A;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+            border-left: 4px solid #D4AF37;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h3 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #4A6B54 0%, #A3B18A 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .contact-section a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                padding-left: 60px;
+            }
+
+            .timeline-item::before {
+                left: 8px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        .print-button {
+            background: #4A6B54;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .print-button:hover {
+            background: #3d5a46;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .print-button,
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logistics-container">
+        <div class="header">
+            <h1>📋 Logística del Evento</h1>
+            <p>Boda - Paulina & Daniel</p>
+            <p style="font-size: 1em; margin-top: 10px;">Viernes, 19 de Diciembre de 2025</p>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">💍 Invitación</a>
+            <a href="contrato.html">📄 Contrato</a>
+            <a href="logistica.html" class="active">📋 Logística</a>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>🎉 DÍA DEL EVENTO</h2>
+                <p style="color: #666; margin-bottom: 20px;"><strong>Fecha:</strong> Viernes 19 de Diciembre, 2025</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="time-badge">6:00 - 6:30 PM</span>
+                        <div class="timeline-content">
+                            <h3>📷 Llegada del Equipo de Producción</h3>
+                            <p><strong>Ubicación:</strong> Templo de San Judas Tadeo</p>
+                            <p>El equipo de Producciones Foro 7 llegará al templo para:</p>
+                            <ul>
+                                <li>Preparación de equipo de fotografía y video</li>
+                                <li>Configuración de iluminación</li>
+                                <li>Tomas previas del templo y decoración</li>
+                                <li>Coordinación con el coordinador del evento</li>
+                            </ul>
+                            <div class="location-card">
+                                <h4>📍 Templo de San Judas Tadeo</h4>
+                                <p>Av Roma s/n, Andrade 37020 León de los Aldama, Gto.</p>
+                                <a href="https://www.google.com/maps?q=21.11162879508956,-101.67137137651461" target="_blank">🗺️ Ver en Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-badge">7:00 PM</span>
+                        <div class="timeline-content">
+                            <h3>⛪ Ceremonia Religiosa</h3>
+                            <p><strong>Duración:</strong> Aproximadamente 1 hora</p>
+                            <p><strong>Cobertura incluye:</strong></p>
+                            <ul>
+                                <li>Llegada de los novios</li>
+                                <li>Entrada de la novia</li>
+                                <li>Ceremonia completa</li>
+                                <li>Intercambio de votos y anillos</li>
+                                <li>Salida de los novios</li>
+                                <li>Fotos con familiares en el templo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-badge special">8:30 PM</span>
+                        <div class="timeline-content">
+                            <h3>💍 Boda Civil</h3>
+                            <p><strong>Ubicación:</strong> Salón De Eventos Laja</p>
+                            <p><strong>Tipo:</strong> Ceremonia íntima</p>
+                            <p style="margin-top: 10px;"><strong>Cobertura incluye:</strong></p>
+                            <ul>
+                                <li>Ceremonia civil completa</li>
+                                <li>Intercambio de votos civiles</li>
+                                <li>Firma de acta</li>
+                                <li>Fotos con testigos y familiares cercanos</li>
+                            </ul>
+                            <div class="location-card">
+                                <h4>📍 Salón De Eventos Laja</h4>
+                                <p>Blvd. Campestre 79, Peñitas, 37180 León de los Aldama, Gto.</p>
+                                <a href="https://www.google.com/maps?q=21.147224894292776,-101.68200812396928" target="_blank">🗺️ Ver en Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-badge special">Inmediatamente después</span>
+                        <div class="timeline-content">
+                            <h3>🎆 Espectáculo de Pirotecnia</h3>
+                            <p><strong>Ubicación:</strong> Exterior del Salón De Eventos Laja</p>
+                            <p><strong>Duración estimada:</strong> 5-10 minutos</p>
+
+                            <div class="highlight-box">
+                                <h3>📸 Sesión Fotográfica Especial</h3>
+                                <p><strong>Durante el espectáculo de pirotecnia se realizará:</strong></p>
+                                <ul>
+                                    <li><strong>Fotografía con iluminación de fuegos artificiales:</strong> Fotos de los novios con el fondo de la pirotecnia</li>
+                                    <li><strong>Tomas aéreas con dron:</strong> Captura del espectáculo desde el aire con los novios en escena</li>
+                                    <li><strong>Video cinemático:</strong> Grabación en 4K del momento mágico</li>
+                                    <li><strong>Fotos con invitados:</strong> Captura del momento con familiares y amigos</li>
+                                </ul>
+                                <p style="margin-top: 15px; font-weight: bold; color: #D4AF37;">
+                                    ⭐ Este será uno de los momentos más espectaculares de la noche
+                                </p>
+                            </div>
+
+                            <p style="margin-top: 15px;"><strong>Recomendaciones para los novios:</strong></p>
+                            <ul>
+                                <li>Estar listos en el área designada antes del inicio</li>
+                                <li>Seguir las indicaciones del fotógrafo para mejores tomas</li>
+                                <li>Disfrutar el momento (las mejores fotos son naturales)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-badge">9:00 PM - 2:00 AM</span>
+                        <div class="timeline-content">
+                            <h3>🎊 Recepción</h3>
+                            <p><strong>Ubicación:</strong> Salón De Eventos Laja</p>
+                            <p><strong>Duración de cobertura:</strong> 5 horas</p>
+                            <p style="margin-top: 15px;"><strong>Eventos a Cubrir:</strong></p>
+                            <ul>
+                                <li>Entrada de los novios a la recepción</li>
+                                <li>Primer baile de los novios</li>
+                                <li>Baile con padres</li>
+                                <li>Brindis</li>
+                                <li>Pastel</li>
+                                <li>Lanzamiento del ramo</li>
+                                <li>Baile general y ambiente</li>
+                                <li>Fotos con familiares e invitados</li>
+                                <li>Momentos especiales y sorpresas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="time-badge">2:00 AM</span>
+                        <div class="timeline-content">
+                            <h3>🌙 Fin de la Cobertura</h3>
+                            <p>El equipo de producción concluye la cobertura del evento</p>
+                            <p><strong>Nota:</strong> Si desean extender la cobertura más allá de las 5 horas incluidas, esto tendrá un costo adicional a cotizar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🎥 Equipo de Producción</h2>
+                <div class="highlight-box">
+                    <h3>Equipos que se utilizarán durante el evento:</h3>
+                    <ul>
+                        <li>📷 <strong>Fotografía:</strong> 1 cámara profesional, 3 flashes</li>
+                        <li>🎥 <strong>Video:</strong> 1 cámara de video 4K, 2 lámparas LED</li>
+                        <li>🚁 <strong>Dron:</strong> 1 dron profesional 4K (para pirotecnia y tomas aéreas)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📦 Entrega de Material</h2>
+                <div class="highlight-box">
+                    <h3>Lo que recibirán (según contrato):</h3>
+                    <ul>
+                        <li>50 fotos del evento impresas tamaño 5x7" en caja impresa</li>
+                        <li>1 película USB en 4K editada, musicalizada y titulada</li>
+                        <li>Material digital completo de fotografías</li>
+                        <li><strong>Fotos especiales de la pirotecnia con dron</strong> 🎆📸</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-weight: bold;">
+                        ⏱️ Tiempo de entrega: Plazo a confirmar después del evento
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h2>📞 Contacto de Emergencia</h2>
+                <p><strong>Arturo Cruz - Producciones Foro 7</strong></p>
+                <p>📍 Dirección: Padilla 112, Cumbres de Arbide, León, Gto.</p>
+                <p>📱 WhatsApp: <a href="https://wa.me/524779203776" style="color: white; text-decoration: underline;">477 920 3776</a></p>
+                <p style="margin-top: 20px; font-size: 0.9em;">
+                    Para cualquier duda, cambio o confirmación de último momento, contactar directamente
+                </p>
+            </div>
+
+            <button class="print-button" onclick="window.print()">🖨️ Imprimir Logística</button>
+        </div>
+    </div>
+</body>
+</html>
