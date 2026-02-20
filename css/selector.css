@@ -314,6 +314,7 @@ body {
 
 .photo-image-container {
     aspect-ratio: 1 / 1;
+    min-height: 140px;
     overflow: hidden;
     background: var(--accent-color);
     display: flex;
@@ -452,6 +453,7 @@ body {
     position: relative;
     animation: slideUp 0.3s;
 }
+
 
 @keyframes slideUp {
     from {
