@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector de Fotos - Boda Daniel y Paulina</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='80'>💍</text></svg>">
+    <link rel="stylesheet" href="css/selector.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="main-title">Selector de Fotos</h1>
+            <h2 class="subtitle">Boda Daniel &amp; Paulina</h2>
+            <p class="instructions">Según el contrato, debes seleccionar:</p>
+            <p class="instructions"><strong>📸 50 fotos para impresión (5x7") + 🖼️ 1 foto para ampliación (28x35 cm)</strong></p>
+        </div>
+    </header>
+
+    <!-- Nav -->
+    <div style="display:flex;justify-content:center;gap:15px;margin:20px 0;flex-wrap:wrap;">
+        <a href="index.html" style="display:inline-block;background:#4A6B54;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;">💍 Invitación</a>
+        <a href="contrato.html" style="display:inline-block;background:#4A6B54;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;">📄 Contrato</a>
+        <a href="logistica.html" style="display:inline-block;background:#4A6B54;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;">📋 Logística</a>
+        <a href="selector.html" style="display:inline-block;background:#2d4a38;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;">📷 Fotos</a>
+    </div>
+
+    <!-- Control Panel -->
+    <section class="control-panel">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-card ampliacion">
+                    <div class="stat-icon">🖼️</div>
+                    <div class="stat-info">
+                        <h3>Ampliación</h3>
+                        <p class="stat-count" id="countAmpliacion">0</p>
+                    </div>
+                </div>
+                <div class="stat-card impresion">
+                    <div class="stat-icon">📸</div>
+                    <div class="stat-info">
+                        <h3>Impresión</h3>
+                        <p class="stat-count" id="countImpresion">0</p>
+                    </div>
+                </div>
+                <div class="stat-card invitacion">
+                    <div class="stat-icon">💌</div>
+                    <div class="stat-info">
+                        <h3>Invitación</h3>
+                        <p class="stat-count" id="countInvitacion">0</p>
+                    </div>
+                </div>
+                <div class="stat-card descartada">
+                    <div class="stat-icon">❌</div>
+                    <div class="stat-info">
+                        <h3>Descartadas</h3>
+                        <p class="stat-count" id="countDescartada">0</p>
+                    </div>
+                </div>
+                <div class="stat-card sin-clasificar">
+                    <div class="stat-icon">⭕</div>
+                    <div class="stat-info">
+                        <h3>Sin Clasificar</h3>
+                        <p class="stat-count" id="countSinClasificar">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-filter" id="btnFilterAll">Todas (0)</button>
+                <button class="btn btn-filter filter-ampliacion" id="btnFilterAmpliacion">Ampliación (0)</button>
+                <button class="btn btn-filter filter-impresion" id="btnFilterImpresion">Impresión (0)</button>
+                <button class="btn btn-filter filter-invitacion" id="btnFilterInvitacion">Invitación (0)</button>
+                <button class="btn btn-filter filter-descartada" id="btnFilterDescartada">Descartadas (0)</button>
+                <button class="btn btn-filter filter-sin-clasificar" id="btnFilterSinClasificar">Sin Clasificar (0)</button>
+            </div>
+
+            <div class="action-buttons secondary">
+                <button class="btn btn-export" id="btnExport">📥 Descargar Reporte</button>
+                <button class="btn btn-share" id="btnShare">📤 Copiar Resumen</button>
+                <button class="btn btn-clear" id="btnClear">🗑️ Limpiar Todo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swipe hint -->
+    <p style="text-align:center;font-size:0.78rem;color:#888;margin:8px 0 0;letter-spacing:0.05em;">
+        ← desliza para quitar &nbsp;|&nbsp; desliza para guardar →
+    </p>
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="photos-grid" id="photosGrid"></div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="photoModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="modal-body">
+                <button class="modal-nav-btn modal-prev" id="btnPrevPhoto" title="Foto anterior (←)">
+                    <span>&#8249;</span>
+                </button>
+                <button class="modal-nav-btn modal-next" id="btnNextPhoto" title="Foto siguiente (→)">
+                    <span>&#8250;</span>
+                </button>
+                <div class="modal-image-container">
+                    <img id="modalImage" src="" alt="Foto seleccionada">
+                    <div class="modal-photo-number" id="modalPhotoNumber"></div>
+                </div>
+                <div class="modal-options">
+                    <h3>¿Qué quieres hacer con esta foto?</h3>
+                    <p class="modal-subtitle">Puedes seleccionar una o varias opciones</p>
+
+                    <div class="option-buttons">
+                        <button class="option-btn ampliacion" data-category="ampliacion">
+                            <span class="option-icon">🖼️</span>
+                            <span class="option-text">Ampliación</span>
+                            <span class="option-check">✓</span>
+                        </button>
+                        <button class="option-btn impresion" data-category="impresion">
+                            <span class="option-icon">📸</span>
+                            <span class="option-text">Impresión</span>
+                            <span class="option-check">✓</span>
+                        </button>
+                        <button class="option-btn invitacion" data-category="invitacion">
+                            <span class="option-icon">💌</span>
+                            <span class="option-text">Invitación</span>
+                            <span class="option-check">✓</span>
+                        </button>
+                        <button class="option-btn descartada" data-category="descartada">
+                            <span class="option-icon">❌</span>
+                            <span class="option-text">Descartar</span>
+                            <span class="option-check">✓</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button class="btn btn-save" id="btnSaveSelection">Guardar</button>
+                        <button class="btn btn-cancel" id="btnCancelSelection">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/selector.js?v=1"></script>
+</body>
+</html>
