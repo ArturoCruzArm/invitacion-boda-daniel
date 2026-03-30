@@ -49,12 +49,12 @@ async function sbRegistrarVisita(pagina = 'selector') {
 // ========================================
 const CONFIG = {
     slug:               'invitacion-boda-daniel',
-    nombre:             'Daniel & Paulina',
-    fechaEvento:        new Date(2026, 2, 21, 19, 0, 0),
+    nombre:             (window.EVENT_CONFIG && window.EVENT_CONFIG.nombre)             || 'Daniel \& Paulina',
+    telefono:           (window.EVENT_CONFIG && window.EVENT_CONFIG.telefono)           || '',
+    fechaEvento:        (window.EVENT_CONFIG && window.EVENT_CONFIG.fechaEvento)        || new Date(2026, 2, 21, 19, 0, 0),
     limiteImpresion:    50,
-    limiteAmpliacion:   1,
     limiteInvitacion:   null,
-    costoFotoAdicional: 20,
+    costoFotoAdicional: (window.EVENT_CONFIG && window.EVENT_CONFIG.costoFotoAdicional) || 20,
 };
 
 // ========================================
