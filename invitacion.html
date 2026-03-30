@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda Abraham & Laura - 19 de Diciembre 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1e3a8a 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .talavera-border {
+            height: 20px;
+            background: repeating-linear-gradient(
+                90deg,
+                #1e40af 0px,
+                #1e40af 20px,
+                white 20px,
+                white 40px
+            );
+        }
+
+        .header {
+            background: linear-gradient(180deg, #f8fafc 0%, #e0f2fe 100%);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #1e40af;
+        }
+
+        .talavera-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.1;
+            background-image:
+                radial-gradient(circle at 25% 25%, #1e40af 2px, transparent 2px),
+                radial-gradient(circle at 75% 75%, #1e40af 2px, transparent 2px);
+            background-size: 50px 50px;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-family: 'Brush Script MT', cursive;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .ampersand {
+            font-size: 1.2em;
+            color: #3b82f6;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #475569;
+            position: relative;
+            z-index: 1;
+        }
+
+        .divider {
+            width: 150px;
+            height: 3px;
+            background: #1e40af;
+            margin: 30px auto;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #3b82f6;
+            border-radius: 50%;
+            top: -3.5px;
+        }
+
+        .divider::before {
+            left: -20px;
+        }
+
+        .divider::after {
+            right: -20px;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 5px solid #1e40af;
+        }
+
+        .section h2 {
+            color: #1e40af;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section h3 {
+            color: #3b82f6;
+            font-size: 1.5em;
+            margin: 20px 0 10px;
+        }
+
+        .section p {
+            color: #475569;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .info-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #bfdbfe;
+        }
+
+        .info-box strong {
+            color: #1e40af;
+        }
+
+        .date-container {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .date-container .day {
+            font-size: 4em;
+            font-weight: bold;
+        }
+
+        .date-container .month {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .date-container .year {
+            font-size: 1.5em;
+        }
+
+        .location-link {
+            display: inline-block;
+            background: #1e40af;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+
+        .location-link:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        }
+
+        .footer {
+            background: #1e40af;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 1.1em;
+        }
+
+        .tile-decoration {
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+            background: linear-gradient(45deg, #1e40af 25%, transparent 25%),
+                        linear-gradient(-45deg, #1e40af 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, #3b82f6 75%),
+                        linear-gradient(-45deg, transparent 75%, #3b82f6 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+            border-radius: 10px;
+            border: 3px solid #1e40af;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <div class="container">
+        <div class="talavera-border"></div>
+
+        <div class="header">
+            <div class="talavera-pattern"></div>
+            <div class="tile-decoration"></div>
+            <h1>Abraham <span class="ampersand">&</span> Laura</h1>
+            <p>¡Nos casamos!</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>💒 Ceremonia Religiosa</h2>
+                <div class="info-box">
+                    <p><strong>Iglesia:</strong> Por confirmar</p>
+                    <p><strong>Hora:</strong> Por confirmar</p>
+                </div>
+            </div>
+
+            <div class="date-container">
+                <div class="day">19</div>
+                <div class="month">DICIEMBRE</div>
+                <div class="year">2026</div>
+            </div>
+
+            <div class="section">
+                <h2>🎉 Recepción</h2>
+                <div class="info-box">
+                    <p><strong>Lugar:</strong> San Cayetana Casa de Eventos</p>
+                    <p><strong>Dirección:</strong> Los Sauces, Guanajuato</p>
+                    <p><strong>Hora:</strong> Por confirmar</p>
+                </div>
+                <center>
+                    <a href="https://maps.app.goo.gl/By52BRXByqagYBYt7?g_st=ipc" target="_blank" class="location-link">
+                        📍 Ver ubicación en Google Maps
+                    </a>
+                </center>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2>💑 Nuestros Datos</h2>
+                <div class="info-box">
+                    <h3>Laura Daniela Muñoz Pachuca</h3>
+                    <p><strong>Teléfono:</strong> 477 721 5847</p>
+                    <p><strong>Dirección:</strong> 3ra privada Muñoz #104, San José del Refugio, León, Gto.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Abraham Adán Gómez Domínguez</h3>
+                    <p><strong>Teléfono:</strong> 473 738 9999</p>
+                    <p><strong>Dirección:</strong> Pastita, Mogote 30, Vis Gto., Gto.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>📸 Fotografía y Video</h2>
+                <div class="info-box">
+                    <p><strong>Fotógrafo/Videógrafo:</strong> Arturo Cruz</p>
+                    <p><strong>Paquete contratado:</strong> Super Paquete de Fotografía y Video</p>
+                    <p><strong>Precio:</strong> $8,500 MXN</p>
+                </div>
+            </div>
+
+            <div class="tile-decoration"></div>
+        </div>
+
+        <div class="footer">
+            <p>Esperamos contar con tu presencia en este día tan especial</p>
+            <p style="margin-top: 15px; font-size: 0.9em;">💙🤍 Temática: Talavera (Azul y Blanco) 🤍💙</p>
+        </div>
+
+        <div class="talavera-border"></div>
+    </div>
+<script src="js/foro7-footer.js"></script>
+</body>
+</html>
