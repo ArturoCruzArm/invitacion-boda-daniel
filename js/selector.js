@@ -250,6 +250,11 @@ const photos = [
     'imagenes/foto7_0187.webp',
     'imagenes/foto7_0188.webp'
 ];
+// Thumbnail helper: usa thumb/ en grid para ahorrar RAM en moviles
+function getThumbPath(fullPath) {
+    return fullPath.replace('imagenes/', 'imagenes/thumb/');
+}
+
 
 const STORAGE_KEY = 'boda_daniel_paulina_photo_selections';
 const LIMITES = {
@@ -508,7 +513,7 @@ function renderGallery() {
 
         card.innerHTML = `
             <div class="photo-image-container">
-                <img src="${photo}" alt="Foto ${index + 1}" loading="lazy">
+                <img src="${getThumbPath(photo)}" alt="Foto ${index + 1}" loading="lazy">
             </div>
             <div class="photo-number">Foto ${index + 1}</div>
             ${badgesHTML}
